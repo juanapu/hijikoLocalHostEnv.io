@@ -1,0 +1,4 @@
+<li><span class="key">用户名:</span> <span class="value userName"></span></li>
+{{#data}}
+<li><span class="key">{{text}}: </span><span class="value"> <input class={{key}} value={{value}} /></span></li>
+{{/data}}

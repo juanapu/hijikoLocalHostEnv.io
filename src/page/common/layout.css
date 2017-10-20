@@ -1,0 +1,96 @@
+/*
+* @Author: Administrator
+* @Date:   2017-08-20 19:40:23
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-08 16:52:08
+*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font: 12px/1.5 tahoma, arial, microsoft yahei, sans-serif;
+	background-color: rgb(246,246,246);
+}
+li{
+	list-style: none;
+}
+img{
+	display: block;
+	border: none;
+}
+label,input[type='checkbox']{
+	cursor: pointer;
+}
+
+/***********fixed width layout***************/
+.w{
+	width: 1080px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.large .w{
+	width: 1600px;
+}
+/*************common css style **************/
+/*hide*/
+.hide{
+	display: none;
+}
+/***************hyperline css style******************/
+.link{
+	text-decoration: none;
+	cursor: pointer;
+	color: #999;
+}
+.link:hover{
+	color: #e80012;
+}
+.link-text{
+	color: #999;
+	text-decoration: none;
+}
+/****************button ***********************/
+.btn{
+	display:  inline-block;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+	border: none;
+	font-size: 17px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #c60023;
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0px 20px;
+}
+.btn-min{
+	padding: 0 10px;
+	line-height: 30px;
+	height: 30px;
+}
+/************************ loading ***************************/
+.load{
+	display: block;
+	background: url("https://media.giphy.com/media/26tPgy93ssTeTTSqA/giphy.gif") no-repeat;
+	background-position: center;
+	background-size: 100%;
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	opacity: 0.6;
+	filter: alpha(opacity=60%);
+
+}
+
+.clear{
+	clear: both;
+}
+a:hover{
+	cursor: pointer;
+}

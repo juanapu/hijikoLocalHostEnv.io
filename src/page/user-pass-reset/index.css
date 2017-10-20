@@ -1,0 +1,97 @@
+/*
+* @Author: Administrator
+* @Date:   2017-09-23 10:07:15
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-09-24 10:03:38
+*/
+.pagewrap.w{
+	background-color: rgb(246,246,246);
+	width: 100%;
+}
+.user-cont{
+	width:480px;
+	background-color: #fff;
+	margin: 100px auto;
+    color: rgb(102,102,102);
+    font-size: 14px;
+}
+
+.user-cont .user-title{
+    padding: 20px 0px;
+	font-size: 18px;
+	text-align: center;
+    border-bottom: 1px solid rgb(189,189,189);
+}
+.user-cont .user-box{
+    padding: 20px 40px 40px 40px;
+}
+.error-item{
+	border:2px solid rgb(204,140,163);
+	color: rgb(200,71,97);
+	padding: 5px;
+	background-color: rgb(255,233,233);
+	margin: 10px 0;
+    display: none;
+}
+.error-item i,.error-item p{
+	display: inline;
+}
+
+.user-item{
+    padding: 5px;
+    height: 30px;
+    line-height: 20px;
+    margin: 10px 0;
+    border: 2px solid rgb(234,233,235);
+    position: relative;
+}
+.user-item.err{
+    border: 2px solid rgb(240,160,143);
+}
+.user-item label{
+    top: 0px;
+    left: 0px;
+    background-color: rgb(242,240,243);
+    width: 33px;
+    border-right: 2px solid rgb(234,233,235);
+    height: 39px;
+    position: absolute;
+}
+.user-item label i{
+    width: 10px;
+    margin: auto;
+    display: block;
+    line-height: 40px;
+    color: rgb(211,211,211);
+}
+.user-item input{
+    width: 353px;
+    height: 40px;
+    top: 0px;
+    left: 34px;
+    outline: none;
+    border: 0px;
+    background-color: transparent;
+    padding-left: 10px;
+    color: rgb(211,211,211);
+    position: absolute;
+}
+.user-box a#submit {
+    width: 400px;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(228,57,60);
+    text-align: center;
+}
+.user-box .link-item {
+    text-align: right;
+    margin-top: 20px;
+}
+.inner-cont.question,.inner-cont.newPass{
+    display: none;  
+}
+
+.inner-cont.question .btn.btn-submit,.inner-cont.newPass .btn.btn-submit{
+    position: relative;
+    top: 50px;
+}

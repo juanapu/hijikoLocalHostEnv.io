@@ -1,0 +1,47 @@
+/*
+* @Author: Administrator
+* @Date:   2017-09-03 09:03:10
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-02 13:11:51
+*/
+.header div.search-con{
+    position: absolute;
+    display: inline;
+}
+
+.header .w{
+	height: 100px;
+	line-height: 100px;
+}
+
+.header .inner {
+    width: 700px;
+    margin: auto;
+}
+
+.header .logo{
+	display: inline;
+	color: red;
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0px 30px 0px 0px;
+    padding: 0px;
+}
+
+.header input#search-input{
+	height: 25px;
+    width: 453px;
+    border: 2px solid rgb(180,0,28);
+    background-color: #fff;
+    outline: none;
+    padding-left: 5px;
+}
+
+.header button.search-btn {
+    height: 29px;
+    line-height: 25px;
+    border: 2px solid rgb(180,0,28);
+    padding: 0px 20px;
+    color: #fff;
+    background-color: rgb(180,0,28);
+}

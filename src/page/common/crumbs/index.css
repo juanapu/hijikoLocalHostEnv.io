@@ -1,0 +1,23 @@
+/*
+* @Author: Administrator
+* @Date:   2017-10-02 13:14:50
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-02 13:26:37
+*/
+
+.crumbs{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: rgb(238,238,238);
+	border-top: 2px solid rgb(180,0,28);
+	color: rgb(136,136,136);
+}
+
+
+.crumbs .text span:first-child{
+	font-size: 18px;
+	font-weight: 700;
+}
+.crumbs .text span:last-child{
+	font-size: 16px;
+}

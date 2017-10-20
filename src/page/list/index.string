@@ -1,0 +1,23 @@
+{{#list}}
+	<div class="innerWrap">
+		<div class="bgWrap">
+			<div class="imgWrap">
+				<a href="./detail.html?productId={{id}}&redirectfrom={{currentUrl}}"><img src={{imageHost}}{{mainImage}} alt="img{{id}}"></a>
+			</div>
+			<div class="text">
+				<div class="price">￥{{price}}</div>
+				<div class="desc">{{name}}</div>
+			</div>
+		</div>
+	</div>
+{{/list}}
+{{^list}}
+	<div class="errCont">
+		<h2>哎呀！这个商品淘气了！找不到了呢~~</h2>
+	</div>  
+{{/list}} 
+	<div class="pagination">
+		<button class="prev">Prev</button>
+			<span class="current">1</span>
+		<button class="next">Next</button>
+	</div>

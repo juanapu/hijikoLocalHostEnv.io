@@ -1,0 +1,41 @@
+	<div class="mainWrap">
+		<div class="imgWrap">
+			<div class="mainImg">
+				<img src="{{imageHost}}{{mainImage}}" alt="img">
+			</div>
+			<div class="previewImgWrap">
+				{{#subImages}}
+					<img src="{{imageHost}}{{img}}" alt="img">
+				{{/subImages}}
+			</div>
+		</div>
+		<div class="textWrap">
+			<h3 class="title">{{name}}</h3>
+			<h5 class="desc">{{subtitle}}</h5>
+			<div class="price">
+				<span>价格：</span>
+				<span class="value">￥{{price}}</span>
+			</div>
+			<div class="stoke">
+				<span>库存：</span>
+				<span class="value">{{stock}}</span>
+			</div>
+			<div class="num">
+				<span>数量：</span>
+				<button data-type="plus">+</button>
+				<input class="value" value="1" />
+				<button data-type="minus">-</button>
+			</div>
+			<div class="submitWrap">
+				<button class="submit">加入购物车</button>
+			</div>
+		</div>
+	</div>
+	<div class="descWrap">
+		<div class="title">
+			<button>商品详情</button>
+		</div>
+		<div class="innerWrap">
+			{{{detail}}}
+		</div>
+	</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>商品列表</title>
+	<link rel="stylesheet" type="text/css" href="../../../node_modules/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+<%= require('html-loader!./layout/nav.html') %>
+<%= require('html-loader!./layout/header.html') %>
+
+<%= require('html-loader!./layout/crumbs.html') %>
+
+<div class="w list">
+	<!-- 推荐排序 价格 -->
+	<div class="listButton"> 
+		<button class="order active">推荐排序</button><button class="price">价格<span class="caretUp"><i class="fa fa-caret-up" aria-hidden="true"></i></span><span class="caretDown active"><i class="fa fa-caret-down" aria-hidden="true"></i></span></button>
+	</div>
+	<div class="listCont">
+		
+	</div>
+</div>
+	<%= require('html-loader!./layout/footer.html') %>
+</body>
+</html>

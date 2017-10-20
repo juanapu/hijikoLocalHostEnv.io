@@ -1,0 +1,20 @@
+/*
+* @Author: Administrator
+* @Date:   2017-09-10 16:44:31
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-09-17 11:10:12
+*/
+
+span.check {
+    color: #1cb142;
+    position: absolute;
+    right: -26px;
+    line-height: 39px;
+    height: 39px;
+    top: 0px;
+    display: none;
+}
+
+span.check .fa-times{
+	color: red;
+}

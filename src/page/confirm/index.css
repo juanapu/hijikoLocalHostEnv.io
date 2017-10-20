@@ -1,0 +1,236 @@
+/*
+* @Author: Administrator
+* @Date:   2017-10-08 17:04:16
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-12 22:16:47
+*/
+.cart table{
+	margin-top: 30px;
+	border-collapse: separate; 
+	text-align: center;
+	line-height: 40px;
+	border-spacing: 0px 30px;	
+}
+.cart table thead{
+	background-color: rgb(238,238,238);
+	padding: 10px;
+	font-weight: bold;
+}
+.cart table thead tr td{
+	padding: 10px;
+	border-top: 1px solid rgb(238,238,238);
+	border-bottom: 1px solid rgb(238,238,238);
+}
+.cart table tr td:first-child{
+	border-left: 1px solid #999;
+	padding:0px;
+	margin:0px;
+	width: 0px!important;
+}
+.cart table thead tr td:first-child{
+	border-left: 1px solid rgb(238,238,238);
+}
+.cart table tr td:nth-child(2){
+	vertical-align: center;
+}
+.cart table tbody tr td:nth-child(2) a{
+	text-decoration: none;	
+	color: #999;
+}
+.cart table tbody tr td:nth-child(2) a:hover{
+	color: #c60023;
+}
+.cart table tbody tr td a.deleteSingle:hover{
+	color: red;
+	cursor: pointer;
+}
+.cart table tr td:nth-child(2) img{
+	display: inline-block;
+	vertical-align: middle;
+}
+.cart table tr td:nth-last-child(1){
+	width: 0px!important;
+	margin:0px;
+	pading:0px;
+	border-right: 1px solid #999;
+}
+.cart table thead tr td:nth-last-child(1){
+	border-right: 1px solid rgb(238,238,238);
+}
+.cart table tr td:nth-last-child(2){
+	width: 80px;
+}
+.cart table tr td:nth-last-child(3){
+	width: 100px;
+}
+.cart table tr td:nth-last-child(4) {
+	width: 50px;
+}
+.cart table tr td:nth-last-child(3) input{
+	width: 40px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #999;
+}
+.cart table tr td:nth-last-child(3) button{
+	line-height: 30px;
+	padding: 0px 6px;
+	background-color: #fff;
+	border: 1px solid #999;
+}
+.cart table tr td img{
+	width: 10%;
+}
+.cart tbody tr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #999;
+	line-height: 100px;
+}
+.cart tbody tr td{
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+.cart tfoot tr td{
+	border-top: 1px solid rgb(238,238,238);
+	border-bottom: 1px solid rgb(238,238,238);
+}
+.cart tfoot tr td:nth-last-child(1){
+	border-right: 1px solid rgb(238,238,238);
+}
+.cart tfoot tr td:first-child{
+	border-left: 1px solid rgb(238,238,238);
+}
+
+.cart tbody input[type="checkbox"] {
+    position: relative;
+    left: -12px;
+}
+.cart tr td:nth-child(2){
+	text-align: left;
+}
+.cart tfoot td:nth-child(2),.cart tfoot td:nth-child(2) a{
+	color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+.cart tfoot td:nth-last-child(2) span.price{
+	font-size: 18px;
+    color: #c60023;
+    font-weight: 700;
+    vertical-align: middle;
+}
+.cart tfoot button.submit{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    vertical-align: middle;
+    background-color: #c60023;
+    padding: 10px 5px;
+    border: none;
+}
+.cart tfoot tr{
+	background-color: rgb(238,238,238);
+}
+
+.cart .empty button.js-goShopping{
+	margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #999;
+    color: #999;
+}
+.cart tfoot tr td{
+	text-align: right!important;
+}
+.confirm .innerWrap h3 {
+    font-weight: 500;
+    font-size: 17px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.confirm .address ul li:nth-child(4n) {
+    margin-right: 0px!important;
+}
+
+.confirm .address ul li {
+    vertical-align: top;
+    color: #444;
+    display: inline-block;
+    border: 4px dashed rgba(153, 153, 153, 0.33);
+    padding: 12px;
+    margin: 30px 54px 30px 0px;
+    width: 18%;
+}
+
+.confirm .address ul li.filledAddress p:first-child {
+    border-bottom: 1px solid #999;
+}
+.confirm .address ul li p {
+    line-height: 24px;
+    color: #7b7a7a;
+}
+.confirm .address li.newAddress {
+    text-align: center;
+}
+.confirm .address li.newAddress i.fa.fa-plus {
+    font-size: 45px;
+    color: #999;
+}
+.confirm .address ul li:hover{
+	background-color: rgba(123, 122, 122, 0.1);
+}
+.confirm .address ul li div.action{
+	position: relative;
+	text-align: right;
+}
+.confirm .address ul li div.action button{
+	border: none;
+	background: transparent;
+}
+.confirm .address ul li div.action button:hover{
+	color: #da0516;
+}
+.confirm .address ul li div.action div.inner{
+	position: absolute;
+	top: -18px;
+	text-align: right;
+	width: 100%;
+	display: none;
+}
+.confirm .address ul li>p:nth-child(2) {
+    padding-bottom: 20px;
+}
+.confirm .address ul li.newAddress p {
+    padding-bottom: 0px;
+}
+body{
+	position: relative;
+}
+.confirm.modal{
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	background: rgba(100,100,100,0.2);
+}
+.confirm.modal .inner{
+	width: 40%;
+	margin: 200px auto;
+	background: #fff;
+	border: 1px solid #444;
+	border-radius: 5px;
+	padding: 30px;
+}
+.confirm.modal .mdlHeader {
+    position: relative;
+}
+.confirm.modal .mdlHeader .rmv {
+    position: absolute;
+    right: -14px;
+    top: -16px;
+}
+.confirm.modal .mdlHeader h4, .confirm.modal .mdlHeader .rmv {
+    display: inline;
+}

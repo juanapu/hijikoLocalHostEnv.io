@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>订单确认</title>
+	<link rel="stylesheet" type="text/css" href="../../../node_modules/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+<%= require('html-loader!./layout/nav.html') %>
+<%= require('html-loader!./layout/header.html') %>
+<%= require('html-loader!./layout/crumbs.html') %>
+
+	<div class="confirm w cart">
+		<div class="innerWrap">
+			<div class="addressWrap">
+				<div class="innerTitle"><h3>收货地址</h3></div>
+				<div class="address">
+					<ul>
+						<li class="filledAddress">
+							<p><span data-type="province">重庆</span><span data-type="city">重庆</span><span data-type="name">（<span>蒲小娟</span> 收）</span></p>
+							<p><span class="detail-address">测试</span><span data-type="tel">123456</span></p>
+							<div class="action">
+								<div class="inner">
+									<button class="js-edit">编辑</button>
+									<button class="js-delete">删除</button>
+								</div>
+							</div>
+						</li>
+						<li class="filledAddress">
+							<p><span data-type="province">重庆</span><span data-type="city">重庆</span><span data-type="name">（<span>蒲小娟</span> 收）</span></p>
+							<p><span class="detail-address">测试</span><span data-type="tel">123456</span></p>
+							<div class="action">
+								<div class="inner">
+									<button class="js-edit">编辑</button>
+									<button class="js-delete">删除</button>
+								</div>
+							</div>
+						</li>
+						<li class="filledAddress">
+							<p><span data-type="province">重庆</span><span data-type="city">重庆</span><span data-type="name">（<span>蒲小娟</span> 收）</span></p>
+							<p><span class="detail-address">测试</span><span data-type="tel">123456</span></p>
+							<div class="action">
+								<div class="inner">
+									<button class="js-edit">编辑</button>
+									<button class="js-delete">删除</button>
+								</div>
+							</div>
+						</li>
+						<li class="filledAddress">
+							<p><span data-type="province">重庆</span><span data-type="city">重庆</span><span data-type="name">（<span>蒲小娟</span> 收）</span></p>
+							<p><span class="detail-address">测试</span><span data-type="tel">123456</span></p>
+							<div class="action">
+								<div class="inner">
+									<button class="js-edit">编辑</button>
+									<button class="js-delete">删除</button>
+								</div>
+							</div>
+						</li>
+						<li class="filledAddress">
+							<p><span data-type="province">重庆</span><span data-type="city">重庆</span><span data-type="name">（<span>蒲小娟</span> 收）</span></p>
+							<p><span class="detail-address">测试</span><span data-type="tel">123456</span></p>
+							<div class="action">
+								<div class="inner">
+									<button class="js-edit">编辑</button>
+									<button class="js-delete">删除</button>
+								</div>
+							</div>
+						</li>
+						<li class="newAddress">
+							<div><i class="fa fa-plus" aria-hidden="true"></i></div>
+							<p>使用新地址</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="listWrap">
+				<div class="innerTitle"><h3>商品清单</h3></div>
+				<table data-allselected="false">
+				<thead>
+					<tr>
+						<td></td>
+						<td>商品描述</td>
+						<td>价格</td>
+						<td>数量</td>
+						<td>小计</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+						<tr data-productid="36" data-count="1" data-stock="9969">
+							<td></td>
+							<td><a href="./detail.html?productId=36"><img src="http://img.happymmall.com/b6c3ffbb-2107-4b75-9a8d-71c1373f6fbc.jpg"><span>【测试学习使用】Haier/海尔 KFR-33GW/10EBBAL13U1 1.5匹 空调挂机 智能操控</span></a></td>
+							<td>￥2099</td>
+							<td>
+								<button class="minus">-</button>
+								<input class="quantity" value="1">
+								<button class="plus">+</button></td>
+							<td>￥2099</td>
+							<td></td>
+						</tr>
+						<tr data-productid="54" data-count="1" data-stock="22990">
+							<td></td>
+							<td><a href="./detail.html?productId=54"><img src="http://img.happymmall.com/6b109cd7-066f-47bc-bdfb-619e4c444da4.png"><span>【测试学习使用】湖北熟制小龙虾1kg 麻辣/十三香口味(17-25只)</span></a></td>
+							<td>￥199</td>
+							<td>
+								<button class="minus">-</button>
+								<input class="quantity" value="1">
+								<button class="plus">+</button></td>
+							<td>￥199</td>
+							<td></td>
+						</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4"><span>总价: </span><span class="price">￥2099 </span></td>
+						<td colspan="2"><button class="submit">去结算</button></td>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+		</div>
+	</div>
+	<div class="confirm modal">
+		<div class="inner">
+			<div class="mdlHeader">
+				<h4>更新地址</h4>
+				<div class="rmv">
+					X
+				</div>
+			</div>
+			<div class="modlBody">
+				<form class="edit">
+					<div class="form-line">
+						<label for="receiver-name">收件人姓名：</label>
+						<input class="form-item name" id="receiver-name" type="text" value="蒲小娟" required ></input>
+					</div>
+					<div class="form-line">
+						<label>所在城市：</label>
+						<select class="form-item province" id="province" required>
+							<option>1</option>
+							<option selected="">2</option>
+						</select>
+						<select class="form-item city" id="city" required>
+							<option>1</option>
+							<option>2</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="detail-address" required>详细地址：</label>
+						<input class="form-item detail-address" id="detail-address" type="text" value="重庆市大虚线" required></input>
+					</div>
+					<div class="form-line">
+						<label for="address-phone" required>收件人手机：</label>
+						<input class="form-item address-phone" id="address-phone" type="text" value="138833"></input>
+					</div>
+					<div class="form-line">
+						<label for="detail-address">邮政编码：</label>
+						<input class="form-item detail-code" id="address-code" type="text" value="000000"></input>
+					</div>
+					<div class="submit">
+						<button type="submit">保存收货地址</button>
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+	<%= require('html-loader!./layout/footer.html') %>
+</body>
+</html>

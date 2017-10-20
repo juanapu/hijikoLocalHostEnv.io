@@ -1,0 +1,30 @@
+/*
+* @Author: Administrator
+* @Date:   2017-10-05 10:49:41
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-05 12:06:54
+*/
+.w.result{
+	display: none;
+}
+
+.result .wrap{
+	background-color: #fff;
+	width: 80%;
+	margin: 30px auto;
+	text-align: center;
+	padding: 50px 20px;
+	border-radius: 10px;
+}
+.result h1{
+	margin: 20px 0px;
+}
+.result button{
+	padding: 10px 20px;
+	background-color: #fff;
+	border : 1px solid #999;
+	color : #999;
+}
+.result button:hover{
+	color: red;
+}

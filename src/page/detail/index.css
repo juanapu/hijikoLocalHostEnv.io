@@ -1,0 +1,88 @@
+/*
+* @Author: Administrator
+* @Date:   2017-10-03 16:49:57
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-10-06 11:07:03
+*/
+.detail .imgWrap,.detail .textWrap{
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+	margin: 30px;
+}
+.detail .imgWrap .mainImg,.detail .imgWrap .mainImg img,.detail .imgWrap .previewImgWrap{
+	width: 100%;
+}
+.detail .imgWrap .mainImg{
+	border: 1px solid #444;
+	margin-bottom: 30px;
+    height: 443px;
+    overflow: hidden;
+}
+.detail .imgWrap .previewImgWrap img{
+	width: 30%;
+	display: inline-block;
+	border:1px solid #444;
+}
+.detail .textWrap{
+	padding-top: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+.detail .textWrap h3{
+    font-size: 20px;
+    color: #333;
+    font-weight: 400;
+}
+.detail .textWrap h5{
+	color: #c60023;
+    line-height: 30px;
+    font-size: 15px;
+}
+.detail .price,.detail .stoke,.detail .num,.detail .submitWrap{
+    margin-top: 20px;
+}
+.detail .price span,.detail .stoke span, .detail .num span{
+    color: #999;
+    padding: 20px;
+}
+.detail div.price{
+    background: #eee;
+}
+.detail .price span.value{
+	font-size: 18px;
+    color: #c60023;
+}
+.detail .submitWrap button.submit{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: none;
+    background-color: #c60023;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.detail .descWrap .title button{
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    background: #c60023;
+    color: #fff;
+    border: none;
+}
+.detail .descWrap .title{
+    background-color: rgb(238,238,238);
+    border-bottom: 1px solid rgb(198,0,35);
+    border-top: 1px solid rgb(221,221,221);
+}
+.detail input.value {
+    width: 14px;
+    text-align: center;
+}

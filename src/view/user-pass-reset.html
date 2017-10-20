@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../../node_modules/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+<%= require('html-loader!./layout/navsimple.html') %>
+	<div class="pagewrap w">
+		<div class="user-cont">
+			<div class="user-title">找回密码</div>
+			<div class="user-box">
+				<div class="error-item">
+					<i class="fa fa-minus-circle error-icon"></i>
+					<p class="err-msg">Error</p>
+				</div>
+				<div class="inner-cont user-name">
+					<div class="user-label">请输入用户名</div>
+					<div class="user-item">
+						<label class="user-label" for="">
+							<i class="fa fa-user"></i>
+						</label>
+						<input class="user-content" id="username" placeholder="请输入用户名" autocomplete="off"></input>
+					</div>
+					<a href="#" class="btn btn-submit" id="submit">下一步</a>
+				</div>
+				<div class="inner-cont question">
+					<div class="user-label">密码提示问题为:<span></span><br>
+	请输入密码提示答案:</div>
+					<div class="user-item">
+						<label class="user-label" for="">
+							<i class="fa fa-user"></i>
+						</label>
+						<input type="text" class="user-content" id="answer" placeholder="请输入密码提示答案" autocomplete="off"></input>
+						<a href="#" class="btn btn-submit" id="submit">下一步</a>
+					</div>
+				</div>
+				<div class="inner-cont newPass">
+					<div class="user-label">请输入新密码:</div>
+					<div class="user-item">
+						<label class="user-label" for="">
+							<i class="fa fa-user"></i>
+						</label>
+						<input type="password" class="user-content" id="newPass" placeholder="请输入新密码" autocomplete="off"></input>
+						<a href="#" class="btn btn-submit" id="submit">下一步</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<%= require('html-loader!./layout/footer.html') %>
+</body>
+</html>

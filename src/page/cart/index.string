@@ -1,0 +1,45 @@
+		{{^cartProductVoList}}
+			<div class="empty">
+			<p>你的购物车是空的!</p>
+			<button class="js-goShopping">返回购物</button>
+			</div>
+		{{/cartProductVoList}}
+
+		<div class="innerWrap">
+			<div class="loadingWrap"></div>
+			<table data-allSelected={{allChecked}}>
+				<thead>
+					<tr>
+						<td><input class="selectAll" type="checkbox"></input>全选</td>
+						<td>商品信息</td>
+						<td>单价</td>
+						<td>数量</td>
+						<td>合计</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					{{#cartProductVoList}}
+						<tr data-productid={{productId}} data-count={{quantity}} data-stock={{productStock}}>
+							<td><input class="singleSelect" type="checkbox" {{checked}} data-checked={{productChecked}}></td>
+							<td><a href="./detail.html?productId={{productId}}"><img src="{{imageHost}}{{productMainImage}}"><span>{{productName}}</span></a></td>
+							<td>￥{{productPrice}}</td>
+							<td>
+								<button class="minus">-</button>
+								<input class="quantity" value="{{quantity}}"></input>
+								<button class="plus">+</button></td>
+							<td>￥{{productTotalPrice}}</td>
+							<td><a class="deleteSingle" hre="#">删除</a></td>
+						</tr>
+					{{/cartProductVoList}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td><input class="selectAll" type="checkbox"></input>全选</td>
+						<td colspan="2"><i class="fa fa-trash-o" aria-hidden="true"></i><span><a class="deleteMul" href="#">删除选中</a></span></td>
+						<td colspan="2"><span>总价: </span><span class="price">￥{{cartTotalPrice}} </span></td>
+						<td><button class="submit">去结算</button></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
