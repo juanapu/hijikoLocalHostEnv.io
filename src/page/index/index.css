@@ -206,33 +206,36 @@ button.js-nxt{
 }
 
 /*******result css**************/
-.loginForm.login{
+.loginForm.login,.registerForm{
 	position: relative;
 }
-.loginForm .resultPg{
+.loginForm .resultPg,.registerForm .resultPg{
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	display: none;
+	display: none; 
 }
-.loginForm .resultPg>.resultWrap{
+.loginForm .resultPg>.resultWrap,.registerForm .resultPg>.resultWrap{
 	width: 16em;
 	margin: auto;
 	font-size: 1em;
 	position: relative;
 }
-.loginForm .resultPg>.resultWrap p{
-	left: 2em;
-	top: 1em;
+.loginForm .resultPg>.resultWrap p,.registerForm .resultPg>.resultWrap p{
+	font-size: 0.8em;
 	font-weight: 800;
+	left: 2em;
 	position: absolute;
-	 -webkit-animation-name: shake; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
-    animation-name: shake;
-    animation-duration: 0.5s;
      animation-iteration-count: 4;
      animation-timing-function: ease-out;
+}
+.loginForm .resultPg>.resultWrap p{
+	top: 1em;
+	 -webkit-animation-name: shake; /* Safari 4.0 - 8.0 */
+    animation-name: shake;
+    animation-duration: 0.5s;
 }
 @-webkit-keyframes shake{
 	0% {left: 2.1em;top:1em;}
@@ -251,6 +254,28 @@ button.js-nxt{
 	100%  {left: 1.9em;top:1em;}
 }
 
+.registerForm .resultPg>.resultWrap p{
+	top: -1em;
+	 -webkit-animation-name: shakeR; /* Safari 4.0 - 8.0 */
+    animation-name: shakeR;
+    animation-duration: 0.5s;
+}
+@-webkit-keyframes shakeR{
+	0% {left: 2.1em;top:-1em;}
+	20%{left: 1.9em;top:-1.1em;}
+	40%{left: 2.1em;top:-1em;}
+	60%{left: 1.9em;top:-1.1em;}
+	80%{left: 2.1em;top:-1em;}
+	100%  {left: 1.9em;top:-1em;}
+}
+@keyframes shakeR{
+	0% {left: 2.1em;top:-1em;}
+	20%{left: 1.9em;top:-1.1em;}
+	40%{left: 2.1em;top:-1em;}
+	60%{left: 1.9em;top:-1.1em;}
+	80%{left: 2.1em;top:-1em;}
+	100%  {left: 1.9em;top:-1em;}
+}
 
 /****************************************for PC ************************************************/
 @media all {

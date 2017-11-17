@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-17 16:55:10
+* @Last Modified time: 2017-11-17 21:43:22
 */
 
 'use strict';
@@ -66,10 +66,10 @@ var _mm={
 		alert(msg || 'wrong behavior');
 	},
 	// phone,email,empty varification
-	validate : function(value,type){
+	validate : function(value,type,required){
 		var value = $.trim(value);
 		//check whether it is empty
-		if('require' === type){
+		if('required' === required){
 			return !!value; // return true if value exist
 		};
 		//phone varification
@@ -85,7 +85,7 @@ var _mm={
 			return  /^[A-Za-z]\w{7,14}$/.test(value);
 		};
 		//username varification
-		if('username' === type){
+		if('nickname' === type){
 			return /^[a-zA-Z0-9_-]{4,16}$/.test(value); 
 		};
 	},

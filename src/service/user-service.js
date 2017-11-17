@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-17 14:59:53
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-17 17:01:03
+* @Last Modified time: 2017-11-17 20:52:48
 */
 "use strict";
 
@@ -27,9 +27,9 @@ var _user = {
 			error   : reject
 		});
 	},
-	login: function(userInfo,resolve,reject){
+	login: function(url,userInfo,resolve,reject){
 		_mm.request({
-			url   :_mm.getServerUrl('/user/login.do'),
+			url   :_mm.getServerUrl(url),
 			data  : userInfo,
 			method: 'post',
 			success: resolve,

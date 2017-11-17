@@ -22,4 +22,9 @@
 			<span>已有账号？</span><a class="jsLogin" href="#">登录</a>
 		</div>
 	</div>
+	<div class="resultPg">
+		<div class="resultWrap">
+			<p>注册了成功啦，快来登录吧！</p>
+		</div>
+	</div>
 </div>

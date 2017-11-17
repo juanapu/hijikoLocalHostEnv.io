@@ -8,11 +8,14 @@ var commonJs={
 	init: function(){
 		var _this=this;
 		FastClick.attach(document.body);  /****** mobile click event compatibility ******/
-		_this.pageMove();
 	},
-	pageMove: function(){
-		
+	loading: function(){
+		$("#loadingWrap").show().css({opacity: 1});
+	},
+	unloading: function(){
+		$("#loadingWrap").css({opacity: 0}).hide();	
 	}
+
 };
 
 $(function(){
@@ -20,3 +23,4 @@ $(function(){
 });
 
 
+module.exports=commonJs;
