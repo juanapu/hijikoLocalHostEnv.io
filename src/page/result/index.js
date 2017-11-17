@@ -1,37 +1,36 @@
 /*
 * @Author: Administrator
-* @Date:   2017-10-05 10:49:23
+* @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-10-08 16:06:16
+* @Last Modified time: 2017-11-10 17:07:18
 */
-
 "use strict";
 
 require('../common/layout.css');
 require('./index.css');
-//require('../common/navsimple/index.js');
-require('../common/navsimple/index.js');
 require('../common/footer/index.js');
-var _header=require('../common/header/index.js');
+require('../common/header/index.js');
 var _mm=require('../../util/mm.js');
-
-var _result={
-	init : function(){
-		var _this=this;
-		$(".w.result").show();
-		_this.bind();
+var img=require('../../resource/img/qrcode.png');
+var confirmPg={
+	init: function(){
+	 		var _this=this;
+	 		$(".confirmPg .QRImg>img.img").attr('src',img);
+	 		_this.bindEvent();
 	},
-	bind : function(){
-		$(".result .wrap .js-goShopping").click(function(){
-			window.location.href=_mm.getUrlParam('redirectfrom');
+	bindEvent: function(){
+		var _this=this;
+		document.getElementById('copyButton').addEventListener('click',function(){
+			_this.copyToClipboard(document.getElementById("copyTarget"));
 		});
-		$(".result .wrap .js-goCart").click(function(){
-			window.location.href='./cart.html?redirectfrom='+_mm.getUrlParam('redirectfrom');
-		});
+	},
+	copyToClipboard: function(elem){
+		  elem.focus();
+	       elem.select();
+		document.execCommand("copy",true);
 	}
 };
 
-
 $(function(){
-	_result.init();
+	confirmPg.init();
 });

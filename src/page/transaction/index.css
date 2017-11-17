@@ -1,0 +1,244 @@
+/*
+* @Author: Administrator
+* @Date:   2017-11-09 17:29:42
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-11-10 15:41:51
+*/
+body,html{
+	background-color: #fff;
+	color: #444;
+}
+.headerWrap nav.navbar {
+    position: relative;
+    width: 100%;
+}
+.headerWrap nav.navbar.navbar-expand-sm.bg-dark.navbar-dark.fixed-top {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+.headerWrap a{
+	color: rgba(0,0,0,0.3);
+}
+.headerWrap a>i.fa.fa-bars {
+    color: rgba(0,0,0,0.3);
+}
+.headerWrap .bar.pc li.nav-item.active a{
+    color: #fff;
+}
+.headerWrap a.showUl>i.fa.fa-bars {
+    color: rgba(0,0,0,0.1);
+}
+
+.transaction {
+    margin-top: 70px;
+}
+.transaction .form-item.range>div{
+  float: right;
+}
+
+/*input range*/
+input[type=range] {
+  height: 37px;
+ -webkit-appearance: none;
+  margin: 10px 0;
+   width: 17em;
+ /* float: right; */
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 19em;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #1f95e3;
+  border-radius: 14px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 30px;
+  width: 30px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #1f95e3;
+}
+input[type=range]::-moz-range-track {
+  width: 19em;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #1f95e3;
+  border-radius: 14px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 30px;
+  width: 30px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 19em;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #1f95e3;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #1f95e3;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 30px;
+  width: 30px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+} 
+input[type=range]:focus::-ms-fill-lower {
+  background: #1f95e3;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #1f95e3;
+}  
+  
+.transaction form .range label{
+  line-height: 30px;
+  height: 30px;
+}
+
+.transaction form{
+    width: 27em;
+}
+
+.transaction .innerForm {
+    border: 2px solid #1f95e3;
+    border-radius: 5px;
+    padding: 2em;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 2em;
+}
+
+.transaction .form-item input[type="text"],.transaction .form-item input[type="number"] {
+    border-bottom: 2px solid #79bec1;
+    border: none;
+    border-bottom: 2px solid #79bec1;
+    width: 21em;
+}
+.transaction .form-item:first-child  input[type="text"]{
+   width: 22.4em;
+}
+.transaction .form-item:nth-child(3) input[type="text"]{
+   width: 18em;
+}
+.transaction input[type='submit']{
+  float: right;
+}
+.transaction .form-item {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.transaction form .range label,.transaction form input[type=range] {
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+.transaction form .range label span.dateExpire{
+  font-size: 2em;
+  font-weight: 800;
+}
+
+
+/****************************************for mobile ************************************************/
+ @media all and (max-width: 500px){
+  /**********headerWrap*********************/
+  .headerWrap ul.navbar-nav{
+    background-color: rgb(47, 146, 169);;
+  }
+  .headerWrap ul.navbar-nav a{
+    color: #fff;
+  }
+  .headerWrap ul.navbar-nav li.active{
+     background-color: rgb(43,130,218);
+  }
+
+    .transaction{
+      margin-top: 5px;
+    }
+    .transaction div.descr{
+      font-weight: 800;
+    }
+    .transaction .innerForm,.transaction form{
+      width: 100%;
+      border: none;
+      margin-top: 0em;
+    }
+    .transaction .innerForm .form-item{
+      width: 100%;
+      position: relative;
+    }
+    .transaction .innerForm {
+      padding: 2em;
+    }
+     .transaction .innerForm input{
+        width: inherit!important;
+     /*   padding-left: 7em!important; */
+     } 
+     .transaction .form-item:first-child  input[type="text"]{
+      padding-left: 5em;
+     }
+     .transaction .form-item input[type="number"]{
+      padding-left: 7em;
+     }
+      .transaction .innerForm form label{
+        position: absolute;
+      }
+      .transaction .innerForm form .tranReceiver label,.transaction .innerForm form .range label{
+        position: relative!important;
+      }
+      .transaction .form-item input[type="submit"]{
+            margin-top: 1.3em;
+      }
+ }
+
+ /****************************************for small mobile screen ************************************************/
+@media all and (max-width: 330px){
+    .transaction .innerForm {
+      padding: 0em 2em;
+    }
+    .transaction {
+      font-size: 0.8em;
+    }
+
+ }

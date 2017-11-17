@@ -1,0 +1,314 @@
+/*
+* @Author: Administrator
+* @Date:   2017-11-10 15:15:58
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-11-16 16:25:01
+*/
+body,html{
+  background-color: #fff;
+  color: #444;
+}
+.headerWrap nav.navbar {
+    position: relative;
+    width: 100%;
+}
+.headerWrap a{
+  color: rgba(0,0,0,0.3);
+}
+.headerWrap a>i.fa.fa-bars {
+    color: rgba(0,0,0,0.3);
+}
+.headerWrap .bar.pc li.nav-item.active a{
+    color: #fff;
+}
+.headerWrap a.showUl>i.fa.fa-bars {
+    color: rgba(0,0,0,0.1);
+}
+.headerWrap nav.navbar.navbar-expand-sm.bg-dark.navbar-dark.fixed-top {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+
+.tranDetailPg.container {
+    padding-top: 1em;
+}
+.formWrap {
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 5px 5px 10px #999999;
+    border-radius: 5px;
+    display: block;
+}
+.tranDetailPg .left.text-left, .right.text-left {
+    display: table-cell;
+    height: 100%;
+    vertical-align: top;
+}
+.tranDetailPg .left.text-left>div,.right.text-left{
+  padding: 0.5em;
+}
+.tranDetailPg .left.text-left{
+    background-color: rgb(45,145,168);
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.tranDetailPg .formWrap{
+  border: none;
+}
+.tranDetailPg .left.text-left>div{
+  border-bottom: 1px solid #fff;
+  margin: 0em 1em;
+  font-size: 1em;
+  font-weight: 800;
+}
+.tranDetailPg .left.text-left>div:last-child{
+  border-bottom: none;
+}
+.tranDetailPg .left.text-left>div>.tle{
+  font-size: 0.8em;
+  font-weight: 400;
+}
+.tranDetailPg .tranNameWrap {
+    padding-top: 1.3em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ced3d5;
+}
+.tranDetailPg .hstWrap {
+    font-size: 1em;
+    padding-top: 0.5em;
+}
+.tranDetailPg .commentWrap .actionWrap {
+    padding-top: 5em;
+    text-align: right;
+    position: relative;
+}
+/*****pop wrap******/
+.tranDetailPg  .popWrap{
+  display: none;
+  position: absolute;
+  right: 0em;
+  bottom: 0em;
+  background-color: rgb(243, 240, 240);
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 6px 6px 20px;
+  max-width: 22em;
+}
+.tranDetailPg .popWrap textarea {
+    background-color: rgba(255,255,255,0.9);
+    margin: 0em 1em;
+}
+.tranDetailPg  .popWrap,.tranDetailPg .popWrap textarea{
+    border-radius: 5px;
+}
+.tranDetailPg .popWrap .buttonWrap {
+    text-align: right;
+    padding-bottom: 1em;
+    padding-right: 1em;
+}
+
+.tranDetailPg .popWrap .desc {
+    padding: 0.8em;
+    font-size: 0.8em;
+    text-align: left;
+}
+ .tranDetailPg  .popWrap textarea {
+    width: 20em;
+  }
+ .tranDetailPg button.btn.cmnBtn.js-POP {
+    margin-left: 1em;
+}
+.tranDetailPg .actionWrap.mobile{
+  display: none;
+}
+.tranDetailPg #cmtListWrap {
+  overflow: visible;
+}
+
+/**********pagination***********/
+#pagination-demo{
+  display: inline-block;
+  margin-bottom: 1.75em;
+}
+#pagination-demo li{
+  display: inline-block;
+}
+
+.tranDetailPg .page-content{
+  background: #eee;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 660px;
+}
+.tranDetailPg div#cmtListWrap {
+  box-shadow: none;
+}
+.tranDetailPg .cmtTtl>div{
+  display: inline-block;
+  vertical-align: bottom;
+}
+.tranDetailPg .cmtTtl>.userImg{
+  max-width: 2em;
+}
+.tranDetailPg .cmtTtl>.userImg>img{
+  width: 100%;
+}
+  .tranDetailPg .userInfo span:last-child{
+    padding-left: 1px;
+  }
+ .tranDetailPg .innerTtl {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 1em 0em;
+    margin-bottom: 1em;
+}
+.tranDetailPg .cmtInner {
+    padding: 1em;
+}
+
+/****************************************for tablet ************************************************/
+@media screen and (max-width: 700px) {
+ 
+
+}
+/****************************************for mobile ************************************************/
+@media screen and (max-width: 500px) {
+  /**********headerWrap*********************/
+  .headerWrap ul.navbar-nav{
+    background-color: rgb(47, 146, 169);;
+  }
+  .headerWrap ul.navbar-nav a{
+    color: #fff;
+  }
+  .headerWrap ul.navbar-nav li.active{
+     background-color: rgb(43,130,218);
+  }
+
+  /***transaction detail page****/
+  .tranDetailPg .pg.text-center{
+    display: none;
+  }
+  .tranDetailPg .actionWrap.pc{
+    display: none;
+  }
+  .tranDetailPg .actionWrap.mobile{
+    display: block;
+  }
+  .tranDetailPg .formWrap{
+   font-size: 0.8em;
+  }
+  .tranDetailPg .formWrap>.left.text-left>div{
+    max-width: 6em;
+    word-wrap: break-word;
+  }
+  .tranDetailPg .commentWrap .actionWrap.mobile{
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .tranDetailPg button.btn.cmnBtn.js-POP{
+    margin: 1em;
+  }
+  .tranDetailPg .commentWrap{
+    height:  calc(100% - 2em);
+  }
+  .tranDetailPg .formWrap {
+    max-height: 10em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .tranDetailPg .formWrap.rmMxHt{
+    max-height: 30em;
+  }
+  .tranDetailPg #cmtListWrap { /**add maximum height**/
+    overflow-y: scroll;
+    overflow-x: hidden;/*maximum height defined in JS*/
+  }
+  .tranDetailPg .commentWrap .innerTtl {
+    background-color: rgb(134,136,135);
+    color: #fff;
+    text-align: center;
+    margin: 1em 0em 0em 0em;
+  }
+  .tranDetailPg div#cmtListWrap {
+    box-shadow: 2px 2px 17px;
+    word-wrap: break-word;
+  }
+  .tranDetailPg .userInfo {
+    font-size: 0.8em;
+  }
+  .tranDetailPg .userInfo span:last-child{
+    font-size: 0.5em;
+  }
+  .tranDetailPg .commentWrap .actionWrap{
+     padding-top: 0;
+  }
+   .tranDetailPg .innerTtl {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 0em;
+    margin-bottom: 0.5em;
+}
+.tranDetailPg .cmtInner {
+    padding: 0.5em;
+}
+  .tranDetailPg  .popWrap{
+    right: 2em;
+  }
+  .popWrap {
+    width: calc(100% - 2em);
+  }
+  .tranDetailPg  .popWrap{
+    max-width: none;
+  }
+  .tranDetailPg .popWrap textarea{
+    margin: 0em auto;
+  }
+
+/********visible scrollbar in mobile******************/
+  /* !important is needed sometimes */
+   .tranDetailPg .formWrap::-webkit-scrollbar,.tranDetailPg #cmtListWrap::-webkit-scrollbar {
+      width: 12px !important;
+   }
+
+   /* Track */
+  .tranDetailPg .formWrap::-webkit-scrollbar-track,.tranDetailPg #cmtListWrap::-webkit-scrollbar-track {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important; 
+     border-radius: 10px !important;
+     border: none;
+   }
+
+   /* Handle */
+   .tranDetailPg .formWrap::-webkit-scrollbar-thumb,.tranDetailPg #cmtListWrap::-webkit-scrollbar-thumb {
+     -webkit-border-radius: 10px !important;
+     border-radius: 10px !important;
+     background: #277b8e4d !important; 
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important; 
+
+   }
+   .tranDetailPg .formWrap::-webkit-scrollbar-thumb:window-inactive,.tranDetailPg #cmtListWrap::-webkit-scrollbar-thumb:window-inactive {
+     background: #277b8e4d !important; 
+   }
+
+
+}
+
+
+ /****************************************for small mobile screen ************************************************/
+@media all and (max-width: 330px){
+  .tranDetailPg .mobile .state div:nth-child(2) {
+    font-size: 1em;
+  }
+  .tranDetailPg  .popWrap{
+    right: 2em;
+  }
+  .tranDetailPg .popWrap textarea {
+    width: 16em;
+  }
+ }
+
+  /****************************************for large screen ************************************************/
+@media all and (min-width: 1020px){
+  
+ }

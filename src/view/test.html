@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<link  rel="stylesheet" type="text/css" href="../page/test/test.css" />
-</head>
+<%= require('html-loader!./layout/meta.html') %> 
 <body>
-
-
-	<div>
-		this is a test file
-	</div>
-		<%= require('html-loader!./layout/footer.html') %>
-
+<div>
+	<form>
+  <label for="slider-1">Slider with tooltip:</label>
+  <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50" data-popup-enabled="true">
+	</form>
+</div>
+		<%= require('html-loader!./layout/footer.html') %> 
 </body>
-</html>

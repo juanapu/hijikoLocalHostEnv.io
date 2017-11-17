@@ -28,19 +28,13 @@ var getHtmlLayoutConfig = function(name){
 
 var exportContent ={
 	entry:{
-		commons: "./src/page/common/index.js",
-		index: "./src/page/index/index.js",
-		"user-login"   :    "./src/page/user-login/index.js",
-		"user-register": "./src/page/user-register/index.js",
-		test: "./src/page/test/index.js",
-		"user-pass-reset" : "./src/page/user-pass-reset/index.js",
-		"user-center"     : "./src/page/user-center/index.js",
-		"user-center-update": "./src/page/user-center-update/index.js",
-		"list"				: "./src/page/list/index.js",
-		"detail"			: "./src/page/detail/index.js",
-		"result"			: "./src/page/result/index.js",
-		"cart"			: "./src/page/cart/index.js",
-		"confirm"			: "./src/page/confirm/index.js"
+		'common': ['./src/page/common/index.js'],
+		'index': "./src/page/index/index.js",
+		'transaction': "./src/page/transaction/index.js",
+		'confirm': "./src/page/confirm/index.js",
+		'result': "./src/page/result/index.js",
+		'tranList': "./src/page/tranList/index.js",
+		'tranDetail': "./src/page/tranDetail/index.js"
 	},
 	output: {
 		path: __dirname+'/dist',
@@ -80,17 +74,11 @@ var exportContent ={
 	  },
 	plugins: [
 		new htmlWebpackPlugin(getHtmlConfig('index')),
-		new htmlWebpackPlugin(getHtmlConfig('test')),
-		new htmlWebpackPlugin(getHtmlConfig('user-login')),
-		new htmlWebpackPlugin(getHtmlConfig('user-register')),
-		new htmlWebpackPlugin(getHtmlConfig('user-pass-reset')),
-		new htmlWebpackPlugin(getHtmlConfig('user-center')),
-		new htmlWebpackPlugin(getHtmlConfig('user-center-update')),
-		new htmlWebpackPlugin(getHtmlConfig('list')),
-		new htmlWebpackPlugin(getHtmlConfig('detail')),
-		new htmlWebpackPlugin(getHtmlConfig('result')),
-		new htmlWebpackPlugin(getHtmlConfig('cart')),
+		new htmlWebpackPlugin(getHtmlConfig('transaction')),
 		new htmlWebpackPlugin(getHtmlConfig('confirm')),
+		new htmlWebpackPlugin(getHtmlConfig('result')),
+		new htmlWebpackPlugin(getHtmlConfig('tranList')),
+		new htmlWebpackPlugin(getHtmlConfig('tranDetail')),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'commons',
 			filename: 'page/commons/commons.js'

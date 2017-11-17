@@ -1,38 +1,44 @@
 /*
 * @Author: Administrator
-* @Date:   2017-10-08 17:03:59
+* @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-10-12 21:26:08
+* @Last Modified time: 2017-11-16 14:11:21
 */
 "use strict";
 
 require('../common/layout.css');
 require('./index.css');
-//require('../common/navsimple/index.js');
-require('../common/nav/index.js');
 require('../common/footer/index.js');
-require('../common/crumbs/index.js');
-var _header=require('../common/header/index.js');
-var _nav=require('../common/nav/index.js');
+require('../common/header/index.js');
 var _mm=require('../../util/mm.js');
-var _cart=require('../../service/cart-service.js');
-var string=require('./index.string');
-var loading=require('../common/loading.string');
-
-var _confirm={
+var img=require('../../resource/img/qrcode.png');
+var confirmPg={
 	init: function(){
-		var _this=this;
-		_this.bind();
+	 		var _this=this;
+	 		$(".confirmPg .QRImg>img.img").attr('src',img);
+	 		_this.bindEvent();
+	 		_this.pageMove();
 	},
-	bind : function(){
-		$(".confirm .address ul li.filledAddress").hover(function(){
-			$(this).find('.inner').show();
-		},function(){
-			$(this).find('.inner').hide();
+	bindEvent: function(){
+		var _this=this;
+		document.getElementById('copyButton').addEventListener('click',function(){
+			$("button#copyButton~span").show('slow').delay(1000).hide('slow');
+			$("input#copyTarget").select();
+			_this.copyToClipboard(document.getElementById("copyTarget"));
+		});
+	},
+	copyToClipboard: function(elem){
+		  elem.focus();
+	       elem.select();
+		document.execCommand("copy",true);
+	},
+	pageMove: function(){
+		$(".confirmPg>.notice>div>a.link").click(function(){
+			window.location.href='./transaction.html';
 		});
 	}
 };
 
 $(function(){
-	_confirm.init();
+	confirmPg.init();
 });

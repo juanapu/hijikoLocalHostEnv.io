@@ -1,0 +1,28 @@
+<div class="loginForm login">
+	<form>
+		<div class="formItem userName">
+			<label for="userName"><i class="fa fa-user-o" aria-hidden="true"></i>
+</label>
+			<input type="text" placeholder="用户名" name="userName" autofocus></input>
+		</div>
+		<div class="formItem passWord">
+			<label for="passWord"><i class="fa fa-lock" aria-hidden="true"></i>
+</label>
+			<input type="password" placeholder="密码" name="passWord" autofocus></input>
+		</div>
+		<input type="submit" value="登录"></input>
+	</form>
+	<div class="underLine">
+		<div class="register">
+			<span>还没有注册账号？</span><a class="jsRegister" href="#">注册</a>
+		</div>
+		<div class="resetPw">
+			<span>忘记密码？</span><a  class="jsResetPw" href="#">找回密码</a>
+		</div>
+	</div>
+	<div class="resultPg">
+		<div class="resultWrap">
+			<p>注册了成功啦，快来登录吧！</p>
+		</div>
+	</div>
+</div>

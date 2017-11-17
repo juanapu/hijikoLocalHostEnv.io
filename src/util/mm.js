@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-10-08 15:45:11
+* @Last Modified time: 2017-11-17 16:55:10
 */
 
 'use strict';
@@ -14,7 +14,6 @@ var conf = {
 };
 var _mm={
 	request: function(param){
-		var _this=this;
 		$.ajax({
 			type	: param.method || 'get',
 			url		: param.url 	|| '',
@@ -23,7 +22,7 @@ var _mm={
 			success : function(res,txtStatus){
 				//request successfully
 				if(0 === res.status){
-					typeof param.success === 'function' && param.success(res.data,res.msg);
+					typeof param.success === 'function' && param.success(res.data,res.message);
 				}
 				//no login 
 				else if(10 === res.status){
@@ -31,10 +30,10 @@ var _mm={
 				}
 				//request data errorf
 				else if(1=== res.status){
-					typeof param.error === 'function' && param.error(res.msg);
+					typeof param.error === 'function' && param.error(res.message);
 				}
 				else{
-					console.log("param's url :"+param.url);
+					console.log("the status is "+res.status);
 				}
 			},
 			error   : function(err){
@@ -49,7 +48,7 @@ var _mm={
 	},
 	//get url's certain value
 	getUrlParam : function(name){
-		var reg = new RegExp('(^|&?)'+name+'=([^&]*)(&|$)');
+		var reg = new RegExp('(^|&)'+name+'=([^&]*)(&|$)');
 		var result = window.location.search.substr(1).match(reg);
 		return result ? decodeURIComponent(result[2]) : null;
 	},
@@ -100,5 +99,4 @@ var _mm={
 	},
 };
 
-console.log("here is mm js");
 module.exports=_mm;

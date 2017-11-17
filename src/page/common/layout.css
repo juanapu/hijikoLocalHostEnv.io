@@ -2,7 +2,9 @@
 * @Author: Administrator
 * @Date:   2017-08-20 19:40:23
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-10-08 16:52:08
+* @Last Modified time: 2017-11-15 15:50:36
+*  default css class style : className;
+*  bootstrap css style : class-name;
 */
 
 *{
@@ -10,7 +12,7 @@
 	padding: 0;
 }
 body{
-	font: 12px/1.5 tahoma, arial, microsoft yahei, sans-serif;
+	font-family: "Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 	background-color: rgb(246,246,246);
 }
 li{
@@ -20,60 +22,50 @@ img{
 	display: block;
 	border: none;
 }
-label,input[type='checkbox']{
+label,input[type='checkbox'],a,button{
 	cursor: pointer;
 }
+ .col-lg-10, .col-md-10, .col-sm-10, .col-xs-10{
+ 	margin: auto;
+ }
 
-/***********fixed width layout***************/
-.w{
-	width: 1080px;
-	margin: 0 auto;
-	position: relative;
-	overflow: hidden;
-}
-.large .w{
-	width: 1600px;
-}
-/*************common css style **************/
 /*hide*/
 .hide{
 	display: none;
 }
 /***************hyperline css style******************/
+.link:before{
+	content: "    ";
+	position: absolute;
+	width: 0px;
+	top: 24px;
+    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
+     -moz-transition: width 1s;
+     -o-transition: width 1s;
+}
 .link{
 	text-decoration: none;
 	cursor: pointer;
-	color: #999;
+	color: #2f92a9;
+	border: none;
 }
 .link:hover{
-	color: #e80012;
+	text-decoration: none;
+	color: rgb(161,208,255);
+}
+.link:hover:before{
+	color: rgb(161,208,255);
+	width: 20px;
+	text-decoration: none;
+	border-bottom:2px solid rgb(161,208,255);
+	width: 70px;
 }
 .link-text{
 	color: #999;
 	text-decoration: none;
 }
-/****************button ***********************/
-.btn{
-	display:  inline-block;
-	padding: 0 20px;
-	height: 40px;
-	line-height: 40px;
-	vertical-align: middle;
-	border: none;
-	font-size: 17px;
-	font-weight: bold;
-	color: #fff;
-	background-color: #c60023;
-	outline: none;
-	cursor: pointer;
-	text-decoration: none;
-	margin: 0px 20px;
-}
-.btn-min{
-	padding: 0 10px;
-	line-height: 30px;
-	height: 30px;
-}
+
 /************************ loading ***************************/
 .load{
 	display: block;
@@ -91,6 +83,46 @@ label,input[type='checkbox']{
 .clear{
 	clear: both;
 }
-a:hover{
-	cursor: pointer;
+
+/*.cmnBtn{
+	border-radius: 5px;
+	border: none;
+	background-color: #2f92a9;
+	color: #fff;
+    padding: 0.4em 1em;
+}
+*/
+
+.cmnBtn {
+border-radius: 5px;
+  background:  #2f92a9;
+  color:#fff;
+  border: none;
+  box-shadow: 0px 2px 0 #0f2d33, 2px 4px 6px #b1e8f5;
+  font-weight: 900;
+  padding: 0.4em 1em;
+  transition: all 150ms linear;
+}
+.cmnBtn:hover {
+  background: rgb(50,122,129);
+  box-shadow: 1px 1px 2px rgba(255, 255, 255, .2);
+	color: #fff;
+  text-decoration: none;
+    text-shadow: -1px -1px 0 #327a81;
+  transition: all 250ms linear;
+}
+
+
+
+.cmnBtn.light{
+	background-color: rgba(47,146,169,0.5);
+}
+
+/****************************************for mobile ************************************************/
+ @media all and (max-width: 500px){
+	.cmnMblContainer{
+	    width: 80%;
+	    margin: auto;
+	    padding: 0px;
+	}
 }

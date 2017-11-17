@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../../../node_modules/font-awesome/css/font-awesome.min.css">
-</head>
+<%= require('html-loader!./layout/meta.html') %> 
 <body>
-<%= require('html-loader!./layout/navsimple.html') %>
-	<div class="w result">
-		<div class="wrap">
-			<h1>您的商品已加入购物车</h1>
-			<div class="button">
-				<button class="js-goShopping">继续购物</button>
-				<button class="js-goCart">去购物车看看</button>
+		<%= require('html-loader!./layout/header.html') %>  
+		<div class="container resultPg confirmPg">
+			<div class="row notice">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
+					<p>恭喜您，已顺利申请了交易托管。Hi,Jiko 确认付款信息之后会通过系统消息通知您。同时您也可以在 【用户中心】-》【交易管理】 里查看详情。</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
+					<p>请将交易托管申请链接分享给<strong>收款人</strong>吧</p>
+					<div class="payAct">
+						<p><input type="text" value="http://www.hijikotest.com/" readonly id="copyTarget"></input></p>
+							<button id="copyButton" class="cmnBtn">复制</button>
+					</div>
+					<div class="text-danger">注意： 本链接只能注册一次，请务必发送给收款方。若发送失误，请及时联系 Hi,Jiko 撤销</div>
+				</div>
+				
 			</div>
 		</div>
-	</div>
-	<%= require('html-loader!./layout/footer.html') %>
+		<%= require('html-loader!./layout/footer.html') %> 
 </body>
-</html>

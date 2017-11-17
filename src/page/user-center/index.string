@@ -1,3 +1,0 @@
-{{#data}}
-<li><span class="key"></span>{{text}}: <span class="value">  {{value}}</span></li>
-{{/data}}

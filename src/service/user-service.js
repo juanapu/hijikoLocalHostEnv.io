@@ -1,18 +1,17 @@
 /*
 * @Author: Administrator
-* @Date:   2017-08-29 08:57:49
+* @Date:   2017-11-17 14:59:53
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-09-26 22:29:09
+* @Last Modified time: 2017-11-17 17:01:03
 */
-//https://en.wikipedia.org/api/rest_v1/?spec
 "use strict";
 
 var _mm = require('util/mm.js');
 
 var _user = {
-	register: function(data,resolve,reject){
+	register: function(url,data,resolve,reject){
 		_mm.request({
-			url   :_mm.getServerUrl('/user/register.do'),
+			url   :_mm.getServerUrl(url),
 			data : data,
 			method : 'post',
 			success : resolve,
@@ -105,5 +104,6 @@ var _user = {
 		});
 	}
 };
+
 
 module.exports = _user;

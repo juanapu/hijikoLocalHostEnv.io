@@ -1,0 +1,25 @@
+<div class="registerForm loginForm">
+	<form>
+		<div class="formItem email">
+			<label for="email"><i class="fa fa-user-o" aria-hidden="true"></i>
+</label>
+			<input type="email" placeholder="注册邮箱" name="email" autofocus></input>
+		</div>
+		<div class="formItem userName">
+			<label for="userName"><i class="fa fa-user-o" aria-hidden="true"></i>
+</label>
+			<input type="text" placeholder="用户名" name="userName" autofocus></input>
+		</div>
+		<div class="formItem passWord">
+			<label for="passWord"><i class="fa fa-lock" aria-hidden="true"></i>
+</label>
+			<input type="password" placeholder="密码" name="passWord" autofocus></input>
+		</div>
+		<input type="submit" value="注册"></input>
+	</form>
+	<div class="underLine">
+		<div class="login">
+			<span>已有账号？</span><a class="jsLogin" href="#">登录</a>
+		</div>
+	</div>
+</div>

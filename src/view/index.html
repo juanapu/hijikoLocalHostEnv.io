@@ -1,23 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../../../node_modules/font-awesome/css/font-awesome.min.css">
-</head>
+<%= require('html-loader!./layout/meta.html') %> 
 <body>
-<%= require('html-loader!./layout/nav.html') %>
-<%= require('html-loader!./layout/header.html') %>
-<div class="page-wrap w">
-	<%= require('html-loader!./layout/nav-side.html') %>
-	<div class="content with-nav"></div>
-</div>
-	<div class="w">
-		<a class="link">test</a>
-		<a class="link-text">link-text</a>
-		<button class="btn">click</button><button class="btn btn-min">click</button>
-		<div class="load"></div>
-		<i class="fa fa-circle-o"></i>
+	<%= require('html-loader!./layout/header.html') %>  
+	<div class="main">
+		<!--
+		<div class="buttonWrap">
+			<button class="js-prev"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+			<button class="js-nxt"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+		</div>  -->
+		<div class="wrap" data-show="1">
+			<div class="pg1">
+				<div class="bg"></div>
+				<div class="content">
+					<div class="description"><img src=""></div>
+					<!-- formWrap module in page-index-layout.string -->
+					 <div class="formWrap">
+					 	
+					 </div>
+				</div>
+			</div>
+			<div class="pg2">
+				<div class="bg"></div>
+				<div class="content">
+					<div class="description"><img src=""></div>
+					<!-- formWrap module in page-index-layout.string -->
+					 <div class="formWrap">
+					 </div>
+				</div>
+			</div>
+			<div class="pg3">
+				<div class="bg"></div>
+				<div class="content">					
+				   <div class="description"><img src=""></div>
+					 <div class="formWrap">
+					 </div>
+				 </div>
+			</div>
+			<div class="pg4">
+				<div class="bg"></div>
+				<div class="content">					
+				   <div class="description"><img src=""></div>
+					 <div class="formWrap">
+					 </div>
+				 </div>
+			</div>
+		</div>
 	</div>
-	<%= require('html-loader!./layout/footer.html') %>
+	<%= require('html-loader!./layout/footer.html') %>  
 </body>
 </html>

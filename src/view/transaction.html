@@ -1,0 +1,43 @@
+<%= require('html-loader!./layout/meta.html') %> 
+<body>
+		<%= require('html-loader!./layout/header.html') %>  
+		<div class="transaction">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
+					<p>欢迎使用 Hi,Jiko 交易托管服务<br>
+					请注意，Hi,Jiko 将在您选择时间内将交易款释放给收款方。若选择时间内未收到货物或交易未成功，请及时到用户中心-》交易管理-》暂停放款</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="innerForm col-lg-10 col-md-10 col-sm-10 col-xl-10">
+						<div class="descr">请输入金额和收款方账号</div>
+						<form>
+							<div class="form-item">
+								<label for="transName">交易名称:</label>
+								<input type="text" name="transName"></input>
+							</div>
+							<div class="form-item">
+								<label for="tranMont">*金额（￥）:</label>
+								<input type="number" required="" name="tranMont"></input>
+							</div>
+							<div class="form-item tranReceiver">
+								<label for="tranReceiver">*收款方支付宝账号:</label>
+								<input type="text" required="" name="tranReceiver"></input>
+							</div>
+							<div class="form-item range">
+								<label><span class="dateExpire">7</span>天后自动放款</label>
+								<div>
+								<input type="range" min="3" max="30" value="7" step="1"></input>
+								</div>
+							</div>
+							<div class="form-item">
+								<input class="cmnBtn jsGoConfirmPg" type="submit" value="下一步"></input>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> 
+		</div>
+		<%= require('html-loader!./layout/footer.html') %> 
+</body>

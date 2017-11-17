@@ -1,0 +1,101 @@
+<%= require('html-loader!./layout/meta.html') %> 
+<body>
+<!-- crtState=current state; rcvName=receiver name;rcvAlpy: receiver alipay account; tle: title;hstWrap:history wrap;bhv=behaviour; cmntTtl: comment title; cmtCnt: comment content; innerTtl: inner comment title--> 
+		<%= require('html-loader!./layout/header.html') %>  
+		<div class="tranDetailPg container">
+			<div class="row">
+				<div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10">
+					<div class="formWrap">
+						<div class="left text-left">
+							<div class="crtStateWrap">
+								<div class="tle">当前状态</div>
+								<div class="crtState"><span class="date">7</span>天后放款</div>
+							</div>
+							<div class="rcvNameWrap">
+								<div class="tle">收款方用户名</div>
+								<div class="rcvName">Jhum Jhum</div>
+							</div>
+							<div class="mountWrap">
+								<div class="tle">金额</div>
+								<div class="mount"><span class="mount">10000</span><span class="currency"></span>RMB</div>
+							</div>
+							<div class="rcvAlpyWrap">
+								<div class="tle">收款方支付宝账号</div>
+								<div class="alpy">123456@qq.com</div>
+							</div>
+						</div>
+						<div class="right text-left">
+							<div class="tranNameWrap">
+								<div class="tranName">汇款名称</div>
+							</div>
+							<div class="hstWrap">
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="commentWrap">
+						<div class="actionWrap pc">
+							<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+						</div>
+						<div class="actionWrap mobile">
+							<div>
+								<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+							</div>
+						</div>
+						<div class="innerTtl">留言记录</div>
+						<div id="cmtListWrap" class="commentListWrap">
+							<div class="cmtInner">
+								<!-- Left-aligned -->
+								<div class="cmtTtl">
+									<div class="userImg"><img src=""></div>
+									<div class="userInfo"><span>USERI</span><span> 2017-11-15</span></div>
+								</div>
+								<div class="cmtCnt">
+									 请写下您暂停放款的原因，邀请收款方与 HiJiko 联系核实退款， HiJIko 会更快地处理哦。 写完原因之后，点击对话框右下角的【确定】按钮
+								</div>
+							</div>
+							<div class="cmtInner">
+								<!-- Left-aligned -->
+								<div class="cmtTtl">
+									<div class="userImg"><img src=""></div>
+									<div class="userInfo"><span>USERI</span><span> 2017-11-15</span></div>
+								</div>
+								<div class="cmtCnt">
+									 请写下您暂停放款的原因，邀请收款方与 HiJiko 联系核实退款， HiJIko 会更快地处理哦。 写完原因之后，点击对话框右下角的【确定】按钮
+								</div>
+							</div>
+							<div class="cmtInner">
+								<!-- Left-aligned -->
+								<div class="cmtTtl">
+									<div class="userImg"><img src=""></div>
+									<div class="userInfo"><span>USERI</span><span> 2017-11-15</span></div>
+								</div>
+								<div class="cmtCnt">
+									 请写下您暂停放款的原因，邀请收款方与 HiJiko 联系核实退款， HiJIko 会更快地处理哦。 写完原因之后，点击对话框右下角的【确定】按钮
+								</div>
+							</div>
+						</div>
+						<div class="pg text-center">
+				            <div id="page-content"></div>
+					        <ul id="pagination-demo" class="pagination-sm">
+					        </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%= require('html-loader!./layout/footer.html') %> 
+		<script type="text/javascript" src="../module/twbsPagination/jquery.twbsPagination.min.js"></script>
+</body>
