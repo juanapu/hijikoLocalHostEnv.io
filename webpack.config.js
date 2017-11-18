@@ -13,7 +13,7 @@ var getHtmlConfig = function(name){
 		filename : 'view/'+name+'.html',
 		inject   : true,
 		hash     : true,
-		chunks   : ['commons', name]
+		chunks   : ['common', name]
 	};
 };
 var getHtmlLayoutConfig = function(name){
@@ -22,7 +22,7 @@ var getHtmlLayoutConfig = function(name){
 		filename : 'view/'+name+'.html',
 		inject   : true,
 		hash     : true,
-		chunks   : ['commons','navsimple'] 
+		chunks   : ['common','navsimple'] 
 	}
 };
 
@@ -80,8 +80,8 @@ var exportContent ={
 		new htmlWebpackPlugin(getHtmlConfig('tranList')),
 		new htmlWebpackPlugin(getHtmlConfig('tranDetail')),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'commons',
-			filename: 'page/commons/commons.js'
+			name: 'common',
+			filename: 'page/common/common.js'
 		}),
 		new ExtractTextPlugin("page/[name]/[name].css")
 	],

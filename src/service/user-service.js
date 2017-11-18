@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-17 14:59:53
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-17 20:52:48
+* @Last Modified time: 2017-11-18 20:33:30
 */
 "use strict";
 
@@ -48,7 +48,7 @@ var _user = {
 	//logout function
 	logout : function(resolve,reject){
 		_mm.request({
-			url : _mm.getServerUrl('/user/logout.do'),
+			url : _mm.getServerUrl('/users/logout'),
 			method : 'POST',
 			success : resolve,
 			error   : reject

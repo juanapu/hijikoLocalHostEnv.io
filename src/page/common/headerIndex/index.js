@@ -2,20 +2,13 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 21:02:32
-*  here is header
+* @Last Modified time: 2017-11-18 18:27:58
 */
 "use strict";
 
 require('./index.css');
 var _mm=require('util/mm.js');
-var _user=require('service/user-service.js');
-var _commonJs=require('../index.js');
 require('bootstrap');
-/****url define***/
-var indexPg='./index.html';
-/***define text****/
-var loginPgTxt='宝贝儿，你还没登录哦';
 
 var header={
 	init: function(){
@@ -30,7 +23,22 @@ var header={
 		$(".headerWrap>nav.navbar>a.navbar-brand>img").attr('src',img);
 	},
 	bindEvent: function(){
-				/**********mobile version menu bar*************/
+		var _this=this;
+				$(".header button.search-btn").click(function(){
+			_this.searchSubmit();
+		});
+		$(".header .search-con input.search-input").focus(function(){
+			var contVal=$(this).attr("placeholder");
+			$(this).attr("placeholder","");
+			$(this).blur(function(){
+				$(this).attr("placeholder",contVal);
+			});
+		}).keyup(function(e){
+			if(e.keyCode===13){
+				_this.searchSubmit();
+			}
+		});
+		/**********mobile version menu bar*************/
 		$(".headerWrap .bar.mobile").click(function(e){
 			$(".bar.mobile>ul.navbar-nav").toggle('slow').siblings('a').toggleClass('showUl');
 			e.preventDefault(e);
@@ -42,34 +50,22 @@ var header={
 			e.stopPropagation(e);  
 			$(this).addClass('active').siblings().removeClass('active');
 		});
-
-		/**logout**/
-		$(".jsLogout").click(function(){
-			_user.logout(function(res,txtStatus){
-				alert(txtStatus);
-				window.location.href=indexPg;
-				_commonJs.cleanCookie();
-			},function(err){
-				alert(err);
-			});
-		});
-
+	},
+	searchSubmit: function(){
+		var textVal=$(".header .search-con input.search-input").val();
+		if(textVal){
+			console.log(textVal);
+			window.location.href='./list.html?keyword='+textVal;
+		}
 	},
 	pageMove: function(){
 		$("a.navbar-brand").click(function(){
-			window.location.href=indexPg;
+			window.location.href="./index.html";
 		});
-		var logInfo=_commonJs.checkLogin();
-		if(!logInfo.login){
-			var currentUrl=window.location.href;
-			alert("宝贝儿，你还没登录哦~~先去登录哦！");
-			window.location.href=indexPg+'?redirectFrom='+currentUrl;
-		}else{
-			$(".headerWrap .bar .nickName").text(logInfo.cookie.nickname);
-		};
 	},
 	checkInWechat: function(){
 		var ua=window.navigator.userAgent.toLowerCase();
+		console.log(ua);
 		if((ua.match(/MicroMessenger/i))=="micromemessenger"){
 			return true;
 		}

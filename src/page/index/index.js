@@ -1,3 +1,5 @@
+/******index*****/
+
 "use strict";
 
 require('../common/layout.css');
@@ -6,7 +8,7 @@ require('./index.css');
 require('../common/footer/index.js');
 require('../../util/mm.js');
 require('../common/loading/index.js');
-var _header=require('../common/header/index.js');
+var _headerIndex=require('../common/headerIndex/index.js');
 var _mm=require('../../util/mm.js');
 var _user=require('../../service/user-service.js');
 var _commonJs=require('../common/index.js');
@@ -90,9 +92,17 @@ var index={
  				password: $(".loginForm.login .passWord input").val()
 			};
 			var url='/users/login?nickname='+userInfo.nickname+'&password='+userInfo.password;
+			_commonJs.loading();
 			_user.login(url,userInfo,function(res,txtStatus){
-				window.location.href=goTransaction;
+				_commonJs.unloading();
+				/***********set cookies****************/
+				var psWord=$.base64.encode(userInfo.password);
+				_commonJs.setCookie('nickname',userInfo.nickname);
+				_commonJs.setCookie('password',psWord);
+				var redirectPg=_mm.getUrlParam('redirectFrom');
+				window.location.href=redirectPg?redirectPg:goTransaction;
 			},function(err){
+				_commonJs.unloading();
 				$(".loginForm .resultPg>.resultWrap>p").text(err);
 				$(".loginForm .resultPg").show('slow');
 				_this.bindUserLogic();
@@ -101,19 +111,6 @@ var index={
 		});
 	}
 
-/*	
-	UserNameApiValidate: function(data,target,val){
-		_user.userName(data,function(res,txtStatus){
-			publicVal.returnResult=true;
-		},function(err){
-			val.errMsg=err;
-			target.siblings(".check").show().children("i").addClass("fa-times");
-			$(".error-item .err-msg").text(val.errMsg);
-			$(".error-item").show();
-			publicVal.returnResult=false;	
-			console.log("modify result: "+publicVal.returnResult);
-		});
-	} */
 }
 
 $(function(){

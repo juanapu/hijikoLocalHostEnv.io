@@ -2,12 +2,15 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:03:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 19:57:02
+* @Last Modified time: 2017-11-09 17:18:42
 */
 
 
 /************************************common css****************************************************/
-
+.headerWrap,.headerWrap a  {
+    color: #fff;
+    
+}
 .headerWrap .navbar{
     padding-left: 4em;
     padding-right: 4em;
@@ -33,15 +36,6 @@
     padding-top: 0px;
     padding-bottom: 0px;
 }
-.headerWrap .bar.mobile{
-    position: relative;
-}
-.headerWrap .bar.mobile>div.user {
-    position: absolute;
-    color: #999;
-    right: 2em;
-    top: 0.5em;
-}
 
 
 /****************************************for tablet ************************************************/
@@ -66,51 +60,15 @@
         display: inline-block;
     }
     .headerWrap .bar.pc a.nav-link {
-        font-size: 1em;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-        color: rgb(47, 146, 169);
-     }
-     .headerWrap .bar.pc a.nav-link.nickName{
-        font-size: 0.8em;
-        color: rgba(0,0,0,0.3);
-     }
-
-     /*********udnerline animation effect***************/
-      .headerWrap .bar.pc a.nav-link.jsTranMg, .headerWrap .bar.pc a.nav-link.jsLogout{
-     /*  -webkit-transition: all 1s; 
-        transition: all 1s; */
-        position: relative;
-      }
-      .headerWrap .bar.pc a.nav-link.jsTranMg:after, .headerWrap .bar.pc a.nav-link.jsLogout:after {
-        content: '';
-          position: absolute;
-          left: 0;
-          bottom: -0.3em;
-          display: inline-block;
-          height: 1em;
-          width: 100%;
-          border-bottom: 1px solid;
-          margin-top: 10px;
-          opacity: 0;
-            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-            transition: opacity 0.35s, transform 0.35s;
-            -webkit-transform: scale(0,1);
-            transform: scale(0,1);
-    }
-
-    .headerWrap .bar.pc a.nav-link.jsTranMg:hover:after, .headerWrap .bar.pc a.nav-link.jsLogout:hover:after{
-  /*      color: #feffff;
-        text-shadow: 1px 1px 1px black; */
-          opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1);
+        font-size: 1.4em;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .headerWrap .nav-link{
         display: inline;
     }
     .headerWrap .bar.pc li.nav-item.active {
-        background-color: none;
+        background-color: rgba(0,0,0,0.3);
         text-align: center;
     }
 }
@@ -141,6 +99,7 @@
     }
     .headerWrap ul.navbar-nav {
         position: absolute;
+        background-color: rgba(43,130,218,0.3);
         width: 7em;
         right: -5px;
         text-align: right;
