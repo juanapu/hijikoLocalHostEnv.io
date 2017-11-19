@@ -12,17 +12,17 @@ var commonJs={
 	init: function(){
 		var _this=this;
 		FastClick.attach(document.body);  /****** mobile click event compatibility ******/
-		_this.loading();
+//		_this.loading();
 		$("body>div").ready(function(){
-			_this.unloading();
+//			_this.unloading();
 		});
 	},
 	/*******page loading setting**********/
 	loading: function(){
-		$("#loadingWrap").show().css({opacity: 1});
+		$("#loadingWrap").show().css({opacity: 1,filter: 'alpha(opacity=100)'});
 	},
 	unloading: function(){
-		$("#loadingWrap").css({opacity: 0}).hide();	
+		$("#loadingWrap").css({opacity: 0,filter: 'alpha(opacity=0)'}).hide();
 	}, 
 	/***********cookie setting && login check******************/
 	checkLogin: function(){

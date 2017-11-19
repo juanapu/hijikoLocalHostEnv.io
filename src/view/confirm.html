@@ -1,24 +1,25 @@
 <%= require('html-loader!./layout/meta.html') %> 
 <body>
 		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %>  
 		<div class="container confirmPg">
 			<div class="row notice">
 				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
 					<p>请确认你的交易金额和收款人支付宝账号</p>
 					<a href="#" class="link goBack">返回修改</a>
-					<p>金额： <span class="mount">100</span>RMB，收款人支付宝账号： <span class="alipayAct">123456@qq.com</span>,于<span class="dateExpire">7</span>天后付款</p>
+					<p>金额： <span class="mount"></span>RMB，收款人支付宝账号： <span class="alipayAct"></span>,于<span class="dateExpire"></span>天后付款</p>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row QR">
 				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
-					<p>请向 Hi,Jiko 支付 <span class="finalMount">105</span>RMB (服务费 0.1%)</p>
+					<p>请向 Hi,Jiko 支付 <span class="finalMount"></span>RMB (服务费 <span id="hijikoSharing"></span>)</p>
 					<div class="QRcode">
 						<div class="QRwrap">
 							<div class="desc">支付宝扫一扫,向我付款</div>
 							<div class="QRImg">
 								<img src="#" class="img" >
 							</div>
-							<div class="mount">￥<span>105.00</span></div>
+							<div class="mount">￥<span class="finalMount"></span></div>
 						</div>
 					</div>
 					<div class="payAct">

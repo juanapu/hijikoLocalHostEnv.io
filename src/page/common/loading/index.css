@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-17 23:20:49
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 00:11:40
+* @Last Modified time: 2017-11-19 21:21:47
 */
 body{
 	position:relative;
@@ -10,6 +10,7 @@ body{
 #loadingWrap{
 	display: none;
 	opacity: 0;
+    filter: alpha(opacity=0);
 	position: absolute;
 	width: 100%;
 	height: 100%;
