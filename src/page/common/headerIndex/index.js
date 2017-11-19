@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 18:27:58
+* @Last Modified time: 2017-11-19 14:10:14
 */
 "use strict";
 
@@ -65,7 +65,6 @@ var header={
 	},
 	checkInWechat: function(){
 		var ua=window.navigator.userAgent.toLowerCase();
-		console.log(ua);
 		if((ua.match(/MicroMessenger/i))=="micromemessenger"){
 			return true;
 		}

@@ -1,6 +1,7 @@
 <%= require('html-loader!./layout/meta.html') %> 
 <body>
 		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %> 
 		<div class="transaction">
 			<div class="container">
 				<div class="row">
@@ -12,7 +13,7 @@
 				<div class="row">
 					<div class="innerForm col-lg-10 col-md-10 col-sm-10 col-xl-10">
 						<div class="descr">请输入金额和收款方账号</div>
-						<form>
+						<form class="trade">
 							<div class="form-item">
 								<label for="transName">交易名称:</label>
 								<input type="text" name="transName"></input>

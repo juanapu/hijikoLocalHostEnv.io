@@ -6,6 +6,7 @@ require('./layout.css');
 
 /*****define public url*******/
 var rtFolderUrl='http://localhost:8080/dist/view/';
+var _loading='../common/loading/index.js';
 
 var commonJs={
 	init: function(){
@@ -22,7 +23,7 @@ var commonJs={
 	},
 	unloading: function(){
 		$("#loadingWrap").css({opacity: 0}).hide();	
-	},
+	}, 
 	/***********cookie setting && login check******************/
 	checkLogin: function(){
 		var _this=this;
@@ -46,7 +47,8 @@ var commonJs={
 	getCookie: function(){
 		var cookieStore={
 			nickname: Cookies.get('nickname'),
-			password: Cookies.get('password')?$.base64.decode(Cookies.get('password')):Cookies.get('password')
+			password: Cookies.get('password')?$.base64.decode(Cookies.get('password')):Cookies.get('password'),
+			user_id: Cookies.get('user_id')?Cookies.get('user_id'):0
 		};
 		return cookieStore;
 	},
@@ -56,6 +58,7 @@ var commonJs={
 	cleanCookie: function(){
 		Cookies.remove('nickname', { path: '/' });
 		Cookies.remove('password', { path: '/' });
+		Cookies.remove('user_id', { path: '/' });
 	}
 
 };

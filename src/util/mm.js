@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 21:00:58
+* @Last Modified time: 2017-11-19 16:21:11
 *
 *  here is mm js
 */
@@ -18,10 +18,12 @@ var _mm={
 	request: function(param){
 		$.ajax({
 			type	: param.method || 'get',
-			url		: param.url 	|| '',
+			//url		: param.url 	|| '',
+			url : param.url?param.url+'?'+$.map(param.data,function(val,key){return key+'='+val}).join('&'):'',
 			dataType: param.type    || 'json',
 			data    : param.data    || '',
 			success : function(res,txtStatus){
+				console.log(res);
 				//request successfully
 				if(0 === res.status){
 					typeof param.success === 'function' && param.success(res.data,res.message);

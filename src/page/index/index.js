@@ -69,9 +69,8 @@ var index={
  				nickname: $(".registerForm .userName input").val()?$(".registerForm .userName input").val():'',
  				password: $(".registerForm .passWord input").val()
 			};
-			var url='/users/register?email='+data.email+'&nickname='+data.nickname+'&password='+data.password;
 			_commonJs.loading();
-			_user.register(url,data,function(res,txtStatus){
+			_user.register(data,function(res,txtStatus){
 				_commonJs.unloading();
 				_this.insertHtml(loginHtml,$(".formWrap"));
 				$(".loginForm .resultPg").show('slow');
@@ -89,16 +88,17 @@ var index={
 		$(".loginForm.login>form").submit(function(e){
 			var userInfo={
 				nickname: $(".loginForm.login .userName input").val()?$(".loginForm.login .userName input").val():'',
- 				password: $(".loginForm.login .passWord input").val()
+ 				password: $(".loginForm.login .passWord input").val(),
 			};
-			var url='/users/login?nickname='+userInfo.nickname+'&password='+userInfo.password;
+			//释放 var url='/users/login?nickname='+userInfo.nickname+'&password='+userInfo.password;
 			_commonJs.loading();
-			_user.login(url,userInfo,function(res,txtStatus){
+			_user.login(userInfo,function(res,txtStatus){
 				_commonJs.unloading();
 				/***********set cookies****************/
 				var psWord=$.base64.encode(userInfo.password);
 				_commonJs.setCookie('nickname',userInfo.nickname);
 				_commonJs.setCookie('password',psWord);
+				_commonJs.setCookie('user_id',res.user_id);
 				var redirectPg=_mm.getUrlParam('redirectFrom');
 				window.location.href=redirectPg?redirectPg:goTransaction;
 			},function(err){
