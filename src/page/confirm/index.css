@@ -2,10 +2,12 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-16 14:11:59
+* @Last Modified time: 2017-11-20 16:12:22
 */
 html,body{
 	background-color: #fff;
+  height: 100%;
+  width: 100%;
 }
 
 .headerWrap nav.navbar {
@@ -35,35 +37,11 @@ html,body{
   .confirmPg{
   	padding-top: 70px;
   }
+  .confirmPg button.cmnBtn {
+    margin: 3em;
+  }
 
-  .confirmPg .QRcode{
-  	background-color: #fff;
-	border: 1px solid rgba(0,0,0,0.1);
-  	border-radius: 5px;
-  	width: 80%;
-  	max-width: 300px;
-  	margin: 20px auto;
-  }
-   .confirmPg .QRcode>.QRwrap{
-   	width: 80%;
-   	margin: 3em auto;
 
-   }
-  .confirmPg .QRImg>img{
-	width: 100%;
-  }
-  .confirmPg .QRcode>.QRwrap .mount,.confirmPg .QRcode>.QRwrap .desc{
-  	text-align: center;
-  	font-weight: 800;
-  }
-  .confirmPg .QRcode>.QRwrap .mount{
-  	font-size: 2em;
-  	padding-top: 1em;
-  }
-  .confirmPg .QRcode>.QRwrap .desc{
-  	font-size: 1.1em;
-  	padding-bottom: 1em;
-  }
   .confirmPg .notice>div>p{
     display: inline-block;
   }
@@ -123,8 +101,7 @@ html,body{
      background-color: rgb(43,130,218);
   }
     .confirmPg {
-      font-size: 0.8em;
-      padding-top: 14px;
+      font-size: 1em;
     }
     .confirmPg .QRcode>.QRwrap {
     margin: 1em auto;

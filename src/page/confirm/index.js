@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-19 22:49:53
+* @Last Modified time: 2017-11-20 17:00:50
 */
 "use strict";
 
@@ -18,6 +18,8 @@ var _commonJs=require('../common/index.js'); /**loading is writen here***/
 
 /***define page url*****/
 var goTransactionPg='./transaction.html';
+var payUrl="http://pay2.youyunnet.com/pay";
+var resultUrl=_mm.getFileHost('/result.html');
 /****define public data******/
 var hijikoSharing=0.001;
 var transactionNum='';
@@ -42,11 +44,11 @@ var confirmPg={
 	},
 	bindEvent: function(){
 		var _this=this;
-		document.getElementById('copyButton').addEventListener('click',function(){
+/*		document.getElementById('copyButton').addEventListener('click',function(){
 			$("button#copyButton~span").show('slow').delay(1000).hide('slow');
 			$("input#copyTarget").select();
 			_this.copyToClipboard(document.getElementById("copyTarget"));
-		});
+		});  */
 	},
 	copyToClipboard: function(elem){
 		  elem.focus();
@@ -58,13 +60,18 @@ var confirmPg={
 		var data={
 			trade_sn: _mm.getUrlParam('transactionNum')
 		};
-		_trade.editTrade(data,function(res,txtStatus){
+		_trade.paymentsCreate(data,function(res,txtStatus){
 			$(".confirmPg>.notice span.mount").text(res.hijiko_money);
 			$(".confirmPg>.notice span.alipayAct").text(res.receive_user);
 			$(".confirmPg>.notice span.dateExpire").text(res.days); 
-			$(".confirmPg>.QR span#hijikoSharing").text(res.reward_money/res.hijiko_money*100+'%');
-			$(".confirmPg>.QR span.finalMount").text(res.total_fee);
+			$(".confirmPg span#hijikoSharing").text(res.rate*100+'%');
+			$(".confirmPg span.finalMount").text(res.total_fee);
 			_commonJs.unloading();
+			$(".confirmPg .confirm button.cmnBtn").click(function(){
+				//window.location.href=payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb="+res.bk;
+				console.log(payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb="+res.bk);
+				console.log(resultUrl);
+			});
 		},function(err){
 			_commonJs.unloading();
 			_mm.errorTips(err);
@@ -77,8 +84,6 @@ var confirmPg={
 		$(".confirmPg>.notice a.goBack").click(function(){
 			_commonJs.loading();
 			_trade.editTrade(data,function(res,txtStatus){
-					console.log(res);
-					console.log("sccuess:"+txtStatus);
 					window.location.href=goTransactionPg+'?transactionNum='+res.trade_sn;
 			},function(err){
 				_commonJs.unloading();

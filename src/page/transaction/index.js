@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:32
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-19 22:51:38
+* @Last Modified time: 2017-11-20 16:26:06
 */
 "use strict";
 
@@ -72,7 +72,6 @@ var transaction={
 							        data.days=$(this).val();
 							        break;
 							};
-																	console.log(data);
 						});
 					};
 					//console.log(data);
@@ -81,8 +80,6 @@ var transaction={
 						_commonJs.loading();
 						_trade.editTradePost(editTradeData,function(res,txtStatus){
 							_commonJs.unloading();
-							console.log(res);
-							console.log("edit trade post:"+txtStatus);
 							window.location.href=confirmPg+'?transactionNum='+data.trade_sn;
 						},function(err){
 							_commonJs.unloading();

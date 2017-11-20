@@ -2,13 +2,17 @@
 * @Author: Administrator
 * @Date:   2017-08-20 19:40:23
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 10:30:44
+* @Last Modified time: 2017-11-20 15:57:52
 *  default css class style : className;
 *  bootstrap css style : class-name;
 */
 *{
 	margin: 0;
 	padding: 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
 }
 body{
 	font-family: "Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,"Helvetica Neue",Helvetica,Arial,sans-serif !important;

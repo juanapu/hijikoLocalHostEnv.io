@@ -1,0 +1,126 @@
+/*
+* @Author: Administrator
+* @Date:   2017-09-03 09:03:10
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-11-09 17:18:42
+*/
+
+
+/************************************common css****************************************************/
+.headerWrap,.headerWrap a  {
+    color: #fff;
+    
+}
+.headerWrap .navbar{
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+.headerWrap nav.navbar{
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.headerWrap nav.navbar a.navbar-brand, .headerWrap .bar{
+    display: inline-block;
+    vertical-align: middle;
+    height: 67px;
+    line-height: 67px;
+}
+ .headerWrap nav.navbar .bar{
+    float: right;
+ }
+.headerWrap nav.navbar a{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+/****************************************for tablet ************************************************/
+ @media all and (max-width: 800px){
+    .headerWrap .navbar{
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+
+ }
+
+/****************************************for PC ************************************************/
+@media all {
+      .headerWrap nav.navbar .bar.mobile{
+        display: none;
+      }    
+    .headerWrap .bar.pc ul.navbar-nav,.headerWrap .bar.pc ul.navbar-nav li {
+        display: inline-block!important;
+    }
+    .headerWrap>nav.navbar>a.navbar-brand>img{
+         height: 46px;
+        display: inline-block;
+    }
+    .headerWrap .bar.pc a.nav-link {
+        font-size: 1.4em;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .headerWrap .nav-link{
+        display: inline;
+    }
+    .headerWrap .bar.pc li.nav-item.active {
+        background-color: rgba(0,0,0,0.3);
+        text-align: center;
+    }
+}
+
+ 
+/****************************************for mobile ************************************************/
+ @media all and (max-width: 500px){
+  .headerWrap nav.navbar .bar.pc{
+        display: none;
+    }
+     .headerWrap nav.navbar .bar.mobile ul.navbar-nav{
+       display: none;
+    }
+  .headerWrap .bar.mobile>a>i.fa.fa-bars{
+        font-size: 26px;
+         vertical-align: middle;
+        vertical-align: -webkit-baseline-middle;
+    }
+    .headerWrap nav.navbar .bar.mobile{
+        display: inline-block;
+    }
+    .headerWrap .navbar{
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .headerWrap .bar.mobile ul li{
+        line-height: 40px;
+    }
+    .headerWrap ul.navbar-nav {
+        position: absolute;
+        background-color: rgba(43,130,218,0.3);
+        width: 7em;
+        right: -5px;
+        text-align: right;
+        border-radius: 5px;
+    }
+    .headerWrap ul.navbar-nav li{
+        padding-right: 2em;
+    }
+    .headerWrap ul.navbar-nav li.active{
+         background-color: rgba(43,130,218,0.6);
+         border-radius: 5px;
+    }
+    .headerWrap a.showUl i {
+        color: rgba(255,255,255,0.3);
+    }
+
+}
+
+/****************************************for large screen ************************************************/
+@media all and (min-width: 1020px){
+ 
+
+ }
+ 

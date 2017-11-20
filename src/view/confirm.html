@@ -1,4 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>确认交易信息</title>
 <%= require('html-loader!./layout/meta.html') %> 
+</head>
 <body>
 		<%= require('html-loader!./layout/header.html') %>  
 		<%= require('html-loader!./layout/loading.html') %>  
@@ -8,26 +13,13 @@
 					<p>请确认你的交易金额和收款人支付宝账号</p>
 					<a href="#" class="link goBack">返回修改</a>
 					<p>金额： <span class="mount"></span>RMB，收款人支付宝账号： <span class="alipayAct"></span>,于<span class="dateExpire"></span>天后付款</p>
+					<p>请向 Hi,Jiko 支付 <span class="finalMount"></span>RMB (服务费 <span id="hijikoSharing"></span>)</p>
 				</div>
 			</div>
-			<div class="row QR">
-				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
-					<p>请向 Hi,Jiko 支付 <span class="finalMount"></span>RMB (服务费 <span id="hijikoSharing"></span>)</p>
-					<div class="QRcode">
-						<div class="QRwrap">
-							<div class="desc">支付宝扫一扫,向我付款</div>
-							<div class="QRImg">
-								<img src="#" class="img" >
-							</div>
-							<div class="mount">￥<span class="finalMount"></span></div>
-						</div>
-					</div>
-					<div class="payAct">
-						<p>Hi,Jiko 支付宝账号：<input type="text" value="sciencerocket@hotmail.com" readonly id="copyTarget"></input></p>
-							<button id="copyButton" class="cmnBtn">复制</button><span class="pop"></span>
-					</div>
+			<div class="row confirm">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10 text-center">
+					<button class="cmnBtn">确认，下一步</button>
 				</div>
-				
 			</div>
 		</div>
 		<%= require('html-loader!./layout/footer.html') %> 

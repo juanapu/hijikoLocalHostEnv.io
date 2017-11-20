@@ -19,12 +19,21 @@ var img; // insert image to html code
 
 /****define page move*****/
 var goTransaction="./transaction.html";
+var goForgetPw='./forgetPw.html';
 
 
 var index={
 	init: function(){
 		var _this=this;
-		if($(".formWrap").children("div").length==0){
+		_this.checkTarget(); //check what's the purpose of user. 
+	},
+	checkTarget: function(){
+		var _this=this;
+		if(_mm.getUrlParam('target')==='register'){
+			_this.userRegister();
+			_this.insertHtml(registerHtml,$(".formWrap"));
+			_this.bindUserLogic();
+		}else{
 			_this.userLogin();
 			_this.insertHtml(loginHtml,$(".formWrap"));
 		};
@@ -44,7 +53,7 @@ var index={
 		};
 	},
 	bindUserLogic: function(){
-		var _this=this;
+/*		var _this=this;
 		_this.userLogin();
 		var callbackFun=function(){ // show register form
 			_this.insertHtml(registerHtml,$(".formWrap"));
@@ -59,7 +68,58 @@ var index={
 				 });
 			 });
 		};
-		$("a.jsRegister").click(callbackFun);
+		$("a.jsRegister").click(callbackFun);   */
+		var _this=this;
+		if(_mm.getUrlParam('target')==='register'){
+			_this.registerAccessFunc();
+		}else{
+			_this.loginAccessFunc(); 
+		};
+	},
+	registerAccessFunc: function(){
+		var _this=this;
+		_this.userRegister(); //
+		var callbackFun=function(){ // show findPw form
+			_this.insertHtml(loginHtml,$(".formWrap"));
+			_this.userLogin();
+			_this.AddResetPwEvent();
+			 $("a.jsRegister").click(function(){
+			 	_this.insertHtml(registerHtml,$(".formWrap"));
+			 	_this.userRegister(); //
+				 $("a.jsLogin").click(function(){
+				 	_this.insertHtml(loginHtml,$(".formWrap"));
+	 				_this.userLogin();
+					_this.AddResetPwEvent();
+				 	callbackFun();
+				 });
+			 });
+		};
+		$("a.jsLogin").click(callbackFun);
+	},
+	loginAccessFunc: function(){
+		var _this=this;
+		_this.userLogin();
+		_this.AddResetPwEvent();
+		var callbackFun=function(){ // show register form
+			_this.insertHtml(registerHtml,$(".formWrap"));
+			_this.userRegister();
+			 $("a.jsLogin").click(function(){
+			 	_this.insertHtml(loginHtml,$(".formWrap"));
+			 	_this.userLogin();
+	 			_this.AddResetPwEvent();
+				 $("a.jsRegister").click(function(){
+				 	_this.insertHtml(registerHtml,$(".formWrap"));
+	 				_this.userRegister();
+				 	callbackFun();
+				 });
+			 });
+		};
+		$("a.jsRegister").click(callbackFun); 
+	},
+	AddResetPwEvent: function(){
+		 $("a.jsResetPw").click(function(){
+		 	window.location.href=goForgetPw;
+		 });
 	},
 	userRegister: function(){
 		var _this=this;

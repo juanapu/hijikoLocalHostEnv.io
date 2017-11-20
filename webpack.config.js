@@ -30,6 +30,7 @@ var exportContent ={
 	entry:{
 		'common': ['./src/page/common/index.js'],
 		'index': "./src/page/index/index.js",
+		'forgetPw': "./src/page/forgetPw/index.js",
 		'transaction': "./src/page/transaction/index.js",
 		'confirm': "./src/page/confirm/index.js",
 		'result': "./src/page/result/index.js",
@@ -74,6 +75,7 @@ var exportContent ={
 	  },
 	plugins: [
 		new htmlWebpackPlugin(getHtmlConfig('index')),
+		new htmlWebpackPlugin(getHtmlConfig('forgetPw')),
 		new htmlWebpackPlugin(getHtmlConfig('transaction')),
 		new htmlWebpackPlugin(getHtmlConfig('confirm')),
 		new htmlWebpackPlugin(getHtmlConfig('result')),

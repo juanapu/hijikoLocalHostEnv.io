@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-19 12:02:16
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-19 16:20:09
+* @Last Modified time: 2017-11-20 12:31:37
 */
 "use strict";
 
@@ -30,6 +30,15 @@ var _trade={
 	editTradePost: function(data,resolve,reject){
 		_mm.request({
 			url   :_mm.getServerUrl('/trades/edit'),
+			data : data,
+			method : 'post',
+			success : resolve,
+			error   : reject
+		})
+	},
+	paymentsCreate: function(data,resolve,reject){
+		_mm.request({
+			url   :_mm.getServerUrl('/payments/create'),
 			data : data,
 			method : 'post',
 			success : resolve,

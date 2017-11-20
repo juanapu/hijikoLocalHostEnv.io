@@ -2,20 +2,24 @@
 * @Author: Administrator
 * @Date:   2017-11-17 23:20:49
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-19 21:21:47
+* @Last Modified time: 2017-11-20 15:54:36
 */
 body{
 	position:relative;
 }
+.fixed-top{
+    z-index: 10!important;
+}
 #loadingWrap{
 	display: none;
 	opacity: 0;
+    top: 0px;
     filter: alpha(opacity=0);
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0,0,0,.9);
-	z-index: 3;
+	z-index: 30;
 }
 #loading {
     width: 100px;
