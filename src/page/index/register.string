@@ -1,7 +1,7 @@
 <div class="registerForm loginForm">
 	<form>
 		<div class="formItem email">
-			<label for="email"><i class="fa fa-user-o" aria-hidden="true"></i>
+			<label for="email"><i class="fa fa-envelope-o" aria-hidden="true"></i>
 </label>
 			<input type="email" placeholder="注册邮箱" name="email" autofocus></input>
 		</div>

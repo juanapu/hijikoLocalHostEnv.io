@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:03:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-18 19:57:02
+* @Last Modified time: 2017-11-21 17:43:08
 */
 
 
@@ -77,12 +77,12 @@
      }
 
      /*********udnerline animation effect***************/
-      .headerWrap .bar.pc a.nav-link.jsTranMg, .headerWrap .bar.pc a.nav-link.jsLogout{
+      .headerWrap .bar.pc a.nav-link.jsTranMg, .headerWrap .bar.pc a.nav-link.jsLogout,.headerWrap .bar.pc a.nav-link.jsAddTran{
      /*  -webkit-transition: all 1s; 
         transition: all 1s; */
         position: relative;
       }
-      .headerWrap .bar.pc a.nav-link.jsTranMg:after, .headerWrap .bar.pc a.nav-link.jsLogout:after {
+      .headerWrap .bar.pc a.nav-link.jsTranMg:after, .headerWrap .bar.pc a.nav-link.jsLogout:after ,.headerWrap .bar.pc a.nav-link.jsAddTran:after {
         content: '';
           position: absolute;
           left: 0;
@@ -99,7 +99,7 @@
             transform: scale(0,1);
     }
 
-    .headerWrap .bar.pc a.nav-link.jsTranMg:hover:after, .headerWrap .bar.pc a.nav-link.jsLogout:hover:after{
+    .headerWrap .bar.pc a.nav-link.jsTranMg:hover:after, .headerWrap .bar.pc a.nav-link.jsLogout:hover:after ,.headerWrap .bar.pc a.nav-link.jsAddTran:hover:after{
   /*      color: #feffff;
         text-shadow: 1px 1px 1px black; */
           opacity: 1;

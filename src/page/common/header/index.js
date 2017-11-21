@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 16:57:16
+* @Last Modified time: 2017-11-21 17:46:11
 *  here is header
 */
 "use strict";
@@ -15,6 +15,7 @@ require('bootstrap');
 /****url define***/
 var indexPg='./index.html';
 var goTranList='./tranList.html';
+var goTranPg='./transaction.html';
 /***define text****/
 var loginPgTxt='宝贝儿，你还没登录哦';
 
@@ -57,6 +58,10 @@ var header={
 		/** go to transaction manage list page */
 		$(".headerWrap .jsTranMg").click(function(){
 			window.location.href=goTranList;
+		});
+		/** go to transaction page */
+		$(".headerWrap .jsAddTran").click(function(){
+			window.location.href=goTranPg;
 		});
 	},
 	pageMove: function(){

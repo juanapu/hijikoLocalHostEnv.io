@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 17:19:51
+* @Last Modified time: 2017-11-21 17:33:31
 */
 "use strict";
 
@@ -68,7 +68,7 @@ var confirmPg={
 			$(".confirmPg span.finalMount").text(res.total_fee);
 			_commonJs.unloading();
 			$(".confirmPg .confirm button.cmnBtn").click(function(){
-				//window.location.href=payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb="+res.bk;
+				window.location.href=payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn;
 				console.log(payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb="+res.bk);
 				console.log(resultUrl);
 			});
