@@ -1,0 +1,22 @@
+<tr>
+ <th>交易名称</th>
+ <th>ID</th>
+ <th>类型</th>
+ <th>日期</th>
+  <th>状态</th>
+   <th>放款时间</th>
+ <th>操作</th>
+</tr>
+
+{{#list}}
+
+  <tr data-trannum={{trade_sn}} data-id={{id}}>
+	  <td><a href="./tranDetail.html?tranNum={{trade_sn}}" data-trannum={{trade_sn}} class="js-tranTt">{{title}}</td>
+	  	  <td>{{id}}</td>
+	     <td>{{receive_user}}</td>
+	     <td>{{created}}</td>
+	     <td>{{payed}} </td>
+	     <td>剩余 3 天 </td>
+	     <td class="action" data-id={{id}}><button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button><button class="btn cmnBtn del js-POP" data-type="delete">删除订单</button></td>
+  </tr>
+ {{/list}}

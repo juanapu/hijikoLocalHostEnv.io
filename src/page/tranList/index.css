@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-16 16:37:51
+* @Last Modified time: 2017-11-21 17:03:35
 */
 body,html{
   background-color: #fff;
@@ -85,9 +85,12 @@ body * {
   text-align: center;
   word-wrap: break-word;
 }
-.tranListPg table th:nth-child(1),.tranListPg table th:nth-child(2),.tranListPg table td:nth-child(1),.tranListPg table td:nth-child(2){
+.tranListPg table th:nth-child(1),.tranListPg table td:nth-child(1),.tranListPg table th:nth-child(4),.tranListPg table td:nth-child(4){
   width: 25%;
 }
+/*.tranListPg table td:nth-child(2),.tranListPg table th:nth-child(2){
+  width: 7%;
+} */
 .tranListPg table td:nth-child(1),.tranListPg table td:nth-child(2){
   text-align: left;
 }
@@ -142,6 +145,15 @@ body * {
  .tranListPg  .popWrap textarea {
     width: 20em;
   }
+.tranListPg button.btn.cmnBtn.del.js-POP {
+    background-color: #f0ad4e;
+    /* margin-left: 0em; */
+    padding: 0.4em 1.6em;
+    margin-top: 0.5em;
+}
+.tranListPg .popWrap.del textarea {
+    color: red;
+}
 
 /****************************************for tablet ************************************************/
 @media screen and (max-width: 700px) {
@@ -165,7 +177,7 @@ body * {
   display: inline-block;
   width: 50%;
   border: none;
-  text-shadow: 1px 1px 1px #01080f;
+/*  text-shadow: 1px 1px 1px #01080f; */
  }
  .tranListPg .mobile .state>div {
     height: 2.5em;
@@ -177,6 +189,7 @@ body * {
    .tranListPg .mobile .state div:first-child{
         background-color:rgb(200,231,234);
         font-size: 2em;
+        color: #fff!important;
    }
     .tranListPg .mobile .state div:last-child .count{
       font-size: 1.5em;
@@ -255,7 +268,10 @@ body * {
     .tranListPg .mobile .action button {
      margin: 0em;
   }
-  
+  .tranListPg button.btn-warning.cmnBtn.del.js-POP {
+      background-color: #f0ad4e;
+  }
+      
 }
 
 

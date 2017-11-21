@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-16 15:58:06
+* @Last Modified time: 2017-11-21 15:16:21
 */
 "use strict";
 
@@ -13,16 +13,44 @@ require('../common/header/index.js');
 require('bootstrap');
 
 var _mm=require('../../util/mm.js');
+var _trade=require('service/trade-service.js');
+var hoganHtml=require('./hoganHtml.string');
+
+
 var tranList={
 	init: function(){
 		var _this=this;
-		_this.addPOP();  /*** pop up message box when click button ****/
+		_this.renderAPI();
+/*		_this.addPOP();  
 		_this.pagination();
 		_this.changeCss();
 		_this.insertImg();
-		_this.bindEvent();
+		_this.bindEvent();   */
 	},
 	bindEvent: function(){
+	},
+	renderAPI: function(){
+		var _this=this;
+		var tradeData={
+			trade_sn: _mm.getUrlParam('tranNum')
+		};
+		_trade.viewTrade(tradeData,function(res,txtStatus){  /*****get transaction's information, render HTML and dynamic data***********/
+			console.log("blow is res");
+			console.log(res);
+			var template=_mm.renderHtml(hoganHtml,res);
+			$(".tranDetailPg>.row>.hoganHtml").html(template);
+
+
+			/********add other events after html are rendered*********/
+			_this.addPOP();  
+			_this.pagination();
+			_this.changeCss();
+			_this.insertImg();
+			_this.bindEvent(); 
+
+		},function(err){
+			_mm.errorTips(err);
+		});
 	},
 	insertImg: function(){
 		var img=require('../../resource/img/avatar.png');

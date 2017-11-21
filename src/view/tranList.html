@@ -6,67 +6,23 @@
 </head>
 <body>
 		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %> 
 		<div class="tranListPg">
 			<div class="table-users pc">
 			   <div class="header">交易托管列表</div>
 			   
-			   <table cellspacing="0">
-			      <tr>
-			         <th>交易名称</th>
-			         <th>ID</th>
-			         <th>类型</th>
-			         <th>日期</th>
-			          <th>状态</th>
-			           <th>放款时间</th>
-			         <th>操作</th>
-			      </tr>
-
-			      <tr>
-			      <td><a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a></td>
-			         <td>ADFADLFJALDJFLAJDLFJALDJFLADJFLJADF</td>
-			         <td>付款</td>
-			         <td>2017-11-06</td>
-			         <td>已支付 </td>
-			         <td>剩余 3 天 </td>
-			         <td class="action"><button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button></td>
-			      </tr>
-			      <tr>
-			      <td><a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a></td>
-			         <td>ADFADLFJALDJFLAJDLFJALDJFLADJFLJADF</td>
-			         <td>付款</td>
-			         <td>2017-11-06</td>
-			         <td>已支付 </td>
-			         <td>剩余 3 天 </td>
-			         <td class="action"><button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button></td>
-			      </tr>
-			      <tr>
-			      <td><a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a></td>
-			         <td>ADFADLFJALDJFLAJDLFJALDJFLADJFLJADF</td>
-			         <td>付款</td>
-			         <td>2017-11-06</td>
-			         <td>已支付 </td>
-			         <td>剩余 3 天 </td>
-			         <td class="action"><button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button></td>
-			      </tr>
-			      <tr>
-			      <td><a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a></td>
-			         <td>ADFADLFJALDJFLAJDLFJALDJFLADJFLJADF</td>
-			         <td>付款</td>
-			         <td>2017-11-06</td>
-			         <td>已支付 </td>
-			         <td>剩余 3 天 </td>
-			         <td class="action"><button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button><button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button></td>
-			      </tr>
+			   <table class="pcHogan" cellspacing="0">
 			   </table>
 			</div>
 			<div class="container mobile">
-				<div class="row">
+				<div class="row mobileHogan">
+<!--
 					<div class="table mobile col-md-8 col-sm-8 col-xs-8">
 						<div class="wrap">
 							<div class="state">
 								<div>已支付</div><div>于<span class="count">8</span>天后放款</div>
 							</div>
-							<div class="detail"> <!--mbTran=mobile-transaction-title, typeDate=type&date -->
+							<div class="detail"> 
 								<p>
 									<span class="mbTran">交易</span>
 									<a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a>
@@ -91,38 +47,7 @@
 								<button class="cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
 							</div>
 						</div>
-					</div>
-					<div class="table mobile col-md-8 col-sm-8 col-xs-8">
-						<div class="wrap">
-							<div class="state">
-								<div>已支付</div><div>于<span class="count">8</span>天后放款</div>
-							</div>
-							<div class="detail"> <!--mbTran=mobile-transaction-title, typeDate=type&date -->
-								<p>
-									<span class="mbTran">交易</span>
-									<a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a>
-								</p>
-								<p>
-									<span class="id">ID</span>
-									123423423542354234123131231231
-								</p>
-								<div class="typeDate">
-									<div class="type">
-										<span>类型</span>
-										<span>付款</span>
-									</div>
-									<div class="date">
-										<span>日期</span>
-										<span>2017-11-07</span>
-									</div>
-								</div>
-							</div>
-							<div class="action">
-								<button class="cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>
-								<button class="cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
-							</div>
-						</div>
-					</div>
+					</div>    -->
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 16:50:15
+* @Last Modified time: 2017-11-21 12:21:38
 *
 *  here is mm js
 */
@@ -24,6 +24,7 @@ var _mm={
 			dataType: param.type    || 'json',
 			data    : param.data    || '',
 			success : function(res,txtStatus){
+				console.log(res);
 				//request successfully
 				if(0 === res.status){
 					typeof param.success === 'function' && param.success(res.data,res.message);
@@ -104,7 +105,7 @@ var _mm={
 	doRegister: function(){
 		window.location.href='./user-register.html?redirect='+encodeURIComponent(window.location.href);
 		//window.location.href='./user-register.html';
-	},
+	}
 };
 
 module.exports=_mm;

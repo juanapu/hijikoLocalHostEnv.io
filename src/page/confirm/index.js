@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 17:00:50
+* @Last Modified time: 2017-11-21 17:19:51
 */
 "use strict";
 
@@ -37,7 +37,7 @@ var confirmPg={
 			if(transactionNum){
 		 		_this.renderData(); //dynamically add text got from API
 		 		_this.bindEvent();
-		 		_this.tradeEditAPI(); 
+		 		_this.viewTradeAPI(); 
 		 	}else{
 		 		window.location.href=goTransactionPg;
 		 	};
@@ -77,14 +77,16 @@ var confirmPg={
 			_mm.errorTips(err);
 		}); 
 	},
-	tradeEditAPI: function(){
+	viewTradeAPI: function(){
 		var data={
 			trade_sn: _mm.getUrlParam('transactionNum')
 		};
+		var tradeId=_mm.getUrlParam('id');
 		$(".confirmPg>.notice a.goBack").click(function(){
 			_commonJs.loading();
-			_trade.editTrade(data,function(res,txtStatus){
-					window.location.href=goTransactionPg+'?transactionNum='+res.trade_sn;
+			_trade.viewTrade(data,function(res,txtStatus){
+					_commonJs.unloading();
+					window.location.href=goTransactionPg+'?transactionNum='+res.trade_sn+'&id='+tradeId;
 			},function(err){
 				_commonJs.unloading();
 				_mm.errorTips(err);

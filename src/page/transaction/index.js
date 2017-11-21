@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:32
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 16:26:06
+* @Last Modified time: 2017-11-21 14:37:12
 */
 "use strict";
 
@@ -39,7 +39,7 @@ var transaction={
 		};
 		if(data.trade_sn){ /***have transaction num come from confirm page,refill input**/
 			_commonJs.loading();
-			_trade.editTrade(data,function(res,txtStatus){
+			_trade.viewTrade(data,function(res,txtStatus){
 				   var editTradeData={
 				   	 id: res.id,
 				   	 title: res.title,
@@ -60,16 +60,16 @@ var transaction={
 							var name=$(this).attr('name');
 							switch(name) {
 							    case 'transName':
-							        data.title=$(this).val();
+							        editTradeData.title=$(this).val();
 							        break;
 							    case 'tranMont':
-							        data.hijiko_money=$(this).val();
+							        editTradeData.hijiko_money=$(this).val();
 							        break;
 							     case 'tranReceiver':
-							        data.receive_user=$(this).val();
+							        editTradeData.receive_user=$(this).val();
 							        break;
 							     case 'days':
-							        data.days=$(this).val();
+							        editTradeData.days=$(this).val();
 							        break;
 							};
 						});
@@ -80,7 +80,7 @@ var transaction={
 						_commonJs.loading();
 						_trade.editTradePost(editTradeData,function(res,txtStatus){
 							_commonJs.unloading();
-							window.location.href=confirmPg+'?transactionNum='+data.trade_sn;
+							window.location.href=confirmPg+'?transactionNum='+data.trade_sn+'&id='+res.id;
 						},function(err){
 							_commonJs.unloading();
 							_mm.errorTips(err);
@@ -104,7 +104,6 @@ var transaction={
 			var receiver=$(".transaction form.trade input[name='tranReceiver']").val();
 			var holdDays=$(".transaction form.trade .range>label>span.dateExpire").text();
 			var userInfo=_commonJs.checkLogin();
-			console.log(userInfo);
 			var data={
 				user_id:  userInfo.login?userInfo.cookie.user_id:0,
 				title: tradeName,

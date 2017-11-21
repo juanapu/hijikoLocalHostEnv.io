@@ -1,0 +1,35 @@
+<!--trandeNum is in mobileTrade.string -->
+{{#list}}
+<div class="table data-id={{id}} mobile col-md-8 col-sm-8 col-xs-8">
+	<div class="wrap">
+		<div class="state">
+			<div>{{payed}}</div><div>于<span class="count">8</span>天后放款</div>
+		</div>
+		<div class="detail" data-tranNum={{trade_sn}}> 
+			<p>
+				<span class="mbTran">交易</span>
+				<a href="./tranDetail.html?tranNum={{trade_sn}}" data-tranNum={{trade_sn}} class="js-tranTt">{{title}}</a>
+			</p>
+			<p>
+				<span class="id">ID</span>
+				{{id}}
+			</p>
+			<div class="typeDate">
+				<div class="type">
+					<span>类型</span>
+					<span>{{receive_user}}</span>
+				</div>
+				<div class="date">
+					<span>日期</span>
+					<span>{{created}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="action" data-id={{id}}>
+			<button class="btn-warning cmnBtn del js-POP" data-type="delete">删除</button>
+			<button class="cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>
+			<button class="cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+		</div>
+	</div>
+</div> 
+ {{/list}}
