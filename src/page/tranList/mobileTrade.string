@@ -1,6 +1,11 @@
 <!--trandeNum is in mobileTrade.string -->
+<div class="tabWrap">
+	<button class=" btn btn-primary jsRcvList">查收款</button>
+	<button class="btn btn-primary jsPayList active">查付款</button>
+</div>
+
 {{#list}}
-<div class="table data-id={{id}} mobile col-md-8 col-sm-8 col-xs-8">
+<div class="table mobile col-md-8 col-sm-8 col-xs-8" data-id={{id}} data-trannum={{trade_sn}} data-role={{roleMark}}>
 	<div class="wrap">
 		<div class="state">
 			<div>{{payed}}</div><div>于<span class="count">8</span>天后放款</div>
@@ -17,7 +22,7 @@
 			<div class="typeDate">
 				<div class="type">
 					<span>类型</span>
-					<span>{{receive_user}}</span>
+					<span>{{role}}</span>
 				</div>
 				<div class="date">
 					<span>日期</span>

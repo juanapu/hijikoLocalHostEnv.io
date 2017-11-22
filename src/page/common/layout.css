@@ -2,9 +2,10 @@
 * @Author: Administrator
 * @Date:   2017-08-20 19:40:23
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 15:57:52
+* @Last Modified time: 2017-11-22 14:50:17
 *  default css class style : className;
 *  bootstrap css style : class-name;
+*   here is common css
 */
 *{
 	margin: 0;
@@ -80,8 +81,8 @@ label,input[type='checkbox'],a,button{
 	margin: auto;
 	opacity: 0.6;
 	filter: alpha(opacity=60%);
-
 }
+
 
 .clear{
 	clear: both;
@@ -119,6 +120,11 @@ border-radius: 5px;
 
 .cmnBtn.light{
 	background-color: rgba(47,146,169,0.5);
+}
+
+/******pagination*****/
+.pagination{
+	display: inline-flex;
 }
 
 /****************************************for mobile ************************************************/

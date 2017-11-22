@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:32
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 14:37:12
+* @Last Modified time: 2017-11-22 09:45:40
 */
 "use strict";
 
@@ -31,6 +31,9 @@ var transaction={
 			/****************************************but mark here, donot work in iphone device**********************************************/
 			$(".transaction form>.form-item.range>label>span").html(amount);
 		});
+		/*** restrict input only number*****/
+		var ableArr=[48,49,50,51,52,53,54,55,56,57,8];
+		_mm.disableKeyCode($(".transaction input[type=number]"),ableArr);
 	},
 	checkTranNum: function(){
 		var _this=this;

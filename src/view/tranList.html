@@ -9,47 +9,25 @@
 		<%= require('html-loader!./layout/loading.html') %> 
 		<div class="tranListPg">
 			<div class="table-users pc">
-			   <div class="header">交易托管列表</div>
-			   
+			   <div class="header tabWrap">交易托管列表<div class="btnWrap"><button class=" btn btn-info jsRcvList">收款</button><button class="btn btn-info jsPayList active">付款</button>
+					</div>
+			   </div>
 			   <table class="pcHogan" cellspacing="0">
+			   			<!--  hogan code-->
 			   </table>
 			</div>
 			<div class="container mobile">
 				<div class="row mobileHogan">
-<!--
-					<div class="table mobile col-md-8 col-sm-8 col-xs-8">
-						<div class="wrap">
-							<div class="state">
-								<div>已支付</div><div>于<span class="count">8</span>天后放款</div>
-							</div>
-							<div class="detail"> 
-								<p>
-									<span class="mbTran">交易</span>
-									<a href="#" class="js-tranTt">转给王小二的SKDJFALJDLFJALDFJLAJFLADJFLAJDFLJADLFJALDJFLAJDLFJALDF</a>
-								</p>
-								<p>
-									<span class="id">ID</span>
-									123423423542354234123131231231
-								</p>
-								<div class="typeDate">
-									<div class="type">
-										<span>类型</span>
-										<span>付款</span>
-									</div>
-									<div class="date">
-										<span>日期</span>
-										<span>2017-11-07</span>
-									</div>
-								</div>
-							</div>
-							<div class="action">
-								<button class="cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>
-								<button class="cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
-							</div>
-						</div>
-					</div>    -->
+						<!--  hogan code-->
 				</div>
+			</div>
+		 <!-- pagination code-->
+			<div class="pg text-center">
+			<!--	<div id="page-content"></div>  -->
+				<ul id="pagination-demo" class="pagination-sm">
+				</ul>
 			</div>
 		</div>
 		<%= require('html-loader!./layout/footer.html') %> 
+		<script type="text/javascript" src="../module/twbsPagination/jquery.twbsPagination.min.js"></script>
 </body>

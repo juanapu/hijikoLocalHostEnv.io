@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 12:21:38
+* @Last Modified time: 2017-11-22 18:21:50
 *
 *  here is mm js
 */
@@ -24,10 +24,9 @@ var _mm={
 			dataType: param.type    || 'json',
 			data    : param.data    || '',
 			success : function(res,txtStatus){
-				console.log(res);
 				//request successfully
 				if(0 === res.status){
-					typeof param.success === 'function' && param.success(res.data,res.message);
+					typeof param.success === 'function' && param.success(res.data,res.message,res);
 				}
 				//no login 
 				else if(10 === res.status){
@@ -105,6 +104,19 @@ var _mm={
 	doRegister: function(){
 		window.location.href='./user-register.html?redirect='+encodeURIComponent(window.location.href);
 		//window.location.href='./user-register.html';
+	}, 
+	//allowed: input allowed key code arr, and target selector
+	disableKeyCode: function(targ,allowed){
+		targ.keydown(function(e){
+				if(allowed.indexOf(e.keyCode)<0){
+					e.preventDefault();
+				};
+		});
+
+	},
+	//targ: target selector, sib: need to be disabled siblings' class
+	disableSiblings: function(targ,sib){
+		targ.addClass('active').attr('disabled',true).siblings(sib).removeClass('active').attr('disabled',false);
 	}
 };
 

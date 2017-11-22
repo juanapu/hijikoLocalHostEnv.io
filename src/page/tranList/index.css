@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 17:03:35
+* @Last Modified time: 2017-11-22 15:03:45
 */
 body,html{
   background-color: #fff;
@@ -154,6 +154,30 @@ body * {
 .tranListPg .popWrap.del textarea {
     color: red;
 }
+/****tabwrap css****/
+.tranListPg>.pc .tabWrap{
+  position: relative;
+}
+.tranListPg>.pc .tabWrap>.btnWrap{
+    display: inline-block;
+    float: left;
+    padding: 0em;
+    margin: 0em;
+    vertical-align: top;
+}
+.tranListPg>.pc .tabWrap>.btnWrap>button{
+  display: inline;
+  margin: 0em;
+  border-radius: 0;
+  top: -1px;
+  position: relative;
+} 
+
+.tranListPg>.pc .tabWrap{
+  display: table;
+  width: 100%;
+}
+
 
 /****************************************for tablet ************************************************/
 @media screen and (max-width: 700px) {
@@ -172,6 +196,7 @@ body * {
     margin: 1em;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #1c3a491c;
+  /*  width: 500px; */
   }
  .tranListPg .mobile .state div{
   display: inline-block;
@@ -245,7 +270,27 @@ body * {
     margin: 0em;
    }
 
+   /*****tab define******/
 
+  .tranListPg>.mobile .tabWrap{
+    position: fixed;
+    right: -1em;
+    top: 6em;
+    z-index: 3;
+  }
+  .tranListPg>.mobile .tabWrap>button{
+    display: block;
+    margin: 0.5em;
+    background-color: rgba(237, 34, 34,0.5);
+    border: none;
+  }
+    .tranListPg>.mobile .tabWrap>button.active{
+       background-color: rgba(237,34,34,0.1);
+    }
+    /*pagination **/
+    .tranListPg .pg.text-center{
+      display: none;
+    }
 }
 /****************************************for mobile ************************************************/
 @media screen and (max-width: 500px) {
@@ -260,7 +305,7 @@ body * {
      background-color: rgb(43,130,218);
   }
   .tranListPg .mobile .state div:first-child {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   .tranListPg .mobile .state div:nth-child(2) {
     font-size: 1.2em;
@@ -271,7 +316,15 @@ body * {
   .tranListPg button.btn-warning.cmnBtn.del.js-POP {
       background-color: #f0ad4e;
   }
-      
+  .tranListPg .cmnBtn{
+    padding: 0.4em;
+  }
+  .tranListPg .mobile .action{
+   padding: 1em 0em;
+  }
+    .tranListPg .mobile .wrap {
+    /*  width: 100%!important; */
+    }    
 }
 
 

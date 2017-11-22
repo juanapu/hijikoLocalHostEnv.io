@@ -8,12 +8,13 @@
  <th>操作</th>
 </tr>
 
+
 {{#list}}
 
-  <tr data-trannum={{trade_sn}} data-id={{id}}>
+  <tr data-trannum={{trade_sn}} data-id={{id}} data-role={{roleMark}}>
 	  <td><a href="./tranDetail.html?tranNum={{trade_sn}}" data-trannum={{trade_sn}} class="js-tranTt">{{title}}</td>
 	  	  <td>{{id}}</td>
-	     <td>{{receive_user}}</td>
+	     <td>{{role}}</td>
 	     <td>{{created}}</td>
 	     <td>{{payed}} </td>
 	     <td>剩余 3 天 </td>
