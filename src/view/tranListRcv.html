@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HiJiko 交易总览</title>
+<%= require('html-loader!./layout/meta.html') %> 
+</head>
+<body>
+		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %> 
+		<div class="tranListPg">
+			<div class="table-users pc">
+			   <div class="header tabWrap">交易托管列表<div class="btnWrap"><button class=" btn btn-info jsRcvList active">收款</button><button class="btn btn-info jsPayList">付款</button>
+					</div>
+			   </div>
+			   <table class="pcHogan" cellspacing="0">
+			   			<!--  hogan code-->
+			   </table>
+			</div>
+			<div class="container mobile">
+				<div class="row mobileHogan">
+						<!--  hogan code-->
+				</div>
+			</div>
+		 <!-- pagination code-->
+			<div class="pg text-center">
+			<!--	<div id="page-content"></div>  -->
+				<ul id="pagination-demo" class="pagination-sm">
+				</ul>
+			</div>
+		</div>
+		<%= require('html-loader!./layout/footer.html') %> 
+		<script type="text/javascript" src="../module/twbsPagination/jquery.twbsPagination.min.js"></script>
+</body>

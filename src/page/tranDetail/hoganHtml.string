@@ -6,11 +6,15 @@
 							</div>
 							<div class="rcvNameWrap">
 								<div class="tle">收款方用户名</div>
-								<div class="rcvName">！！！！！！！！！</div>
+								<div class="rcvName">{{#receive_user_fullname}} {{receive_user_fullname}} {{/receive_user_fullname}}{{^receive_user_fullname}}待收款人{{/receive_user_fullname}}</div>
 							</div>
 							<div class="mountWrap">
 								<div class="tle">金额</div>
 								<div class="mount"><span class="mount">{{hijiko_money}}</span><span class="currency"></span>RMB</div>
+							</div>
+							<div class="rcvEmainWrap">
+								<div class="tle">收款方收件箱</div>
+								<div class="rcvName">{{#receive_user_emai}} {{receive_user_emai}} {{/receive_user_emai}}{{^receive_user_emai}}待收款人{{/receive_user_emai}}</div>
 							</div>
 							<div class="rcvAlpyWrap">
 								<div class="tle">收款方支付宝账号</div>

@@ -3,17 +3,18 @@
 		<div class="formItem email">
 			<label for="email"><i class="fa fa-envelope-o" aria-hidden="true"></i>
 </label>
-			<input type="email" placeholder="注册邮箱" name="email" autofocus></input>
+			<input type="email" placeholder="注册邮箱" name="email" autofocus autocomplete="new-password" autocomplete="false"></input>
 		</div>
 		<div class="formItem userName">
 			<label for="userName"><i class="fa fa-user-o" aria-hidden="true"></i>
 </label>
-			<input type="text" placeholder="用户名" name="userName" autofocus></input>
+			<input type="text" placeholder="姓" name="lstName" autofocus autocomplete="new-password" autocomplete="false"></input>
+			<input type="text" placeholder="名" name="fstName" autofocus autocomplete="new-password" autocomplete="false"></input>
 		</div>
 		<div class="formItem passWord">
 			<label for="passWord"><i class="fa fa-lock" aria-hidden="true"></i>
 </label>
-			<input type="password" placeholder="密码" name="passWord" autofocus></input>
+			<input type="password" placeholder="密码" name="passWord" autofocus autocomplete="new-password" autocomplete="false"></input>
 		</div>
 		<input type="submit" value="注册"></input>
 	</form>

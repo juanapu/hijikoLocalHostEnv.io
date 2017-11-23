@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-19 12:02:16
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-22 17:11:51
+* @Last Modified time: 2017-11-23 17:10:58
 */
 "use strict";
 
@@ -75,6 +75,15 @@ var _trade={
 	tranMesCreate: function(data,resolve,reject){
 		_mm.request({
 			url   :_mm.getServerUrl('/TradeMessages/create'),
+			data : data,
+			method : 'post',
+			success : resolve,
+			error   : reject
+		})
+	},
+	tranMesRead: function(data,resolve,reject){
+		_mm.request({
+			url   :_mm.getServerUrl('/TradeMessages/receive'),
 			data : data,
 			method : 'post',
 			success : resolve,

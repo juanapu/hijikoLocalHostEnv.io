@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-22 18:21:50
+* @Last Modified time: 2017-11-23 17:17:09
 *
 *  here is mm js
 */
@@ -24,6 +24,8 @@ var _mm={
 			dataType: param.type    || 'json',
 			data    : param.data    || '',
 			success : function(res,txtStatus){
+				console.log("below is mm res");
+				console.log(res);
 				//request successfully
 				if(0 === res.status){
 					typeof param.success === 'function' && param.success(res.data,res.message,res);

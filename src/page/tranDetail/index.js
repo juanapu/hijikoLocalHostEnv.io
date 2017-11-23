@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 15:16:21
+* @Last Modified time: 2017-11-23 17:15:55
 */
 "use strict";
 
@@ -12,31 +12,39 @@ require('../common/footer/index.js');
 require('../common/header/index.js');
 require('bootstrap');
 
+require('../common/loading/index.js');
+var _commonJs=require('../common/index.js');
+
 var _mm=require('../../util/mm.js');
 var _trade=require('service/trade-service.js');
 var hoganHtml=require('./hoganHtml.string');
 
+/****** define public variable*************/
+var userInfo=_commonJs.checkLogin();
 
 var tranList={
 	init: function(){
 		var _this=this;
 		_this.renderAPI();
-/*		_this.addPOP();  
-		_this.pagination();
-		_this.changeCss();
-		_this.insertImg();
-		_this.bindEvent();   */
 	},
 	bindEvent: function(){
 	},
 	renderAPI: function(){
 		var _this=this;
+		_commonJs.che
 		var tradeData={
-			trade_sn: _mm.getUrlParam('tranNum')
+			trade_sn: _mm.getUrlParam('tranNum'),
+			type: _mm.getUrlParam('type'),
+			user_id: userInfo.cookie.user_id
 		};
+		_commonJs.loading();
 		_trade.viewTrade(tradeData,function(res,txtStatus){  /*****get transaction's information, render HTML and dynamic data***********/
-			console.log("blow is res");
-			console.log(res);
+			_commonJs.unloading();
+			_trade.tranMesRead(tradeData,function(resMsg,txtStatusMsg){
+				console.log(resMsg);
+			},function(errMsg){
+				console.log(errMsg);
+			});
 			var template=_mm.renderHtml(hoganHtml,res);
 			$(".tranDetailPg>.row>.hoganHtml").html(template);
 
@@ -49,6 +57,7 @@ var tranList={
 			_this.bindEvent(); 
 
 		},function(err){
+			_commonJs.unloading();
 			_mm.errorTips(err);
 		});
 	},
@@ -64,7 +73,6 @@ var tranList={
 			var htForm=$(".formWrap").height()/parseFloat($("body").css("font-size"));
 			var htBt=$(".actionWrap.mobile>div").height()/parseFloat($("body").css("font-size"));
 			var htCmt=htEm-htForm-htBt-8;
-			 console.log(htCmt);
 			$("#cmtListWrap").css({"max-height":""+htCmt+"em"});
 		};
 	},

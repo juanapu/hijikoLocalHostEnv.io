@@ -35,6 +35,7 @@ var exportContent ={
 		'confirm': "./src/page/confirm/index.js",
 		'result': "./src/page/result/index.js",
 		'tranList': "./src/page/tranList/index.js",
+		'tranListRcv': "./src/page/tranListRcv/index.js",
 		'tranDetail': "./src/page/tranDetail/index.js"
 	},
 	output: {
@@ -80,6 +81,7 @@ var exportContent ={
 		new htmlWebpackPlugin(getHtmlConfig('confirm')),
 		new htmlWebpackPlugin(getHtmlConfig('result')),
 		new htmlWebpackPlugin(getHtmlConfig('tranList')),
+		new htmlWebpackPlugin(getHtmlConfig('tranListRcv')),
 		new htmlWebpackPlugin(getHtmlConfig('tranDetail')),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',

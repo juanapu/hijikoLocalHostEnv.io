@@ -205,6 +205,12 @@ button.js-nxt{
 	    margin-top: 0px;
 }
 
+.main .userName input[type="text"] {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 45%;
+}
+
 /*******result css**************/
 .loginForm.login,.registerForm{
 	position: relative;

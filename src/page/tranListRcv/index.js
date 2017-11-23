@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-23 16:19:05
+* @Last Modified time: 2017-11-23 16:23:53
 */
 "use strict";
 
@@ -18,7 +18,7 @@ var tradehtml=require('./tradelist.string');
 var mobileTrade=require('./mobileTrade.string'); 
 /****define url*******/
 var goDetail='./tranDetail.html';
-var goTranListRcv='./tranListRcv.html';
+var goTranList='./tranList.html';
 /**public data**/
 var userInfo=_commonJs.checkLogin();
 
@@ -31,13 +31,12 @@ var tranList={
 	bindEvent: function(){
 		var _this=this;
 		$(".mobileHogan .detail").click(function(){
-			var targ=$(this).parents('.table');
-			window.location.href=goDetail+"?tranNum="+targ.data('trannum')+"&id="+targ.data('id')+"&role="+targ.data('role')+"&status="+targ.data('status')+"&type=2";
+			window.location.href=goDetail+"?tranNum="+targ.data('trannum')+"&id="+targ.data('id')+"&role="+targ.data('role')+"&status="+targ.data('status')+"&type=3";
 		});
-		$(".tranListPg .tabWrap button.jsRcvList").click(function(){
+		$(".tranListPg .tabWrap button.jsPayList").click(function(){
 			//type(2(my payment)，3 (my income orders)
 			var orderType=$(this).hasClass('jsRcvList')?3:2;
-			window.location.href=goTranListRcv;
+			window.location.href=goTranList;
 		});
 	},
 	renderApi: function(orderType){ 	//type(2(my payment)，3 (my income orders)
@@ -45,18 +44,19 @@ var tranList={
 		// var userInfo=_commonJs.checkLogin();
 		var data={
 			user_id: userInfo.cookie.user_id,
-			type: orderType?orderType:2,
+			type: orderType?orderType:3,
 			page: 1
 		};
 		var isPc=_this.isPc();
 		//if is pc, use pagination. If is mobile load all. 
 		if(isPc){
  			_commonJs.loading();
-			_this.loadPc(data,userInfo,orderType);	
+			_this.loadPc(data,userInfo,data.type);	
 		}else{
 		 /* mobile load all**/
  			_commonJs.loading();
 			_trade.tranList(data,function(resDt,txtStatus,res){
+				console.log(res);
 				data.page=res.pages;
 				_this.loadMobile(data,userInfo,orderType);
 			},function(err){
@@ -243,7 +243,8 @@ var tranList={
 			var insertMbHtml=_mm.renderHtml(mobileTrade,hoganData);
 			$(".mobileHogan").html(insertMbHtml);
 			 var insertHtml=_mm.renderHtml(tradehtml,hoganData);
-			 $(".pcHogan").html(insertHtml);		 			// render tabWrap
+			 $(".pcHogan").html(insertHtml);
+	 			// render tabWrap
 			_this.addPOP();  /*** pop up message box when click button ****/
 			_this.bindEvent();
 	},

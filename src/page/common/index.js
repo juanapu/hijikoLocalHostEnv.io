@@ -35,7 +35,7 @@ var commonJs={
 			/******it is home page*******/
 		}else{
 			var cookieStore=_this.getCookie(); 
-			if((!cookieStore.nickname)||(!cookieStore.password)){
+			if((!cookieStore.email)||(!cookieStore.password)){
 				logInfo.login=false;
 			}else{
 				logInfo.login=true;
@@ -46,6 +46,7 @@ var commonJs={
 	},
 	getCookie: function(){
 		var cookieStore={
+			email: Cookies.get('email'),
 			nickname: Cookies.get('nickname'),
 			password: Cookies.get('password')?$.base64.decode(Cookies.get('password')):Cookies.get('password'),
 			user_id: Cookies.get('user_id')?Cookies.get('user_id'):0
@@ -56,6 +57,7 @@ var commonJs={
 		Cookies.set(name,val,{expires: 7,path : '/'});
 	},
 	cleanCookie: function(){
+		Cookies.remove('email', { path: '/' });
 		Cookies.remove('nickname', { path: '/' });
 		Cookies.remove('password', { path: '/' });
 		Cookies.remove('user_id', { path: '/' });
