@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-23 17:15:55
+* @Last Modified time: 2017-11-24 17:44:22
 */
 "use strict";
 
@@ -40,11 +40,12 @@ var tranList={
 		_commonJs.loading();
 		_trade.viewTrade(tradeData,function(res,txtStatus){  /*****get transaction's information, render HTML and dynamic data***********/
 			_commonJs.unloading();
-			_trade.tranMesRead(tradeData,function(resMsg,txtStatusMsg){
-				console.log(resMsg);
-			},function(errMsg){
-				console.log(errMsg);
-			});
+			res.ablePasBtn=(parseInt(_mm.getUrlParam('role'))===3)?false:true; //role=3: receiver, role=2: payer  add ablePasBtn
+			// _trade.tranMesRead(tradeData,function(resMsg,txtStatusMsg){
+			// 	console.log(resMsg);
+			// },function(errMsg){
+			// 	console.log(errMsg);
+			// });
 			var template=_mm.renderHtml(hoganHtml,res);
 			$(".tranDetailPg>.row>.hoganHtml").html(template);
 

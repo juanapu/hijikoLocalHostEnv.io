@@ -53,22 +53,6 @@ var index={
 		};
 	},
 	bindUserLogic: function(){
-/*		var _this=this;
-		_this.userLogin();
-		var callbackFun=function(){ // show register form
-			_this.insertHtml(registerHtml,$(".formWrap"));
-			_this.userRegister();
-			 $("a.jsLogin").click(function(){
-			 	_this.insertHtml(loginHtml,$(".formWrap"));
-			 	_this.userLogin();
-				 $("a.jsRegister").click(function(){
-				 	_this.insertHtml(registerHtml,$(".formWrap"));
-	 				_this.userRegister();
-				 	callbackFun();
-				 });
-			 });
-		};
-		$("a.jsRegister").click(callbackFun);   */
 		var _this=this;
 		if(_mm.getUrlParam('target')==='register'){
 			_this.registerAccessFunc();
@@ -78,6 +62,7 @@ var index={
 	},
 	registerAccessFunc: function(){
 		var _this=this;
+		$(".registerForm .email input").focus();
 		_this.userRegister(); //
 		var callbackFun=function(){ // show findPw form
 			_this.insertHtml(loginHtml,$(".formWrap"));
@@ -85,6 +70,7 @@ var index={
 			_this.AddResetPwEvent();
 			 $("a.jsRegister").click(function(){
 			 	_this.insertHtml(registerHtml,$(".formWrap"));
+			 		$(".registerForm .email input").focus();
 			 	_this.userRegister(); //
 				 $("a.jsLogin").click(function(){
 				 	_this.insertHtml(loginHtml,$(".formWrap"));
@@ -102,6 +88,7 @@ var index={
 		_this.AddResetPwEvent();
 		var callbackFun=function(){ // show register form
 			_this.insertHtml(registerHtml,$(".formWrap"));
+			$(".registerForm .email input").focus();
 			_this.userRegister();
 			 $("a.jsLogin").click(function(){
 			 	_this.insertHtml(loginHtml,$(".formWrap"));
@@ -109,6 +96,7 @@ var index={
 	 			_this.AddResetPwEvent();
 				 $("a.jsRegister").click(function(){
 				 	_this.insertHtml(registerHtml,$(".formWrap"));
+			 		$(".registerForm .email input").focus();
 	 				_this.userRegister();
 				 	callbackFun();
 				 });
@@ -123,12 +111,19 @@ var index={
 	},
 	userRegister: function(){
 		var _this=this;
+		var checkResult=false;	
+		_mm.disableInputKeyCode($(".registerForm>form input"),32);
+		var targ=".registerForm";
+		_this.checkAllValidate(targ);
 		$(".registerForm>form").submit(function(e){
 			var data={
  				email: $(".registerForm .email input").val()?$(".registerForm .email input").val():'',
- 				nickname: $(".registerForm .userName input").val()?$(".registerForm .userName input").val():'',
- 				password: $(".registerForm .passWord input").val()
+ 				firstname: $(".registerForm .userName input[name='fstName']").val()?$(".registerForm .userName input[name='fstName']").val():'',
+ 				lastname: $(".registerForm .userName input[name='lstName']").val()?$(".registerForm .userName input[name='lstName']").val():'',
+ 				password: $.base64.encode($(".registerForm .passWord input").val()),
+ 				trade_sn: _mm.getUrlParam('tranNum')? _mm.getUrlParam('tranNum'):''
 			};
+			data.nickname=data.lastname+' '+data.firstname; //added nick name
 			_commonJs.loading();
 			_user.register(data,function(res,txtStatus){
 				_commonJs.unloading();
@@ -140,15 +135,17 @@ var index={
 				$(".registerForm .resultPg>.resultWrap>p").text(err);
 				$(".registerForm .resultPg").show('slow');
 			});
-			e.preventDefault();
+			 e.preventDefault();
 		});
 	},
 	userLogin: function(){
 		var _this=this;
+		var targ=".loginForm.login";
+		_this.checkAllValidate(targ);
 		$(".loginForm.login>form").submit(function(e){
 			var userInfo={
-				nickname: $(".loginForm.login .userName input").val()?$(".loginForm.login .userName input").val():'',
- 				password: $(".loginForm.login .passWord input").val(),
+				email: $(".loginForm.login .email input").val()?$(".loginForm.login .email input").val():'',
+ 				password: $.base64.encode($(".loginForm.login .passWord input").val())
 			};
 			//释放 var url='/users/login?nickname='+userInfo.nickname+'&password='+userInfo.password;
 			_commonJs.loading();
@@ -156,7 +153,10 @@ var index={
 				_commonJs.unloading();
 				/***********set cookies****************/
 				var psWord=$.base64.encode(userInfo.password);
-				_commonJs.setCookie('nickname',userInfo.nickname);
+				_commonJs.setCookie('email',userInfo.email);
+				_commonJs.setCookie('nickname',res.user_fullname);
+				_commonJs.setCookie('user_firstname',res.user_firstname);
+				_commonJs.setCookie('user_lastname',res.user_lastname);
 				_commonJs.setCookie('password',psWord);
 				_commonJs.setCookie('user_id',res.user_id);
 				var redirectPg=_mm.getUrlParam('redirectFrom');
@@ -169,8 +169,60 @@ var index={
 			});
 			e.preventDefault();
 		});
-	}
+	},
+	checkAllValidate: function(target){
+		   $(target+" input").blur(function(){
+			   	function emptyAction(targ){
+						$(target+" .resultPg>.resultWrap>p").text('亲，不能为空哦');
+					 	$(target+" .resultPg").show('slow');
+					 	targ.addClass('errInput');
+			   	};
 
+			  function errAction(targ,type){
+			  	        var typeTxt='';
+			  	        switch(type){
+			  	        	case 'email' :
+			  	        		typeTxt='邮箱'
+			  	        		break;
+        	 	        	case 'lstName'||'fstName' :
+			  	        		typeTxt='姓名'
+			  	        		break;
+        	 	        	case 'passWord' :
+			  	        		typeTxt='密码'
+			  	        		break;
+			  	        };
+						$(target+" .resultPg>.resultWrap>p").text('亲，要正确填写'+typeTxt+'哦');
+					 	$(target+" .resultPg").show('slow');
+					 	targ.addClass('errInput');
+			   	};
+
+			   function rightAction(targ){
+						$(target+" .resultPg").hide('slow');
+						targ.removeClass('errInput');
+			   	};
+			   	var type=$(this).attr('name');
+			   	  _mm.validAlert($(this),type,emptyAction,errAction,rightAction);
+
+			   	  /*****check whether all filled******/
+		   	  		   var formItem=$(target+">form").children('.formItem');
+		   	  		   var checkFalseNum=0;
+		   	  		   var check;
+					   for(var i=0;i<formItem.length;i++){
+					   	   var input=$(formItem[i]).children('input');
+					   	    for(var j=0;j<input.length;j++){
+						   	      check=_mm.validResult($(input[j]),$(input[j]).attr('name'),emptyAction,errAction,rightAction);
+						   	    if(!check){
+						   	    	checkFalseNum++;
+						   	    };
+						   	};
+					   };
+				if(!checkFalseNum){
+					$(target+" input[type='submit']").attr('disabled',false).removeClass('disInput',1000);
+				}else{
+					$(target+" input[type='submit']").attr('disabled',true).addClass('disInput',1000);
+				};
+			});
+	}
 }
 
 $(function(){

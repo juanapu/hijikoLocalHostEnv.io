@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-23 17:17:09
+* @Last Modified time: 2017-11-24 18:09:32
 *
 *  here is mm js
 */
@@ -43,6 +43,8 @@ var _mm={
 				}
 			},
 			error   : function(err){
+				console.log("below is mm err");
+				console.log(err);
 				typeof param.error === 'function' && param.error(err.statusText);
 			}
 
@@ -91,13 +93,37 @@ var _mm={
 			return /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3})){1,3}$/.test(value);
 		};
 		//password varification
-		if('password' === type){
-			return  /^[A-Za-z]\w{7,14}$/.test(value);
+		if('passWord' === type){
+			//return  /^[A-Za-z]\w{7,14}$/.test(value);
+			return  value;
 		};
 		//username varification
 		if('nickname' === type){
 			return /^[a-zA-Z0-9_-]{4,16}$/.test(value); 
 		};
+		//for all 
+		if(('lstName' ===  type)||('fstName' === type)){
+			return value;
+		};
+	},
+	validAlert: function(targ,type,emptyAction,errAction,rightAction){
+		var _this=this;
+		if(!_this.validate(targ.val(),'','required')){
+			 emptyAction(targ);	
+		}else if(!_this.validate(targ.val(),type,'')){
+			 errAction(targ,type);
+		}else{
+			 rightAction(targ);
+			 return true;
+		};
+		return false;
+	},
+	validResult: function(targ,type,emptyAction,errAction,rightAction){
+		var _this=this;
+		if((_this.validate(targ.val(),'','required'))&&(_this.validate(targ.val(),type,''))){
+			 return true;
+		};
+		return false;
 	},
 	doLogin: function(){
 		window.location.href='./user-login.html?redirect='+encodeURIComponent(window.location.href);
@@ -114,7 +140,13 @@ var _mm={
 					e.preventDefault();
 				};
 		});
-
+	},
+	disableInputKeyCode: function(targ,disabled){
+			targ.keydown(function(e){
+				if(e.keyCode === 32){
+					e.preventDefault();
+				};
+			});
 	},
 	//targ: target selector, sib: need to be disabled siblings' class
 	disableSiblings: function(targ,sib){

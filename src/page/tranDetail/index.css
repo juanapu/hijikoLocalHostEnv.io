@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-16 16:25:01
+* @Last Modified time: 2017-11-24 15:44:17
 */
 body,html{
   background-color: #fff;
@@ -164,6 +164,14 @@ body,html{
 }
 .tranDetailPg .cmtInner {
     padding: 1em;
+}
+
+ .tranDetailPg button.pasDisable.js-POP{
+  box-shadow: none;
+  background-color: #2f92a970;
+}
+.tranDetailPg button.pasDisable.js-POP:hover{
+  text-shadow: none;
 }
 
 /****************************************for tablet ************************************************/

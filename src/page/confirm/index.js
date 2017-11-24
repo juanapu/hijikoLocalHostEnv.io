@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-21 17:33:31
+* @Last Modified time: 2017-11-24 15:13:31
 */
 "use strict";
 
@@ -21,7 +21,6 @@ var goTransactionPg='./transaction.html';
 var payUrl="http://pay2.youyunnet.com/pay";
 var resultUrl=_mm.getFileHost('/result.html');
 /****define public data******/
-var hijikoSharing=0.001;
 var transactionNum='';
 
 
@@ -68,9 +67,7 @@ var confirmPg={
 			$(".confirmPg span.finalMount").text(res.total_fee);
 			_commonJs.unloading();
 			$(".confirmPg .confirm button.cmnBtn").click(function(){
-				window.location.href=payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn;
-				console.log(payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb="+res.bk);
-				console.log(resultUrl);
+				window.location.href=payUrl+"?pid="+res.pid+"&money="+res.money+"&data="+res.data+"&url="+resultUrl+"?transactionNum="+data.trade_sn+"&lb=1";
 			});
 		},function(err){
 			_commonJs.unloading();

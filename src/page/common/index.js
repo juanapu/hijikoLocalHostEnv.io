@@ -46,10 +46,12 @@ var commonJs={
 	},
 	getCookie: function(){
 		var cookieStore={
-			email: Cookies.get('email'),
-			nickname: Cookies.get('nickname'),
+			email: Cookies.get('email')?Cookies.get('email'):0,
+			nickname: Cookies.get('nickname')?Cookies.get('nickname'):0,
 			password: Cookies.get('password')?$.base64.decode(Cookies.get('password')):Cookies.get('password'),
-			user_id: Cookies.get('user_id')?Cookies.get('user_id'):0
+			user_firstname: Cookies.get('user_firstname')?Cookies.get('user_firstname'):0,
+			user_lastname: Cookies.get('user_lastname')?Cookies.get('user_lastname'):0,
+			user_id: Cookies.get('user_id')?Cookies.get('user_id'):0,
 		};
 		return cookieStore;
 	},
@@ -61,6 +63,8 @@ var commonJs={
 		Cookies.remove('nickname', { path: '/' });
 		Cookies.remove('password', { path: '/' });
 		Cookies.remove('user_id', { path: '/' });
+		Cookies.remove('user_firstname', { path: '/' });
+		Cookies.remove('user_lastname', { path: '/' });
 	}
 
 };

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-23 16:19:05
+* @Last Modified time: 2017-11-24 15:20:33
 */
 "use strict";
 
@@ -331,7 +331,7 @@ var tranList={
                  	_mm.errorTips("亲爱的，你还没有留言哦！");
                  };
 			});
-			$(".popWrap form").bind('click keypress submit',function(e){
+			$(".popWrap form").bind('click submit',function(e){
 				e.stopPropagation();  
 				e.preventDefault();
 			})
