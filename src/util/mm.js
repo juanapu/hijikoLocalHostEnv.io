@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-24 18:09:32
+* @Last Modified time: 2017-11-25 14:11:57
 *
 *  here is mm js
 */
@@ -109,7 +109,7 @@ var _mm={
 	validAlert: function(targ,type,emptyAction,errAction,rightAction){
 		var _this=this;
 		if(!_this.validate(targ.val(),'','required')){
-			 emptyAction(targ);	
+			 emptyAction(targ,type);	
 		}else if(!_this.validate(targ.val(),type,'')){
 			 errAction(targ,type);
 		}else{

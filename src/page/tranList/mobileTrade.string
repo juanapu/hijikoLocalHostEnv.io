@@ -40,3 +40,8 @@
 	</div>
 </div> 
  {{/list}}
+ {{^list}}
+	<div class="emptyWrap">
+		<div>哎呀！是空的呢！</div>
+	</div>
+ {{/list}}

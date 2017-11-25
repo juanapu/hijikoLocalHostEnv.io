@@ -40,3 +40,8 @@
 	</div>
 </div> 
  {{/list}}
+  {{^list}}
+	<div class="emptyWrap">
+		<div>哎呀！收款还是空的捏！<p>快去邀请朋友发起收款吧！</p></div>
+	</div>
+ {{/list}}

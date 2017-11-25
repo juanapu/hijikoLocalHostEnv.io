@@ -2,6 +2,7 @@
 "use strict"
 
 require('./layout.css');
+require('./empty.css');
 //require('../css/style.css')
 
 /*****define public url*******/

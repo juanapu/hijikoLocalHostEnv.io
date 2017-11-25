@@ -86,6 +86,7 @@ var index={
 		var _this=this;
 		_this.userLogin();
 		_this.AddResetPwEvent();
+
 		var callbackFun=function(){ // show register form
 			_this.insertHtml(registerHtml,$(".formWrap"));
 			$(".registerForm .email input").focus();
@@ -127,9 +128,13 @@ var index={
 			_commonJs.loading();
 			_user.register(data,function(res,txtStatus){
 				_commonJs.unloading();
-				_this.insertHtml(loginHtml,$(".formWrap"));
-				$(".loginForm .resultPg").show('slow');
-				_this.bindUserLogic();
+				if(res.user_id){
+					_commonJs.setCookie('email',data.email);
+					_commonJs.setCookie('password',data.password);
+				};
+				 _this.insertHtml(loginHtml,$(".formWrap"));
+				 $(".loginForm .resultPg").show('slow');
+				 _this.userLogin();
 			},function(err){
 				_commonJs.unloading();
 				$(".registerForm .resultPg>.resultWrap>p").text(err);
@@ -141,13 +146,17 @@ var index={
 	userLogin: function(){
 		var _this=this;
 		var targ=".loginForm.login";
+		var ckRegister=_commonJs.getCookie(); //check whether registered, refill the login form.
+		 if(ckRegister.email){
+		 	$(".loginForm.login .email input").val(ckRegister.email);
+		 	$(".loginForm.login .passWord input").val(ckRegister.password); 
+		 };
 		_this.checkAllValidate(targ);
 		$(".loginForm.login>form").submit(function(e){
 			var userInfo={
 				email: $(".loginForm.login .email input").val()?$(".loginForm.login .email input").val():'',
  				password: $.base64.encode($(".loginForm.login .passWord input").val())
 			};
-			//释放 var url='/users/login?nickname='+userInfo.nickname+'&password='+userInfo.password;
 			_commonJs.loading();
 			_user.login(userInfo,function(res,txtStatus){
 				_commonJs.unloading();
@@ -172,10 +181,25 @@ var index={
 	},
 	checkAllValidate: function(target){
 		   $(target+" input").blur(function(){
-			   	function emptyAction(targ){
-						$(target+" .resultPg>.resultWrap>p").text('亲，不能为空哦');
+			   	function emptyAction(targ,type){
+
+			  	        var typeTxt='';
+			  	        switch(type){
+			  	        	case 'email' :
+			  	        		typeTxt='邮箱'
+			  	        		break;
+        	 	        	case 'lstName' :
+			  	        		typeTxt='姓'
+			  	        		break;
+        	 	        	case 'fstName' :
+			  	        		typeTxt='名'
+			  	        		break;
+        	 	        	case 'passWord' :
+			  	        		typeTxt='密码'
+			  	        		break;
+			  	        };
+						$(target+" .resultPg>.resultWrap>p").text('亲，'+typeTxt+'不能为空哦');
 					 	$(target+" .resultPg").show('slow');
-					 	targ.addClass('errInput');
 			   	};
 
 			  function errAction(targ,type){
@@ -184,8 +208,11 @@ var index={
 			  	        	case 'email' :
 			  	        		typeTxt='邮箱'
 			  	        		break;
-        	 	        	case 'lstName'||'fstName' :
-			  	        		typeTxt='姓名'
+        	 	        	case 'lstName' :
+			  	        		typeTxt='姓'
+			  	        		break;
+        	 	        	case 'fstName' :
+			  	        		typeTxt='名'
 			  	        		break;
         	 	        	case 'passWord' :
 			  	        		typeTxt='密码'
@@ -193,32 +220,44 @@ var index={
 			  	        };
 						$(target+" .resultPg>.resultWrap>p").text('亲，要正确填写'+typeTxt+'哦');
 					 	$(target+" .resultPg").show('slow');
-					 	targ.addClass('errInput');
 			   	};
 
 			   function rightAction(targ){
 						$(target+" .resultPg").hide('slow');
-						targ.removeClass('errInput');
 			   	};
-			   	var type=$(this).attr('name');
-			   	  _mm.validAlert($(this),type,emptyAction,errAction,rightAction);
+				   	 var type=$(this).attr('name');
+			   	   _mm.validAlert($(this),type,function(targ){
+					 	targ.addClass('errInput');
+			   	   },function(targ){
+					 	targ.addClass('errInput');
+			   	   },function(targ){
+						targ.removeClass('errInput');
+			   	   });
 
 			   	  /*****check whether all filled******/
-		   	  		   var formItem=$(target+">form").children('.formItem');
-		   	  		   var checkFalseNum=0;
-		   	  		   var check;
-					   for(var i=0;i<formItem.length;i++){
-					   	   var input=$(formItem[i]).children('input');
-					   	    for(var j=0;j<input.length;j++){
-						   	      check=_mm.validResult($(input[j]),$(input[j]).attr('name'),emptyAction,errAction,rightAction);
-						   	    if(!check){
-						   	    	checkFalseNum++;
-						   	    };
-						   	};
-					   };
+	   	  		   var formItem=$(target+">form").children('.formItem');
+	   	  		   var checkFalseNum=0;
+	   	  		   var check;
+	   	  		   var falseNum=[];
+				   for(var i=0;i<formItem.length;i++){
+				   	   var input=$(formItem[i]).children('input');
+				   	    for(var j=0;j<input.length;j++){
+					   	      check=_mm.validResult($(input[j]),$(input[j]).attr('name'),emptyAction,errAction,rightAction);
+					   	    if(!check){
+					   	    	checkFalseNum++;
+					   	    	var pushVal={formItem: i,inputNum: j};
+					   	    	falseNum.push(pushVal);
+					   	    };
+					   	};
+				   };
 				if(!checkFalseNum){
+				 	$(target+" .resultPg").hide('slow');
 					$(target+" input[type='submit']").attr('disabled',false).removeClass('disInput',1000);
 				}else{
+					var $this=$($(formItem[falseNum[0].formItem]).children('input')[falseNum[0].inputNum]);
+					var typeHr=$this.attr('name');
+					 _mm.validAlert($this,typeHr,emptyAction,errAction,rightAction);
+				 	$(target+" .resultPg").show('slow');
 					$(target+" input[type='submit']").attr('disabled',true).addClass('disInput',1000);
 				};
 			});
