@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-24 17:44:22
+* @Last Modified time: 2017-11-26 12:42:21
 */
 "use strict";
 
@@ -46,6 +46,39 @@ var tranList={
 			// },function(errMsg){
 			// 	console.log(errMsg);
 			// });
+			switch(res.status){
+	//0，waitting for pay；1：paid；2：money released；-1：pending;-2:request of refund;-3 :refuned ;-4:request of pending; -5: invisible for user -6，hide for payer，-7，hide for all users（not admin）
+
+						case  0 :
+							res.statusTxt="等待付款"
+							res.ablePasBtn=false  //active pause button=false.
+							break;
+						case 1 :
+							res.statusTxt="已付款"
+							res.ablePasBtn=(_mm.getUrlParam('type')===3)?false:true
+							res.realeaseDays=res.left_days
+							break;
+						case 2 :
+							res.statusTxt="已完成"
+							res.ablePasBtn=false  
+							break; 
+						case -1 :
+							res.statusTxt="托管暂停"
+							res.ablePasBtn=false  
+							break; 
+						case -2 :
+							res.statusTxt="申请退款"
+							res.ablePasBtn=(_mm.getUrlParam('type')===3)?false:true 
+							break; 
+						case -3 :
+							res.statusTxt="已退款"
+							res.ablePasBtn=false  
+							break; 
+						case -4 :
+							res.statusTxt="申请暂停"
+							res.ablePasBtn=false  
+							break; 
+				};
 			var template=_mm.renderHtml(hoganHtml,res);
 			$(".tranDetailPg>.row>.hoganHtml").html(template);
 

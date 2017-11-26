@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-23 12:42:15
+* @Last Modified time: 2017-11-26 12:56:52
 */
 body,html{
   background-color: #fff;
@@ -302,6 +302,9 @@ body * {
     /*pagination **/
     .tranListPg .pg.text-center{
       display: none;
+    }
+    .tranListPg .mobile>.wrap>.state>div{
+      vertical-align: middle;
     }
 }
 /****************************************for mobile ************************************************/

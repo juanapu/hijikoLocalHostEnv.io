@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-25 15:28:11
+* @Last Modified time: 2017-11-26 13:08:09
 */
 "use strict";
 
@@ -108,9 +108,12 @@ var tranList={
 			return true;
 		};
 	},
-	delTran: function(tranId,targMb,targPc){
+	delTran: function(tranSn,userId,tranId,tranRole,targMb,targPc){
 				 /**delete order by using delete API***/
 			var data={
+				trade_sn: tranSn,
+				type: tranRole,
+				user_id: userId,
 				id: tranId
 			};
 			_trade.tranDelete(data,function(res,txtStatus){
@@ -207,6 +210,7 @@ var tranList={
 						case 1 :
 							val.statusTxt="已付款"
 							val.ableCelBtn=false  
+							val.realeaseDays=res.left_days
 							val.ablePasBtn=(val.roleMark===3)?false:true
 							break;
 						case 2 :
@@ -253,11 +257,11 @@ var tranList={
 					trade_sn: '',
 					message: '',
 					type: '',
-					user_id: ''
+					email: ''
 				};
 				data.trade_sn=targ.parents(".popWrap.comment").parents(".table").data("trannum")?targ.parents(".popWrap.comment").parents(".table").data("trannum"):targ.parents(".popWrap.comment").parents("td.action").parents("tr").data("trannum");
 				data.type=targ.parents(".popWrap.comment").parents(".table").data("role")?targ.parents(".popWrap.comment").parents(".table").data("role"):targ.parents(".popWrap.comment").parents("td.action").parents("tr").data("role");
-				data.user_id=userInfo.cookie.user_id;
+				data.email=userInfo.cookie.email;
 				data.message=targ.parents(".buttonWrap").siblings("textarea").val();
 				_commonJs.loading();
 				_trade.tranMesCreate(data,function(resDt,txtStatus,res){
@@ -315,10 +319,14 @@ var tranList={
 			});
 			$(".popWrap.del .buttonWrap>input[type='submit']").click(function(e){
 				var $inside=$(this);
-				var tranId=$inside.parents("form").parents(".action").data('id');
-				var targMb=$inside.parents(".wrap").parent();
-				var targPc=$inside.parents("td.action").parent();
-				_this.delTran(tranId,targMb,targPc);
+				var parentTarg=$inside.parents("form").parents(".action").parents(".table");
+				var tranSn=parentTarg.data('trannum');
+				var userId=parentTarg.data('userid');
+				var tranId=parentTarg.data('id');
+				var tranRole=parentTarg.data('role');
+				var targMb=parentTarg.parent();
+				var targPc=parentTarg.parent();
+				_this.delTran(tranSn,userId,tranId,tranRole,targMb,targPc);
 				$inside.parents('.popWrap').hide('slow',function(){
 					$(this).remove();
 				}); 

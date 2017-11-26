@@ -11,13 +11,13 @@
 
 {{#list}}
 
-  <tr data-trannum={{trade_sn}} data-id={{id}} data-role={{roleMark}} data-status={{status}}>
+  <tr class="table" data-trannum={{trade_sn}} data-id={{id}} data-role={{roleMark}} data-status={{status}} data-userid={{user_id}}>
 	  <td><a href="./tranDetail.html?tranNum={{trade_sn}}&id={{id}}&role={{roleMark}}&status={{status}}&type=2" data-trannum={{trade_sn}} class="js-tranTt">{{title}}</td>
 	  	  <td>{{id}}</td>
 	     <td>{{role}}</td>
 	     <td>{{created}}</td>
 	     <td>{{statusTxt}} </td>
-	     <td>剩余 3 天 </td>
+	     <td>{{#realeaseDays}}于<span class="count">{{realeaseDays}}</span>天后放款{{/realeaseDays}} </td>
 	     <td class="action" data-id={{id}}>{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}{{^ablePasBtn}}<button class="btn cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>{{#ableCelBtn}}<button class="btn cmnBtn del js-POP" data-type="delete">删除订单</button> {{/ableCelBtn}}{{^ableCelBtn}}<button class="btn cmnBtn del delDisable js-POP" data-type="delete" disabled="true">删除订单</button> {{/ableCelBtn}}</td>
   </tr>
  {{/list}}

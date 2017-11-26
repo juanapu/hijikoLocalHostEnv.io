@@ -5,10 +5,10 @@
 </div>
 
 {{#list}}
-<div class="table mobile col-md-8 col-xs-8" data-id={{id}} data-trannum={{trade_sn}} data-role={{roleMark}} data-status={{status}}>
+<div class="table mobile col-md-8 col-xs-8" data-id={{id}} data-trannum={{trade_sn}} data-role={{roleMark}} data-status={{status}} data-userid={{user_id}}>
 	<div class="wrap">
 		<div class="state">
-			<div>{{statusTxt}}</div><div>于<span class="count">8</span>天后放款</div>
+			<div>{{statusTxt}}</div><div>{{#realeaseDays}}于<span class="count">{{realeaseDays}}</span>天后放款{{/realeaseDays}}</div>
 		</div>
 		<div class="detail" data-tranNum={{trade_sn}}> 
 			<p>
