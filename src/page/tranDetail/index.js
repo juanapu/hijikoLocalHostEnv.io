@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 12:42:21
+* @Last Modified time: 2017-11-26 20:54:01
 */
 "use strict";
 
@@ -84,7 +84,7 @@ var tranList={
 
 
 			/********add other events after html are rendered*********/
-			_this.addPOP();  
+			_this.addPOP(res);  
 			_this.pagination();
 			_this.changeCss();
 			_this.insertImg();
@@ -132,9 +132,41 @@ var tranList={
 				$(".tranDetailPg .formWrap").removeClass('rmMxHt');
 			};
 	},
-	addPOP: function(){
+	//event: e, targ: the clicked button selector
+	tradeMsgLogic: function(event,targ,viewRes){ 
+				var data={
+					trade_sn: viewRes.trade_sn,
+					message: '',
+					type: _mm.getUrlParam('type'),
+					email: viewRes.user_email
+				};
+				data.message=targ.parents(".buttonWrap").siblings("textarea").val();
+				_commonJs.loading();
+				_trade.tranMesCreate(data,function(resDt,txtStatus,res){
+					_commonJs.unloading();
+					targ.parents('.popWrap').hide('slow',function(){
+						$(this).remove();
+						_mm.errorTips("留言成功啦，点击订单-》可在订单详情页面查看留言哦！");
+						location.reload();
+					}); 
+				},function(err){
+					_commonJs.unloading();
+					_mm.errorTips(err);
+				});
+	},
+	addPOP: function(viewRes){
+		var _this=this;
 		$(".js-POP").click(function(){
-			var popCnt='<div class="popWrap"><div class="desc"></div><form action=""><textarea rows="4" value="please input here"></textarea><div class="buttonWrap"><input class="cancel cmnBtn light" type="button" value="取消"/> <input type="submit" class="cmnBtn" value="确认" /></div></form></div>';
+			var adCls='';
+			switch($(this).data('type')){
+		  		case 'pauseRlease' : 
+					  adCls='pauseRlease'
+					  break;
+		  		case 'comment' : 
+					  adCls='comment'
+					  break;
+			};
+			var popCnt='<div class="popWrap '+adCls+' "><div class="desc"></div><form action=""><textarea rows="4" value="please input here"></textarea><div class="buttonWrap"><input class="cancel cmnBtn light" type="button" value="取消"/> <input type="submit" class="cmnBtn" value="确认" /></div></form></div>';
 			var $this=$(this);
 			$this.after(popCnt);
 			/******description of each form*********/
@@ -155,15 +187,18 @@ var tranList={
 				});
 				e.stopPropagation();  
 			});
-			$(".popWrap input[type='submit']").click(function(e){
-				var $inside=$(this);
-				$inside.parents('.popWrap').hide('slow',function(){
-					$(this).remove();
-				});
-				e.stopPropagation();  
+			
+			//applay tradeMsgLogic
+			$(".popWrap.comment .buttonWrap>input[type='submit']").click(function(e){
+				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
+						_this.tradeMsgLogic(e,$(this),viewRes); 
+                 }else{
+                 	_mm.errorTips("亲爱的，你还没有留言哦！");
+                 };
 			});
-			$(".popWrap form").bind('click keypress submit',function(e){
-				e.stopPropagation();  
+			$(".popWrap form").bind('click submit',function(e){
+				e.stopPropagation();
+				e.preventDefault();  
 			})
 		});
 	}

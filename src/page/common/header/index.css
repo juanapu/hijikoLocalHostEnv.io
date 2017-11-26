@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:03:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-24 15:09:57
+* @Last Modified time: 2017-11-26 22:28:37
 * here is header CSS
 */
 
@@ -41,13 +41,115 @@
     position: absolute;
     color: #999;
     right: 2em;
-    top: 0.5em;
+    top: 1.5em;
     font-size: 0.8em;
     width: 10em;
     height: 4em;
     overflow: hidden;
     text-align: right;
 }
+
+/****bell ringing style****/
+.bellWrap{
+    position: absolute;
+    right: 2em;
+    top: 0.5em;
+    width: 2em;
+    height: 2em;
+    color: #fff;
+    z-index: 5;
+}
+ .notification {
+  position: relative;
+  width: 10em;
+  height: 10em;
+}
+ .notification svg {
+  width: 10em;
+  height: 10em;
+}
+path.notification--bell, path.notification--bellClapper {
+    fill: #ec971f;
+}
+.notification--bell.active {
+  animation: bell 2.2s linear infinite;
+  transform-origin: 50% 0%;
+}
+ .notification--bellClapper.active {
+  animation: bellClapper 2.2s 0.1s linear infinite;
+}
+ .notification--num{
+  display: none;
+ }
+ .notification--num.active{
+  display: block;
+ }
+ .notification--num {
+    position: absolute;
+    top: 1%;
+    left: 58%;
+    font-size: 2em;
+    border-radius: 50%;
+    width: 0.6em;
+    height: 0.6em;
+    background-color: #ff4c13;
+    border: 4px solid #ff4c13;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+.bellWrap span.inner {
+    position: relative;
+    top: -2.34em;
+    font-size: 0.45em;
+    /* background-color: yellow; */
+}
+
+@keyframes bell {
+  0%, 25%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  45% {
+    transform: rotate(-10deg);
+  }
+  55% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+}
+@keyframes bellClapper {
+  0%, 25%, 75%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-0.15em);
+  }
+  45% {
+    transform: translateX(0.15em);
+  }
+  55% {
+    transform: translateX(-0.1em);
+  }
+  60% {
+    transform: translateX(0.1em);
+  }
+}
+@keyframes notification {
+  0%, 25%, 75%, 100% {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0;
+  }
+}
+
+
+
 
 
 /****************************************for tablet ************************************************/

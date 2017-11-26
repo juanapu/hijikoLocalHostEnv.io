@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 13:08:09
+* @Last Modified time: 2017-11-26 20:19:15
 */
 "use strict";
 
@@ -332,6 +332,7 @@ var tranList={
 				}); 
 				e.stopPropagation();  
 			});
+			//applay tradeMsgLogic
 			$(".popWrap.comment .buttonWrap>input[type='submit']").click(function(e){
 				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
 						_this.tradeMsgLogic(e,$(this)); 

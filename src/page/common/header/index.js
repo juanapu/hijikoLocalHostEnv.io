@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-22 14:54:08
+* @Last Modified time: 2017-11-26 22:21:18
 *  here is header
 */
 "use strict";
@@ -33,9 +33,14 @@ var header={
 	},
 	bindEvent: function(){
 				/**********mobile version menu bar*************/
-		$(".headerWrap .bar.mobile").click(function(e){
+		$(".bellWrap").click(function(e){
+			alert("right");
+			e.stopPropagation();
+		});
+		$(".headerWrap .bar.mobile a.menuMb").click(function(e){
 			$(".bar.mobile>ul.navbar-nav").toggle('slow').siblings('a').toggleClass('showUl');
 			e.preventDefault(e);
+			e.stopPropagation();
 		});
 		$(".headerWrap .bar.pc ul li").click(function(){
 			$(this).addClass('active').siblings().removeClass('active');
