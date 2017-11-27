@@ -26,29 +26,17 @@
 								<div class="tranName">汇款名称</div>
 							</div>
 							<div class="hstWrap">
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
-								<div><date>2017-11-06</date><span class="bhv">申请交易托管</span></div>
+							    {{#msgList}}<div><date>{{created}}</date><span class="bhv">{{content}}</span></div>{{/msgList}}
 							</div>
 						</div>
 					</div>
 					<div class="commentWrap">
 						<div class="actionWrap pc">
-							{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}{{^ablePasBtn}}<button class="btn cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+							{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}{{^ablePasBtn}}<button class="btn cmnBtn continuePay js-POP" data-type="continuePay">现在付款</button>{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
 						</div>
 						<div class="actionWrap mobile">
 							<div>
-								{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}{{^ablePasBtn}}<button class="btn cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+								{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}} {{^ablePasBtn}}{{#ableContinuePay}}<button class="btn cmnBtn continuePay js-POP" data-type="continuePay">现在付款</button>{{/ableContinuePay}}{{^ableContinuePay}}<button class="btn cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ableContinuePay}}{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
 							</div>
 						</div>
 						<div class="innerTtl">留言记录</div>

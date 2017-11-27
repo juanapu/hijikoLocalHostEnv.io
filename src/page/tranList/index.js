@@ -2,12 +2,13 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 20:19:15
+* @Last Modified time: 2017-11-27 17:04:13
 */
 "use strict";
 
 require('../common/layout.css');
 require('./index.css');
+require('./empty.css');
 require('../common/footer/index.js');
 require('../common/header/index.js');
 require('../common/loading/index.js');
@@ -19,6 +20,7 @@ var mobileTrade=require('./mobileTrade.string');
 /****define url*******/
 var goDetail='./tranDetail.html';
 var goTranListRcv='./tranListRcv.html';
+var goConfirm='./confirm.html';
 /**public data**/
 var userInfo=_commonJs.checkLogin();
 
@@ -62,6 +64,7 @@ var tranList={
 			},function(err){
 				_commonJs.unloading();
 				_mm.errorTips(err);
+				$(".tranListPg").html('<div class="container" style="padding-top: 3em"><div class="row"><div class="col-md-8 col-xs-8">出错啦！！！请刷新页面试试哦！！或者清一下浏览器缓存重新登录一次哦</div></div></div>');
 			});		 		
 		};
 	},
@@ -199,18 +202,20 @@ var tranList={
 					val.roleMark=(val.user_id.toString()===userInfo.cookie.user_id.toString())?2:1;
 					val.role=(val.user_id.toString()===userInfo.cookie.user_id.toString())?"付款方":"管理员";
 				};
+				val.ableContinuePay=false;
 				switch(val.status){
 	//0，waitting for pay；1：paid；2：money released；-1：pending;-2:request of refund;-3 :refuned ;-4:request of pending; -5: invisible for user -6，hide for payer，-7，hide for all users（not admin）
 
 						case  0 :
 							val.statusTxt="等待付款"
 							val.ableCelBtn=(val.roleMark===3)?false:true  //active cancel button=false.
+							val.ableContinuePay=true;
 							val.ablePasBtn=false  //active pause button=false.
 							break;
 						case 1 :
 							val.statusTxt="已付款"
 							val.ableCelBtn=false  
-							val.realeaseDays=res.left_days
+							val.realeaseDays=val.left_days
 							val.ablePasBtn=(val.roleMark===3)?false:true
 							break;
 						case 2 :
@@ -289,7 +294,9 @@ var tranList={
 	  		case 'comment' : 
 				  adCls='comment'
 				  break;
-			
+	  		case 'continuePay' : 
+				  adCls='continuePay'
+				  break;
 			};
 
 			var popCnt='<div class="popWrap '+adCls+' "><div class="desc"></div><form action=""><textarea rows="4" value="please input here"></textarea><div class="buttonWrap"><input class="cancel cmnBtn light" type="button" value="取消"/> <input type="submit" class="cmnBtn" value="确认" /></div></form></div>';
@@ -308,6 +315,10 @@ var tranList={
 			 	case 'comment':  //comment button click => html
 			 			$this.siblings('.popWrap').find('.desc').html('请输入留言内容。注意：此条留言将与收款方&HiJiko管理员共享');
 			 		break;
+			 	case 'continuePay':
+				 		$this.siblings('.popWrap').find('.desc').html('！！注意：请不要重复付款，若您已付款，状态显示失败，请留言HiJiko');
+			 			$('.popWrap.continuePay>form>textarea').attr('readonly','readonly').text('若您还未支付，请点【确定】，开始支付，请务必全款支付，否则交易无法正常显示');
+			 		break;
 			 };
 			 $this.siblings('.popWrap').show('slow');
 			$(".popWrap .cancel").click(function(e){
@@ -324,9 +335,19 @@ var tranList={
 				var userId=parentTarg.data('userid');
 				var tranId=parentTarg.data('id');
 				var tranRole=parentTarg.data('role');
-				var targMb=parentTarg.parent();
-				var targPc=parentTarg.parent();
+				var targMb=parentTarg;
+				var targPc=parentTarg;
+
 				_this.delTran(tranSn,userId,tranId,tranRole,targMb,targPc);
+				$inside.parents('.popWrap').hide('slow',function(){
+					$(this).remove();
+				}); 
+				e.stopPropagation();  
+			});
+			$(".popWrap.continuePay .buttonWrap>input[type='submit']").click(function(e){
+				var $inside=$(this);
+				var tranSn=$inside.parents("form").parents(".action").parents(".table").data('trannum');
+				window.location.href=goConfirm+'?transactionNum='+tranSn;
 				$inside.parents('.popWrap').hide('slow',function(){
 					$(this).remove();
 				}); 

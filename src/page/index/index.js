@@ -155,7 +155,8 @@ var index={
 		$(".loginForm.login>form").submit(function(e){
 			var userInfo={
 				email: $(".loginForm.login .email input").val()?$(".loginForm.login .email input").val():'',
- 				password: $.base64.encode($(".loginForm.login .passWord input").val())
+ 				password: $.base64.encode($(".loginForm.login .passWord input").val()),
+ 				trade_sn: _mm.getUrlParam('tranNum')? _mm.getUrlParam('tranNum'):''
 			};
 			_commonJs.loading();
 			_user.login(userInfo,function(res,txtStatus){

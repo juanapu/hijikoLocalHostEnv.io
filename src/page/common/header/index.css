@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:03:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 22:28:37
+* @Last Modified time: 2017-11-27 15:24:38
 * here is header CSS
 */
 
@@ -58,6 +58,7 @@
     height: 2em;
     color: #fff;
     z-index: 5;
+    cursor: pointer;
 }
  .notification {
   position: relative;

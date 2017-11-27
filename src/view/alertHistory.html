@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>提醒记录</title>
+<%= require('html-loader!./layout/meta.html') %> 
+</head>
+<body>
+		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %> 
+		<div class="alertHistory">
+		   <div class="container">
+		       <div class="row">
+		           <div class="col-md-8 col-xs-8">
+						<div class="hoganWrap">
+							<div class="alertWrap">
+								<p><i class="fa fa-refresh" aria-hidden="true"></i> 状态更改： <span class="user">买家XX</span>已<span class="status">付款</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="#"> 查看详情</a></p>
+							</div>
+							<div class="alertWrap">
+								<p><i class="fa fa-refresh" aria-hidden="true"></i> 状态更改： <span class="user">买家XX</span>已<span class="status">申请暂停放款</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="#"> 查看详情</a></p>
+							</div>
+							<div class="alertWrap">
+								<p><i class="fa fa-refresh" aria-hidden="true"></i> 状态更改： <span class="user">HiJiko</span>已<span class="status">确认暂停放款</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="#"> 查看详情</a></p>
+							</div>
+							<div class="alertWrap">
+								<p><i class="fa fa-commenting" aria-hidden="true"></i> 新留言： <span class="user">买家XX</span> <span class="status">留言</span><span class="comments">这里是买家的留言，我不想要这单了...</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="#"> 查看详情</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%= require('html-loader!./layout/footer.html') %> 
+</body>

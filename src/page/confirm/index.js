@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-24 15:13:31
+* @Last Modified time: 2017-11-27 11:53:50
 */
 "use strict";
 
@@ -19,7 +19,7 @@ var _commonJs=require('../common/index.js'); /**loading is writen here***/
 /***define page url*****/
 var goTransactionPg='./transaction.html';
 var payUrl="http://pay2.youyunnet.com/pay";
-var resultUrl=_mm.getFileHost('/result.html');
+var resultUrl=_mm.getFileHost('result.html');
 /****define public data******/
 var transactionNum='';
 

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-20 16:12:22
+* @Last Modified time: 2017-11-27 13:05:16
 */
 html,body{
 	background-color: #fff;
@@ -35,12 +35,15 @@ html,body{
 
   /**********confirm pg*********************/
   .confirmPg{
-  	padding-top: 70px;
+  	padding-top: 3em;
   }
   .confirmPg button.cmnBtn {
     margin: 3em;
   }
 
+.confirmPg p.text-danger {
+    padding-bottom: 1em;
+}
 
   .confirmPg .notice>div>p{
     display: inline-block;

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-13 11:44:37
+* @Last Modified time: 2017-11-27 13:39:20
 */
 html,body{
 	background-color: #fff;
@@ -34,6 +34,7 @@ html,body{
   /**********confirm pg*********************/
   .confirmPg{
   	padding-top: 70px;
+    color: #464a4cd4;
   }
 
   .confirmPg .QRcode{
@@ -84,6 +85,10 @@ html,body{
 }
 .confirmPg input#copyTarget {
     width: 14em;
+}
+.confirmPg span.stat {
+    font-size: 1.5em;
+    font-weight: 800;
 }
 
 /****************************************for mobile ************************************************/

@@ -1,0 +1,83 @@
+/*
+* @Author: Administrator
+* @Date:   2017-11-09 17:29:42
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-11-27 12:56:18
+*/
+body,html{
+	background-color: #fff;
+	color: #444;
+}
+.headerWrap nav.navbar {
+    position: relative;
+    width: 100%;
+}
+.headerWrap nav.navbar.navbar-expand-sm.bg-dark.navbar-dark.fixed-top {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+.headerWrap a{
+	color: rgba(0,0,0,0.3);
+}
+.headerWrap a>i.fa.fa-bars {
+    color: rgba(0,0,0,0.3);
+}
+.headerWrap .bar.pc li.nav-item.active a{
+    color: #fff;
+}
+.headerWrap a.showUl>i.fa.fa-bars {
+    color: rgba(0,0,0,0.1);
+}
+
+.alertHistory .hoganWrap{
+  padding-top: 1em;
+  color: #444444b5;
+}
+
+.alertHistory .hoganWrap span.date {
+    font-size: 0.8em;
+}
+.alertHistory .hoganWrap span.status {
+    font-weight: bold;
+}
+.alertHistory .hoganWrap i.fa.fa-refresh {
+    color: #3c763d;
+}
+.alertHistory .hoganWrap i.fa.fa-commenting {
+    color: #c9302c;
+}
+.alertHistory .hoganWrap span.comments {
+    font-style: italic;
+    font-size: 0.9em;
+      overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1; /* number of lines to show */
+}
+/*****link*******/ 
+.alertHistory .link{
+  position: relative;
+}
+
+
+/****************************************for mobile ************************************************/
+ @media all and (max-width: 500px){
+  /**********headerWrap*********************/
+  .headerWrap ul.navbar-nav{
+    background-color: rgb(47, 146, 169);;
+  }
+  .headerWrap ul.navbar-nav a{
+    color: #fff;
+  }
+  .headerWrap ul.navbar-nav li.active{
+     background-color: rgb(43,130,218);
+  }
+
+
+ }
+
+ /****************************************for small mobile screen ************************************************/
+@media all and (max-width: 330px){
+
+ }

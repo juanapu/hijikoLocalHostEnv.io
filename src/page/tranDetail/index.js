@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 20:54:01
+* @Last Modified time: 2017-11-27 18:22:08
 */
 "use strict";
 
@@ -18,6 +18,9 @@ var _commonJs=require('../common/index.js');
 var _mm=require('../../util/mm.js');
 var _trade=require('service/trade-service.js');
 var hoganHtml=require('./hoganHtml.string');
+
+/*********  define url ************/
+var goConfirm='./confirm.html';
 
 /****** define public variable*************/
 var userInfo=_commonJs.checkLogin();
@@ -39,23 +42,24 @@ var tranList={
 		};
 		_commonJs.loading();
 		_trade.viewTrade(tradeData,function(res,txtStatus){  /*****get transaction's information, render HTML and dynamic data***********/
-			_commonJs.unloading();
 			res.ablePasBtn=(parseInt(_mm.getUrlParam('role'))===3)?false:true; //role=3: receiver, role=2: payer  add ablePasBtn
 			// _trade.tranMesRead(tradeData,function(resMsg,txtStatusMsg){
 			// 	console.log(resMsg);
 			// },function(errMsg){
 			// 	console.log(errMsg);
 			// });
+			res.ableContinuePay=false;
 			switch(res.status){
 	//0，waitting for pay；1：paid；2：money released；-1：pending;-2:request of refund;-3 :refuned ;-4:request of pending; -5: invisible for user -6，hide for payer，-7，hide for all users（not admin）
 
 						case  0 :
 							res.statusTxt="等待付款"
+							res.ableContinuePay=(_mm.getUrlParam('type')==='2')?true:false
 							res.ablePasBtn=false  //active pause button=false.
 							break;
 						case 1 :
 							res.statusTxt="已付款"
-							res.ablePasBtn=(_mm.getUrlParam('type')===3)?false:true
+							res.ablePasBtn=(_mm.getUrlParam('type')==='3')?false:true
 							res.realeaseDays=res.left_days
 							break;
 						case 2 :
@@ -68,7 +72,7 @@ var tranList={
 							break; 
 						case -2 :
 							res.statusTxt="申请退款"
-							res.ablePasBtn=(_mm.getUrlParam('type')===3)?false:true 
+							res.ablePasBtn=(_mm.getUrlParam('type')==='3')?false:true 
 							break; 
 						case -3 :
 							res.statusTxt="已退款"
@@ -79,20 +83,42 @@ var tranList={
 							res.ablePasBtn=false  
 							break; 
 				};
-			var template=_mm.renderHtml(hoganHtml,res);
-			$(".tranDetailPg>.row>.hoganHtml").html(template);
 
+	      /*****render trade logs API*********/
+             var logData={
+             	user_id: res.user_id,
+             	page: 1
+             };
+             res.msgList=[];
+             _trade.tranLog(logData,function(resDt,txtStatus){
+     			_commonJs.unloading();
+             	$.each(resDt,function(index,val){
+             		if(!(val.content==='添加留言')){
+             			 val.created=val.created.replace("T"," ").replace(/\+.*/," ");
+	             		res.msgList.push(val);
+             		};
+		             /*****render hogan template*********/
+		             console.log("below is res");
+		             console.log(res);
+             	});
+					var template=_mm.renderHtml(hoganHtml,res);
+					$(".tranDetailPg>.row>.hoganHtml").html(template);
 
-			/********add other events after html are rendered*********/
-			_this.addPOP(res);  
-			_this.pagination();
-			_this.changeCss();
-			_this.insertImg();
-			_this.bindEvent(); 
+					/********add other events after html are rendered*********/
+					_this.addPOP(res);  
+				//	_this.pagination();
+					_this.changeCss();
+					_this.insertImg();
+					_this.bindEvent(); 
+             },function(err){
+     			_commonJs.unloading();
+             	_mm.errorTips(err);
+             });
 
 		},function(err){
 			_commonJs.unloading();
 			_mm.errorTips(err);
+			$(".tranDetailPg ").html('<div style="padding-top: 3em"><div class="row"><div class="col-md-8 col-xs-8">出错啦！！！请刷新页面试试哦！！或者清一下浏览器缓存重新登录一次哦</div></div></div>');
 		});
 	},
 	insertImg: function(){
@@ -165,6 +191,9 @@ var tranList={
 		  		case 'comment' : 
 					  adCls='comment'
 					  break;
+		  		case 'continuePay' : 
+				  adCls='continuePay'
+				  break;
 			};
 			var popCnt='<div class="popWrap '+adCls+' "><div class="desc"></div><form action=""><textarea rows="4" value="please input here"></textarea><div class="buttonWrap"><input class="cancel cmnBtn light" type="button" value="取消"/> <input type="submit" class="cmnBtn" value="确认" /></div></form></div>';
 			var $this=$(this);
@@ -178,6 +207,10 @@ var tranList={
 			 	case 'comment':  //comment button click => html
 			 			$this.siblings('.popWrap').find('.desc').html('请输入留言内容。注意：此条留言将与收款方&HiJiko管理员共享');
 			 		break;
+			 	case 'continuePay':
+				 		$this.siblings('.popWrap').find('.desc').html('！！注意：请不要重复付款，若您已付款，状态显示失败，请留言HiJiko');
+			 			$('.popWrap.continuePay>form>textarea').attr('readonly','readonly').text('若您还未支付，请点【确定】，开始支付，请务必全款支付，否则交易无法正常显示');
+			 		break;
 			 };
 			 $this.siblings('.popWrap').show('slow');
 			$(".popWrap .cancel").click(function(e){
@@ -187,7 +220,16 @@ var tranList={
 				});
 				e.stopPropagation();  
 			});
-			
+			$(".popWrap.continuePay .buttonWrap>input[type='submit']").click(function(e){
+				var $inside=$(this);
+				var tranSn=_mm.getUrlParam('tranNum');
+				window.location.href=goConfirm+'?transactionNum='+tranSn;
+				$inside.parents('.popWrap').hide('slow',function(){
+					$(this).remove();
+				}); 
+				e.stopPropagation();  
+			});
+
 			//applay tradeMsgLogic
 			$(".popWrap.comment .buttonWrap>input[type='submit']").click(function(e){
 				 if($(this).parents(".buttonWrap").siblings("textarea").val()){

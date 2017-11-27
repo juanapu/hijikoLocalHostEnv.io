@@ -2,12 +2,13 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-25 16:25:30
+* @Last Modified time: 2017-11-27 17:46:04
 */
 "use strict";
 
 require('../common/layout.css');
 require('./index.css');
+require('./empty.css');
 require('../common/footer/index.js');
 require('../common/header/index.js');
 require('../common/loading/index.js');
@@ -30,7 +31,9 @@ var tranList={
 	},
 	bindEvent: function(){
 		var _this=this;
+
 		$(".mobileHogan .detail").click(function(){
+			var targ=$(this).parents('.table');
 			window.location.href=goDetail+"?tranNum="+targ.data('trannum')+"&id="+targ.data('id')+"&role="+targ.data('role')+"&status="+targ.data('status')+"&type=3";
 		});
 		$(".tranListPg .tabWrap button.jsPayList").click(function(){
@@ -47,6 +50,7 @@ var tranList={
 			type: orderType?orderType:3,
 			page: 1
 		};
+
 		var isPc=_this.isPc();
 		//if is pc, use pagination. If is mobile load all. 
 		if(isPc){
@@ -56,18 +60,18 @@ var tranList={
 		 /* mobile load all**/
  			_commonJs.loading();
 			_trade.tranList(data,function(resDt,txtStatus,res){
-				console.log(res);
 				data.page=res.pages;
 				_this.loadMobile(data,userInfo,orderType);
 			},function(err){
 				_commonJs.unloading();
 				_mm.errorTips(err);
+				$(".tranListPg").html('<div class="container" style="padding-top: 3em"><div class="row"><div class="col-md-8 col-xs-8">出错啦！！！请刷新页面试试哦！！或者清一下浏览器缓存重新登录一次哦</div></div></div>');
 			});		 		
 		};
 	},
 	loadMobile: function(data,userInfo,orderType){
 			var _this=this;
-			data.type=orderType?orderType:2;
+			data.type=orderType?orderType:3;
 			_trade.tranList(data,function(res,txtStatus){
 					_commonJs.unloading();
 					_this.renderHoganPcMb(res,userInfo,orderType);
@@ -108,9 +112,12 @@ var tranList={
 			return true;
 		};
 	},
-	delTran: function(tranId,targMb,targPc){
+	delTran: function(tranSn,userId,tranId,tranRole,targMb,targPc){
 				 /**delete order by using delete API***/
 			var data={
+				trade_sn: tranSn,
+				type: tranRole,
+				user_id: userId,
 				id: tranId
 			};
 			_trade.tranDelete(data,function(res,txtStatus){
@@ -207,6 +214,7 @@ var tranList={
 						case 1 :
 							val.statusTxt="已付款"
 							val.ableCelBtn=false  
+							val.realeaseDays=val.left_days
 							val.ablePasBtn=(val.roleMark===3)?false:true
 							break;
 						case 2 :
@@ -286,7 +294,9 @@ var tranList={
 	  		case 'comment' : 
 				  adCls='comment'
 				  break;
-			
+	  		case 'continuePay' : 
+				  adCls='continuePay'
+				  break;
 			};
 
 			var popCnt='<div class="popWrap '+adCls+' "><div class="desc"></div><form action=""><textarea rows="4" value="please input here"></textarea><div class="buttonWrap"><input class="cancel cmnBtn light" type="button" value="取消"/> <input type="submit" class="cmnBtn" value="确认" /></div></form></div>';
@@ -305,6 +315,10 @@ var tranList={
 			 	case 'comment':  //comment button click => html
 			 			$this.siblings('.popWrap').find('.desc').html('请输入留言内容。注意：此条留言将与收款方&HiJiko管理员共享');
 			 		break;
+ 			 	case 'continuePay':
+				 		$this.siblings('.popWrap').find('.desc').html('！！注意：请不要重复付款，若您已付款，状态显示失败，请留言HiJiko');
+			 			$('.popWrap.continuePay>form>textarea').attr('readonly','readonly').text('若您还未支付，请点【确定】，开始支付，请务必全款支付，否则交易无法正常显示');
+			 		break;
 			 };
 			 $this.siblings('.popWrap').show('slow');
 			$(".popWrap .cancel").click(function(e){
@@ -316,10 +330,15 @@ var tranList={
 			});
 			$(".popWrap.del .buttonWrap>input[type='submit']").click(function(e){
 				var $inside=$(this);
-				var tranId=$inside.parents("form").parents(".action").data('id');
-				var targMb=$inside.parents(".wrap").parent();
-				var targPc=$inside.parents("td.action").parent();
-				_this.delTran(tranId,targMb,targPc);
+				var parentTarg=$inside.parents("form").parents(".action").parents(".table");
+				var tranSn=parentTarg.data('trannum');
+				var userId=parentTarg.data('userid');
+				var tranId=parentTarg.data('id');
+				var tranRole=parentTarg.data('role');
+				var targMb=parentTarg;
+				var targPc=parentTarg;
+
+				_this.delTran(tranSn,userId,tranId,tranRole,targMb,targPc);
 				$inside.parents('.popWrap').hide('slow',function(){
 					$(this).remove();
 				}); 

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 22:21:18
+* @Last Modified time: 2017-11-27 15:45:15
 *  here is header
 */
 "use strict";
@@ -16,6 +16,7 @@ require('bootstrap');
 var indexPg='./index.html';
 var goTranList='./tranList.html';
 var goTranPg='./transaction.html';
+var goAlertHistrory='./alertHistory.html';
 /***define text****/
 var loginPgTxt='宝贝儿，你还没登录哦';
 
@@ -23,6 +24,7 @@ var header={
 	init: function(){
 		var _this=this;
 		_this.insertImg();
+		_this.renderApi();
 		_this.bindEvent();
 		_this.pageMove();
 		_this.checkInWechat();
@@ -31,12 +33,20 @@ var header={
 		var img=require('../../../resource/img/logo.png');
 		$(".headerWrap>nav.navbar>a.navbar-brand>img").attr('src',img);
 	},
+	renderApi: function(){
+		/****get api render new message*******/
+		//if has new message
+			  var msgNum=1; //messagenum
+			  $(".headerWrap span.notification--num.act>.inner").text(msgNum);
+			  $(".headerWrap .act").addClass('active');
+			  console.log($(".headerWrap .act"));
+		//else no new message
+			// $(".headerWrap .act").removeClass('active');
+
+	},
 	bindEvent: function(){
 				/**********mobile version menu bar*************/
-		$(".bellWrap").click(function(e){
-			alert("right");
-			e.stopPropagation();
-		});
+
 		$(".headerWrap .bar.mobile a.menuMb").click(function(e){
 			$(".bar.mobile>ul.navbar-nav").toggle('slow').siblings('a').toggleClass('showUl');
 			e.preventDefault(e);
@@ -81,6 +91,11 @@ var header={
 		}else{
 			$(".headerWrap .bar .nickName").text(logInfo.cookie.nickname);
 		};
+
+		$(".bellWrap").click(function(e){
+			window.location.href=goAlertHistrory;
+			e.stopPropagation();
+		});
 	},
 	checkInWechat: function(){
 		var ua=window.navigator.userAgent.toLowerCase();

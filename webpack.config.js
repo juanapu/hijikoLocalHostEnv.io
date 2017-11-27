@@ -36,7 +36,8 @@ var exportContent ={
 		'result': "./src/page/result/index.js",
 		'tranList': "./src/page/tranList/index.js",
 		'tranListRcv': "./src/page/tranListRcv/index.js",
-		'tranDetail': "./src/page/tranDetail/index.js"
+		'tranDetail': "./src/page/tranDetail/index.js",
+		'alertHistory': "./src/page/alertHistory/index.js"
 	},
 	output: {
 		path: __dirname+'/dist',
@@ -83,6 +84,7 @@ var exportContent ={
 		new htmlWebpackPlugin(getHtmlConfig('tranList')),
 		new htmlWebpackPlugin(getHtmlConfig('tranListRcv')),
 		new htmlWebpackPlugin(getHtmlConfig('tranDetail')),
+		new htmlWebpackPlugin(getHtmlConfig('alertHistory')),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',
 			filename: 'page/common/common.js'

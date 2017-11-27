@@ -41,7 +41,11 @@
 </div> 
  {{/list}}
   {{^list}}
-	<div class="emptyWrap">
-		<div>哎呀！收款还是空的捏！<p>快去邀请朋友发起收款吧！</p></div>
+	<div class="emptyWrap col-md-8 col-xs-8">
+		<div class="inner text-center">
+			<p><i class="fa fa-frown-o" aria-hidden="true"></i></p>
+			 <p>哎呀！收款还是空的捏！</p>
+			 <p>快去邀请朋友发起收款吧！</p>
+		</div>
 	</div>
  {{/list}}

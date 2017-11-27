@@ -6,20 +6,21 @@
 </head>
 <body>
 		<%= require('html-loader!./layout/header.html') %>  
+		<%= require('html-loader!./layout/loading.html') %>  
 		<div class="container resultPg confirmPg">
 			<div class="row notice">
 				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
-					<p>恭喜您，已顺利申请了交易托管。Hi,Jiko 确认付款信息之后会通过系统消息通知您。同时您也可以在 【用户中心】-》【交易管理】 里查看详情。</p>
+					<p class="status"><br /><span class="stat"></span><br /><span class="statTxt"></span>。<br />您也可以在菜单栏 -》【交易管理】 里查看详情。</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-10 col-md-10 col-sm-10 col-xl-10">
 					<p>请将交易托管申请链接分享给<strong>收款人</strong>吧</p>
 					<div class="payAct">
-						<p><input type="text" value="http://www.hijikotest.com/" readonly id="copyTarget"></input></p>
+						<p><input class="payLink" type="text" value="" readonly id="copyTarget"></input></p>
 							<button id="copyButton" class="cmnBtn">复制</button>
 					</div>
-					<div class="text-danger">注意： 本链接只能注册一次，请务必发送给收款方。若发送失误，请及时联系 Hi,Jiko 撤销</div>
+					<div class="text-danger">注意： 本链接只能注册一次，请务必发送给收款方。若发送失误，请及时到 【交易管理】 联系 Hi,Jiko 撤销</div>
 				</div>
 				
 			</div>
