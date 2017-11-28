@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-19 12:02:16
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 17:23:36
+* @Last Modified time: 2017-11-28 16:41:47
 */
 "use strict";
 
@@ -93,6 +93,15 @@ var _trade={
 	tranLog: function(data,resolve,reject){
 		_mm.request({
 			url   :_mm.getServerUrl('/TradeLogs/index'),
+			data : data,
+			method : 'post',
+			success : resolve,
+			error   : reject
+		})
+	},
+	tranLogCount: function(data,resolve,reject){
+		_mm.request({
+			url   :_mm.getServerUrl('/TradeLogs/logscount'),
 			data : data,
 			method : 'post',
 			success : resolve,

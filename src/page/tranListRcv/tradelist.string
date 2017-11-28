@@ -22,7 +22,7 @@
 {{#list}}
 
   <tr class="table" data-trannum={{trade_sn}} data-id={{id}} data-role={{roleMark}} data-status={{status}} data-userid={{user_id}}>
-	  <td><a href="./tranDetail.html?tranNum={{trade_sn}}&id={{id}}&role={{roleMark}}&status={{status}}&type=2" data-trannum={{trade_sn}} class="js-tranTt">{{title}}</td>
+	  <td><a href="./tranDetail.html?tranNum={{trade_sn}}&id={{id}}&role={{roleMark}}&status={{status}}&type=3" data-trannum={{trade_sn}} class="js-tranTt">{{title}}</td>
 	  	  <td>{{id}}</td>
 	     <td>{{role}}</td>
 	     <td>{{created}}</td>

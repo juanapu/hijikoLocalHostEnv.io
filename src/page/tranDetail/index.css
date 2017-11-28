@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-24 15:44:17
+* @Last Modified time: 2017-11-28 15:12:58
 */
 body,html{
   background-color: #fff;
@@ -122,6 +122,7 @@ body,html{
   display: none;
 }
 .tranDetailPg #cmtListWrap {
+  overflow-y: visible;
   overflow: visible;
 }
 
@@ -150,6 +151,10 @@ body,html{
 }
 .tranDetailPg .cmtTtl>.userImg{
   max-width: 2em;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 10%;
+    overflow: hidden;
 }
 .tranDetailPg .cmtTtl>.userImg>img{
   width: 100%;
@@ -299,6 +304,10 @@ body,html{
      background: #277b8e4d !important; 
    }
 
+    .tranDetailPg .formWrap.fullHeight {
+      max-height: 100%;
+      overflow: visible;
+    }
 
 }
 

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 18:22:08
+* @Last Modified time: 2017-11-28 17:45:37
 */
 "use strict";
 
@@ -43,11 +43,6 @@ var tranList={
 		_commonJs.loading();
 		_trade.viewTrade(tradeData,function(res,txtStatus){  /*****get transaction's information, render HTML and dynamic data***********/
 			res.ablePasBtn=(parseInt(_mm.getUrlParam('role'))===3)?false:true; //role=3: receiver, role=2: payer  add ablePasBtn
-			// _trade.tranMesRead(tradeData,function(resMsg,txtStatusMsg){
-			// 	console.log(resMsg);
-			// },function(errMsg){
-			// 	console.log(errMsg);
-			// });
 			res.ableContinuePay=false;
 			switch(res.status){
 	//0，waitting for pay；1：paid；2：money released；-1：pending;-2:request of refund;-3 :refuned ;-4:request of pending; -5: invisible for user -6，hide for payer，-7，hide for all users（not admin）
@@ -87,20 +82,36 @@ var tranList={
 	      /*****render trade logs API*********/
              var logData={
              	user_id: res.user_id,
-             	page: 1
+             	page: 20
              };
+             res.messageLength=res.trade_messages.length; //add messageLength
              res.msgList=[];
-             _trade.tranLog(logData,function(resDt,txtStatus){
-     			_commonJs.unloading();
-             	$.each(resDt,function(index,val){
+             	$.each(res.trade_logs,function(index,val){
              		if(!(val.content==='添加留言')){
              			 val.created=val.created.replace("T"," ").replace(/\+.*/," ");
 	             		res.msgList.push(val);
              		};
-		             /*****render hogan template*********/
-		             console.log("below is res");
-		             console.log(res);
              	});
+
+             _trade.tranLog(logData,function(resDt,txtStatus){
+	      			_commonJs.unloading();
+             	$.each(res.trade_messages,function(index,val){
+             		if(val.type===2){ //payer comment
+             			val.commentType="付款人";
+             			val.commentUser=res.user_fullname;
+             			val.commentRole="isPayer";
+
+             		}else if(val.type===3){ //receiver comment
+             			val.commentType="收款人";
+             			val.commentUser=res.receive_user_fullname;
+             			val.commentRole="isRec";
+             		}else{ //admin comment
+             			val.commentType="管理员";
+             			val.commentUser="HiJiko";
+             			val.commentRole="isAdmin";
+             		};
+             	});
+		             /*****render hogan template*********/
 					var template=_mm.renderHtml(hoganHtml,res);
 					$(".tranDetailPg>.row>.hoganHtml").html(template);
 
@@ -122,8 +133,12 @@ var tranList={
 		});
 	},
 	insertImg: function(){
-		var img=require('../../resource/img/avatar.png');
-		$(".userImg>img").attr('src',img);
+		var hjImg=require('../../resource/img/hijikoLogo.png');
+		var recImg=require('../../resource/img/store.png');
+		var payerImg=require('../../resource/img/userIcon.png');
+		$(".userImg>img.isAdmin").attr('src',hjImg);
+		$(".userImg>img.isRec").attr('src',recImg);
+		$(".userImg>img.isPayer").attr('src',payerImg);
 	},
 	changeCss: function(){
 		var elem1 = document.getElementById("cmtListWrap");

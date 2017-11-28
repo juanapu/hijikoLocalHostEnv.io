@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 17:04:13
+* @Last Modified time: 2017-11-28 15:30:17
 */
 "use strict";
 
@@ -34,7 +34,7 @@ var tranList={
 		var _this=this;
 		$(".mobileHogan .detail").click(function(){
 			var targ=$(this).parents('.table');
-			window.location.href=goDetail+"?tranNum="+targ.data('trannum')+"&id="+targ.data('id')+"&role="+targ.data('role')+"&status="+targ.data('status')+"&type=2";
+			window.location.href=goDetail+"?tranNum="+targ.data('trannum')+"&id="+targ.data('id')+"&role="+targ.data('role')+"&status="+targ.data('status')+"&type=2"; //role: 2付款人，3收款人， type came from 付款/收款页面
 		});
 		$(".tranListPg .tabWrap button.jsRcvList").click(function(){
 			//type(2(my payment)，3 (my income orders)

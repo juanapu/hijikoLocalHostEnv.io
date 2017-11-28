@@ -1,4 +1,4 @@
-				<div class="formWrap">
+				<div {{#messageLength}}class="formWrap"{{/messageLength}}{{^messageLength}}class="formWrap fullHeight"{{/messageLength}}>
 						<div class="left text-left">
 							<div class="crtStateWrap">
 								<div class="tle">当前状态</div>
@@ -14,11 +14,19 @@
 							</div>
 							<div class="rcvEmainWrap">
 								<div class="tle">收款方收件箱</div>
-								<div class="rcvName">{{#receive_user_emai}} {{receive_user_emai}} {{/receive_user_emai}}{{^receive_user_emai}}待收款人{{/receive_user_emai}}</div>
+								<div class="rcvName">{{#receive_user_email}} {{receive_user_email}} {{/receive_user_email}}{{^receive_user_email}}待收款人{{/receive_user_email}}</div>
 							</div>
 							<div class="rcvAlpyWrap">
 								<div class="tle">收款方支付宝账号</div>
 								<div class="alpy">{{receive_user}}</div>
+							</div>
+							<div class="payerNameWrap">
+								<div class="tle">付款方</div>
+								<div class="alpy">{{user_fullname}}</div>
+							</div>
+							<div class="payerEmailWrap">
+								<div class="tle">付款方</div>
+								<div class="alpy">{{user_email}}</div>
 							</div>
 						</div>
 						<div class="right text-left">
@@ -39,21 +47,24 @@
 								{{#ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}} {{^ablePasBtn}}{{#ableContinuePay}}<button class="btn cmnBtn continuePay js-POP" data-type="continuePay">现在付款</button>{{/ableContinuePay}}{{^ableContinuePay}}<button class="btn cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ableContinuePay}}{{/ablePasBtn}}<button class="btn cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
 							</div>
 						</div>
-						<div class="innerTtl">留言记录</div>
-						<div id="cmtListWrap" class="commentListWrap">
-						  {{#trade_messages}}
-							<div class="cmtInner">
-								<!-- Left-aligned -->
-								<div class="cmtTtl">
-									<div class="userImg"><img src=""></div>
-									<div class="userInfo"><span>USERI</span><span> 2017-11-15</span></div>
+							<div class="innerTtl">留言记录</div>
+							<div id="cmtListWrap" class="commentListWrap">
+							  {{#trade_messages}}
+								<div class="cmtInner">
+									<!-- Left-aligned -->
+									<div class="cmtTtl">
+										<div class="userImg"><img src="" class="{{{commentRole}}}"></div>
+										<div class="userInfo"><span>{{commentType}}-{{commentUser}}</span><span> {{created}}</span></div>
+									</div>
+									<div class="cmtCnt">
+										 {{message}}
+									</div>
 								</div>
-								<div class="cmtCnt">
-									 {{message}}
-								</div>
+								{{/trade_messages}}
+								{{^trade_messages}}
+									<div class="cmtInner">还木有留言呢</div>
+								{{/trade_messages}}
 							</div>
-							{{/trade_messages}}
-						</div>
 						<div class="pg text-center">
 				            <div id="page-content"></div>
 					        <ul id="pagination-demo" class="pagination-sm">

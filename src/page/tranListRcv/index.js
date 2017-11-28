@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 17:46:04
+* @Last Modified time: 2017-11-28 17:12:18
 */
 "use strict";
 
@@ -262,12 +262,14 @@ var tranList={
 					trade_sn: '',
 					message: '',
 					type: '',
-					user_id: ''
+					user_id: '',
+					email: ''
 				};
 				data.trade_sn=targ.parents(".popWrap.comment").parents(".table").data("trannum")?targ.parents(".popWrap.comment").parents(".table").data("trannum"):targ.parents(".popWrap.comment").parents("td.action").parents("tr").data("trannum");
 				data.type=targ.parents(".popWrap.comment").parents(".table").data("role")?targ.parents(".popWrap.comment").parents(".table").data("role"):targ.parents(".popWrap.comment").parents("td.action").parents("tr").data("role");
 				data.user_id=userInfo.cookie.user_id;
 				data.message=targ.parents(".buttonWrap").siblings("textarea").val();
+				data.email=userInfo.cookie.email;
 				_commonJs.loading();
 				_trade.tranMesCreate(data,function(resDt,txtStatus,res){
 					_commonJs.unloading();
@@ -351,7 +353,7 @@ var tranList={
                  	_mm.errorTips("亲爱的，你还没有留言哦！");
                  };
 			});
-			$(".popWrap form").bind('click keypress submit',function(e){
+			$(".popWrap form").bind('click submit',function(e){
 				e.stopPropagation();  
 				e.preventDefault();
 			})

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 15:45:15
+* @Last Modified time: 2017-11-28 16:49:22
 *  here is header
 */
 "use strict";
@@ -11,6 +11,7 @@ require('./index.css');
 var _mm=require('util/mm.js');
 var _user=require('service/user-service.js');
 var _commonJs=require('../index.js');
+var _trade=require('service/trade-service.js');
 require('bootstrap');
 /****url define***/
 var indexPg='./index.html';
@@ -36,12 +37,24 @@ var header={
 	renderApi: function(){
 		/****get api render new message*******/
 		//if has new message
-			  var msgNum=1; //messagenum
+		var data={
+			user_id: _commonJs.getCookie().user_id
+		};
+		_trade.tranLogCount(data,function(resDt,txtStatus){
+			  console.log("below is resDt");
+			  console.log(resDt);
+			  var msgNum=parseInt(resDt); //messagenum
+			  console.log("msgNum is:"+msgNum);
+			  if(msgNum){
 			  $(".headerWrap span.notification--num.act>.inner").text(msgNum);
 			  $(".headerWrap .act").addClass('active');
-			  console.log($(".headerWrap .act"));
-		//else no new message
-			// $(".headerWrap .act").removeClass('active');
+			  console.log($(".headerWrap .act")); 
+			 }else{
+			 	 $(".headerWrap .act").removeClass('active');
+			 };
+		},function(err){
+			_mm.errorTips(err);
+		});
 
 	},
 	bindEvent: function(){
