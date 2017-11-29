@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-28 16:49:22
+* @Last Modified time: 2017-11-29 15:53:02
 *  here is header
 */
 "use strict";
@@ -26,36 +26,43 @@ var header={
 		var _this=this;
 		_this.insertImg();
 		_this.renderApi();
-		_this.bindEvent();
-		_this.pageMove();
-		_this.checkInWechat();
+		 _this.bindEvent();
+		// _this.pageMove();
+		// _this.checkInWechat();
 	},
 	insertImg: function(){
 		var img=require('../../../resource/img/logo.png');
 		$(".headerWrap>nav.navbar>a.navbar-brand>img").attr('src',img);
 	},
 	renderApi: function(){
+		var _this=this;
 		/****get api render new message*******/
 		//if has new message
 		var data={
 			user_id: _commonJs.getCookie().user_id
 		};
+		_commonJs.loading();
+
 		_trade.tranLogCount(data,function(resDt,txtStatus){
-			  console.log("below is resDt");
-			  console.log(resDt);
-			  var msgNum=parseInt(resDt); //messagenum
-			  console.log("msgNum is:"+msgNum);
+				if(_mm.getPage()==='transaction'){ //if it is transaction page insert unloading
+					_commonJs.unloading();
+				};
+
+			  var msgNum=parseInt(resDt.logscount); //messagenum
 			  if(msgNum){
 			  $(".headerWrap span.notification--num.act>.inner").text(msgNum);
 			  $(".headerWrap .act").addClass('active');
-			  console.log($(".headerWrap .act")); 
 			 }else{
 			 	 $(".headerWrap .act").removeClass('active');
 			 };
+			 //get resDt.id
+			 var unread=resDt.ids;
+			_this.pageMove(unread);
+			_this.checkInWechat();
 		},function(err){
+			_commonJs.unloading();
 			_mm.errorTips(err);
 		});
-
 	},
 	bindEvent: function(){
 				/**********mobile version menu bar*************/
@@ -92,7 +99,7 @@ var header={
 			window.location.href=goTranPg;
 		});
 	},
-	pageMove: function(){
+	pageMove: function(unread){
 		$("a.navbar-brand").click(function(){
 			window.location.href=indexPg;
 		});
@@ -106,8 +113,21 @@ var header={
 		};
 
 		$(".bellWrap").click(function(e){
-			window.location.href=goAlertHistrory;
-			e.stopPropagation();
+			_commonJs.loading();
+			var data={
+				id: unread,
+				user_id: _commonJs.getCookie().user_id
+			};
+
+			var unreadQue='';
+				$.each(data.id,function(index,val){
+					if(index>0){
+						unreadQue+='_'+val.id; 
+					}else{
+						unreadQue+=val.id; 
+					};
+				});
+			window.location.href=goAlertHistrory+'?unread='+unreadQue;
 		});
 	},
 	checkInWechat: function(){

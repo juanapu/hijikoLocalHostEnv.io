@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-28 15:12:58
+* @Last Modified time: 2017-11-29 11:49:22
 */
 body,html{
   background-color: #fff;
@@ -31,7 +31,7 @@ body,html{
 
 
 .tranDetailPg.container {
-    padding-top: 1em;
+    padding-top: 5em;
 }
 .formWrap {
     border: 1px solid rgba(0,0,0,0.3);

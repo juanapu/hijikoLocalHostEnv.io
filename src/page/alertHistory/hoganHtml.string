@@ -1,13 +1,20 @@
 	{{#data}}
+	      {{#isLocalUser}}
+			{{#isStatChange}}
+				<div class="alertWrap" id="unread{{{id}}}" data-cmid={{id}}>
+					<p><i class="fa fa-refresh" aria-hidden="true"></i> 状态更改： <span class="user">{{name}}</span>已<span class="status">{{content}}</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="./tranDetail.html?tranNum={{{trade_sn}}}&id={{{msgId}}}&role={{{role}}}&status={{{status}}}&type={{{role}}}"> 查看详情</a></p>
+				</div>
+			{{/isStatChange}}
+	      {{/isLocalUser}}
 		  {{^isLocalUser}}
 			{{#isStatChange}}
-				<div class="alertWrap">
+				<div class="alertWrap" id="unread{{{id}}}" data-cmid={{id}}>
 					<p><i class="fa fa-refresh" aria-hidden="true"></i> 状态更改： <span class="user">{{name}}</span>已<span class="status">{{content}}</span><span class="date"> 2017-11-27 09:30</span><a class="link" href="./tranDetail.html?tranNum={{{trade_sn}}}&id={{{msgId}}}&role={{{role}}}&status={{{status}}}&type={{{role}}}"> 查看详情</a></p>
 				</div>
 			{{/isStatChange}}
 			
 			{{#isComt}}
-			<div class="alertWrap">
+			<div class="alertWrap" id="unread{{{id}}}" data-cmid={{id}}>
 				<p><i class="fa fa-commenting" aria-hidden="true"></i> 新留言：<span class="user">{{name}}</span>在订单 <strong>{{title}}</strong> 里<span class="status">发表新留言啦</span><span class="date"> {{created}}</span><a class="link" href="./tranDetail.html?tranNum={{{trade_sn}}}&id={{{msgId}}}&role={{{role}}}&status={{{status}}}&type={{{role}}}"> 查看详情</a></p>
 			</div>
 			{{/isComt}}

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:32
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-28 17:26:29
+* @Last Modified time: 2017-11-29 15:35:33
 */
 "use strict";
 
@@ -35,6 +35,7 @@ var transaction={
 	     _trade.tranLog(logData,function(resDt,txtStatus,res){
 			 _commonJs.unloading();
 			 var localUser=_commonJs.getCookie().nickname;
+
 			 $.each(resDt,function(index,val){
 				 if(val.content === '添加留言'){
 				 	val.isComt=true;
@@ -57,17 +58,32 @@ var transaction={
 			 });
  			var template=_mm.renderHtml(hoganHtml,res);
 			$(".alertHistory .hoganWrap").html(template);
-			console.log("below is res");
-			console.log(res);
+
+			/**set unread messge's style**/
+			 var unreadQue=_mm.getUrlParam('unread');
+			 var unreadArr=unreadQue.split('_');
+			 $.each(unreadArr,function(index,val){
+			 	$("#unread"+val).addClass('unread');
+			 });
+					_this.bindEvent();
 	     },function(err){
 	     	 _commonJs.unloading();
 	     	 _mm.errorTips(err);
 	     	 $(".alertHistory").html('<div class="container" style="padding-top: 3em"><div class="row"><div class="col-md-8 col-xs-8">出错啦！！！请刷新页面试试哦！！或者清一下浏览器缓存重新登录一次哦</div></div></div>');
 	     });
-		_this.bindEvent();
 	},
 	bindEvent: function(){
-
+		$(".alertWrap.unread>p>a").click(function(e){
+			var data={
+				id: $(this).parents('.alertWrap').data('cmid'),
+				user_id: _commonJs.getCookie().user_id
+			};
+			_trade.tranLogRead(data,function(resDt,txtStatus,res){
+				//_mm.successTips(txtStatus);
+			},function(err){
+				_mm.errorTips(err);
+			});
+		});
 	}
 }
 

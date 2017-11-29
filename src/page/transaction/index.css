@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:42
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-10 15:41:51
+* @Last Modified time: 2017-11-29 16:08:36
 */
 body,html{
 	background-color: #fff;
@@ -31,6 +31,7 @@ body,html{
 
 .transaction {
     margin-top: 70px;
+    padding-top: 6em;
 }
 .transaction .form-item.range>div{
   float: right;

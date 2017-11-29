@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-28 17:45:37
+* @Last Modified time: 2017-11-29 15:25:24
 */
 "use strict";
 
@@ -34,7 +34,6 @@ var tranList={
 	},
 	renderAPI: function(){
 		var _this=this;
-		_commonJs.che
 		var tradeData={
 			trade_sn: _mm.getUrlParam('tranNum'),
 			type: _mm.getUrlParam('type'),
@@ -85,7 +84,7 @@ var tranList={
              	page: 20
              };
              res.messageLength=res.trade_messages.length; //add messageLength
-             res.msgList=[];
+            res.msgList=[];
              	$.each(res.trade_logs,function(index,val){
              		if(!(val.content==='添加留言')){
              			 val.created=val.created.replace("T"," ").replace(/\+.*/," ");
@@ -94,7 +93,6 @@ var tranList={
              	});
 
              _trade.tranLog(logData,function(resDt,txtStatus){
-	      			_commonJs.unloading();
              	$.each(res.trade_messages,function(index,val){
              		if(val.type===2){ //payer comment
              			val.commentType="付款人";
@@ -114,6 +112,7 @@ var tranList={
 		             /*****render hogan template*********/
 					var template=_mm.renderHtml(hoganHtml,res);
 					$(".tranDetailPg>.row>.hoganHtml").html(template);
+	      			_commonJs.unloading();
 
 					/********add other events after html are rendered*********/
 					_this.addPOP(res);  
@@ -179,7 +178,7 @@ var tranList={
 					trade_sn: viewRes.trade_sn,
 					message: '',
 					type: _mm.getUrlParam('type'),
-					email: viewRes.user_email
+					email: _commonJs.getCookie().email
 				};
 				data.message=targ.parents(".buttonWrap").siblings("textarea").val();
 				_commonJs.loading();
@@ -193,6 +192,27 @@ var tranList={
 				},function(err){
 					_commonJs.unloading();
 					_mm.errorTips(err);
+				});
+	},
+		//event: e, targ: the clicked button selector
+	tranPausingLogic: function(event,targ,viewRes){ 
+				var data={
+					trade_sn: viewRes.trade_sn,
+					message: '',
+					type: _mm.getUrlParam('type'),
+					email: viewRes.user_email
+				};
+				data.message='【暂停放款留言】'+targ.parents(".buttonWrap").siblings("textarea").val();
+				_commonJs.loading();
+				_trade.tranPause(data,function(resPsDt,psTxtStatus,PsRes){
+					_commonJs.unloading();
+					$(this).remove();
+					_mm.successTips("留言成功啦，点击订单-》可在订单详情页面查看留言哦！");
+					location.reload();
+					
+				},function(err){
+						_commonJs.unloading();
+						_mm.errorTips(err);
 				});
 	},
 	addPOP: function(viewRes){
@@ -249,6 +269,14 @@ var tranList={
 			$(".popWrap.comment .buttonWrap>input[type='submit']").click(function(e){
 				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
 						_this.tradeMsgLogic(e,$(this),viewRes); 
+                 }else{
+                 	_mm.errorTips("亲爱的，你还没有留言哦！");
+                 };
+			});
+			//applay tradePending API
+			$(".popWrap.pauseRlease  .buttonWrap>input[type='submit']").click(function(e){
+				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
+						_this.tranPausingLogic(e,$(this),viewRes); 
                  }else{
                  	_mm.errorTips("亲爱的，你还没有留言哦！");
                  };

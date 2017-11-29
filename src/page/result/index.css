@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 13:39:20
+* @Last Modified time: 2017-11-29 16:14:19
 */
 html,body{
 	background-color: #fff;
@@ -105,7 +105,7 @@ html,body{
   }
     .confirmPg {
       font-size: 0.8em;
-      padding-top: 14px;
+      padding-top: 5em;
     }
     .confirmPg .QRcode>.QRwrap {
     margin: 1em auto;

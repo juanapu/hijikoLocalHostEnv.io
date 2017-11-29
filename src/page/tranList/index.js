@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-28 15:30:17
+* @Last Modified time: 2017-11-29 12:15:13
 */
 "use strict";
 
@@ -280,6 +280,31 @@ var tranList={
 					_mm.errorTips(err);
 				});
 	},
+	//event: e, targ: the clicked button selector
+	tranPausingLogic: function(event,targ){ 
+				var data={
+					trade_sn: '',
+					message: '',
+					type: ''
+				};
+				data.trade_sn=targ.parents(".popWrap.pauseRlease").parents(".table").data("trannum")?targ.parents(".popWrap.pauseRlease").parents(".table").data("trannum"):targ.parents(".popWrap.pauseRlease").parents("td.action").parents("tr").data("trannum");
+				data.type=targ.parents(".popWrap.pauseRlease").parents(".table").data("role")?targ.parents(".popWrap.pauseRlease").parents(".table").data("role"):targ.parents(".popWrap.pauseRlease").parents("td.action").parents("tr").data("role");
+				data.message='【暂停放款留言】'+targ.parents(".buttonWrap").siblings("textarea").val();
+				_commonJs.loading();
+				_trade.tranPause(data,function(resPsDt,psTxtStatus,PsRes){
+					var numWrap=$(".headerWrap .notification--num.act.active>span.inner");
+					var numCount=parseInt(numWrap.text())+parseInt(1);
+					numWrap.empty().text(numCount);
+					_commonJs.unloading();		
+					targ.parents('.popWrap').hide('slow',function(){
+						$(this).remove();
+						_mm.errorTips("暂停申请已成功提交啦，点击订单-》可在订单详情页面查看留言哦！");
+					}).siblings('.pauseRlease.js-POP').addClass('pasDisable').attr('disabled',true); 		
+				},function(err){
+						_commonJs.unloading();
+						_mm.errorTips(err);
+				});
+	},
 	addPOP: function(){
 		var _this=this;
 		$(".js-POP").click(function(){
@@ -357,6 +382,14 @@ var tranList={
 			$(".popWrap.comment .buttonWrap>input[type='submit']").click(function(e){
 				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
 						_this.tradeMsgLogic(e,$(this)); 
+                 }else{
+                 	_mm.errorTips("亲爱的，你还没有留言哦！");
+                 };
+			});
+			//applay tradePending API
+			$(".popWrap.pauseRlease  .buttonWrap>input[type='submit']").click(function(e){
+				 if($(this).parents(".buttonWrap").siblings("textarea").val()){
+						_this.tranPausingLogic(e,$(this)); 
                  }else{
                  	_mm.errorTips("亲爱的，你还没有留言哦！");
                  };

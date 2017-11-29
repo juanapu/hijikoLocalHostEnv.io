@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-25 14:11:57
+* @Last Modified time: 2017-11-29 15:54:50
 *
 *  here is mm js
 */
@@ -63,6 +63,18 @@ var _mm={
 		var reg = new RegExp('(^|&)'+name+'=([^&]*)(&|$)');
 		var result = window.location.search.substr(1).match(reg);
 		return result ? decodeURIComponent(result[2]) : null;
+	},
+	getRedirect: function(name){
+		var reg = new RegExp('(^|&)'+name+'=');
+		var key = window.location.search.substr(1).match(reg)[0];
+		var result=window.location.search.substring(window.location.search.indexOf(name)+name.length+1,window.location.search.length);
+		return result ? decodeURIComponent(result) : null;
+	},
+	getPage: function(){ //get this url page's name
+		var lc=window.location.pathname;
+		var arr=lc.split("/");
+		var result=arr[arr.length-1].replace(".html","");
+		return result;
 	},
 	//render html template
 	renderHtml : function(htmlTemplate, data){

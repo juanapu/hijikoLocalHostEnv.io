@@ -169,7 +169,10 @@ var index={
 				_commonJs.setCookie('user_lastname',res.user_lastname);
 				_commonJs.setCookie('password',psWord);
 				_commonJs.setCookie('user_id',res.user_id);
-				var redirectPg=_mm.getUrlParam('redirectFrom');
+				var redirectPg=null;
+				if(_mm.getUrlParam('redirectFrom')){
+					 redirectPg=_mm.getRedirect('redirectFrom');
+				};
 				window.location.href=redirectPg?redirectPg:goTransaction;
 			},function(err){
 				_commonJs.unloading();

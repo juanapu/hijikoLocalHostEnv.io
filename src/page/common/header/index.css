@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:03:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-27 15:24:38
+* @Last Modified time: 2017-11-29 11:48:22
 * here is header CSS
 */
 
@@ -15,6 +15,7 @@
 }
 
 .headerWrap nav.navbar{
+    position: fixed!important;
     display: inline-block;
     margin-top: 0px;
     margin-bottom: 0px;

@@ -33,9 +33,9 @@
 		<div class="action" data-id={{id}}>
 			 {{#ableCelBtn}}<button class="btn-warning cmnBtn del js-POP" data-type="delete">删除</button>{{/ableCelBtn}}			
 			 {{^ableCelBtn}}<button class="btn-warning cmnBtn del delDisable js-POP" data-type="delete" disabled="true">删除</button>{{/ableCelBtn}}
-			{{#ablePasBtn}}<button class="cmnBtn js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}
+			{{#ablePasBtn}}<button class="cmnBtn pauseRlease js-POP" data-type="pauseRlease">暂停放款</button>{{/ablePasBtn}}
 			 {{^ablePasBtn}}{{#ableContinuePay}}<button class="cmnBtn continuePay js-POP" data-type="continuePay">现在付款</button>{{/ableContinuePay}}{{^ableContinuePay}}<button class="cmnBtn pasDisable js-POP" data-type="pauseRlease" disabled="true">暂停放款</button>{{/ableContinuePay}}{{/ablePasBtn}}
-			<button class="cmnBtn js-POP" data-type="comment">留言 HiJiko</button>
+			<button class="cmnBtn comment js-POP" data-type="comment">留言 HiJiko</button>
 		</div>
 	</div>
 </div> 

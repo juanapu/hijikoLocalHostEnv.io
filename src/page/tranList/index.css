@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-26 12:56:52
+* @Last Modified time: 2017-11-29 11:51:49
 */
 body,html{
   background-color: #fff;
@@ -39,6 +39,7 @@ body * {
 
 .tranListPg{
   width: 100%;
+ padding-top: 4em;
 }
 .tranListPg .header {
   background-color: #327a81;
