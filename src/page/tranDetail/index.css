@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:58
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 11:49:22
+* @Last Modified time: 2017-12-01 13:29:53
 */
 body,html{
   background-color: #fff;
@@ -177,6 +177,16 @@ body,html{
 }
 .tranDetailPg button.pasDisable.js-POP:hover{
   text-shadow: none;
+}
+.tranDetailPg span.dtNum {
+    font-size: 1.6em;
+    /* color: #ed2224; */
+    font-weight: 800;
+    text-shadow: 1px 1px 1px #464a4c;
+    font-family: fantasy;
+}
+.tranDetailPg span.date{
+  font-style: 0.8em;
 }
 
 /****************************************for tablet ************************************************/

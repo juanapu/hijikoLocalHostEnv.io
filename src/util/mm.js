@@ -2,7 +2,7 @@
 * @Author: Juana
 * @Date:   2017-08-17 08:31:05
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 15:54:50
+* @Last Modified time: 2017-12-01 16:55:31
 *
 *  here is mm js
 */
@@ -12,8 +12,8 @@
 var _this = this;
 var Hogan = require('hogan.js');
 var conf = {
-	serverHost : 'http://localhost:8080',
-	fileHost: 'http://localhost:8080/dist/view/'
+	serverHost : 'http://localhost:8009',
+	fileHost: 'http://localhost:8009/dist/view/'
 };
 var _mm={
 	request: function(param){

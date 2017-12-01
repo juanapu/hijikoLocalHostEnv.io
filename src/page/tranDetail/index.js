@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 15:25:24
+* @Last Modified time: 2017-12-01 17:21:33
 */
 "use strict";
 
@@ -21,6 +21,7 @@ var hoganHtml=require('./hoganHtml.string');
 
 /*********  define url ************/
 var goConfirm='./confirm.html';
+var goTransaction='./transaction.html';
 
 /****** define public variable*************/
 var userInfo=_commonJs.checkLogin();
@@ -59,6 +60,11 @@ var tranList={
 						case 2 :
 							res.statusTxt="已完成"
 							res.ablePasBtn=false  
+							break; 
+						case 3 :
+							res.statusTxt="等待放款"
+							res.ablePasBtn=true
+							res.realeaseDays=res.left_days  
 							break; 
 						case -1 :
 							res.statusTxt="托管暂停"
@@ -127,6 +133,9 @@ var tranList={
 
 		},function(err){
 			_commonJs.unloading();
+		  if(err==='订单无查看权限'){
+				window.location.href=goTransaction;
+			};
 			_mm.errorTips(err);
 			$(".tranDetailPg ").html('<div style="padding-top: 3em"><div class="row"><div class="col-md-8 col-xs-8">出错啦！！！请刷新页面试试哦！！或者清一下浏览器缓存重新登录一次哦</div></div></div>');
 		});

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-09-03 09:02:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 15:53:02
+* @Last Modified time: 2017-12-01 15:40:47
 *  here is header
 */
 "use strict";
@@ -101,7 +101,7 @@ var header={
 	},
 	pageMove: function(unread){
 		$("a.navbar-brand").click(function(){
-			window.location.href=indexPg;
+			window.location.href=goTranPg;
 		});
 		var logInfo=_commonJs.checkLogin();
 		if(!logInfo.login){
@@ -112,6 +112,7 @@ var header={
 			$(".headerWrap .bar .nickName").text(logInfo.cookie.nickname);
 		};
 
+		/**bell ****/
 		$(".bellWrap").click(function(e){
 			_commonJs.loading();
 			var data={

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-10 15:15:50
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 12:15:13
+* @Last Modified time: 2017-12-01 17:51:45
 */
 "use strict";
 
@@ -222,6 +222,12 @@ var tranList={
 							val.statusTxt="已完成"
 							val.ableCelBtn=true
 							val.ablePasBtn=false  
+							break; 
+						case 3 :
+							val.statusTxt="等待放款"
+							val.ablePasBtn=true
+							val.ableCelBtn=false
+							val.realeaseDays=val.left_days  
 							break; 
 						case -1 :
 							val.statusTxt="托管暂停"

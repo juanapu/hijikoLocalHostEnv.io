@@ -2,7 +2,7 @@
 						<div class="left text-left">
 							<div class="crtStateWrap">
 								<div class="tle">当前状态</div>
-								<div class="crtState"><span class="date">{{realeaseDays}}</span><span class="state">{{statusTxt}}</span></div>
+								<div class="crtState"><span class="state">{{statusTxt}}</span>{{#realeaseDays}}<span class="date"><br /><span class="dtNum">{{realeaseDays}}</span> 天后放款</span>{{/realeaseDays}}</div>
 							</div>
 							<div class="rcvNameWrap">
 								<div class="tle">收款方用户名</div>
@@ -31,7 +31,7 @@
 						</div>
 						<div class="right text-left">
 							<div class="tranNameWrap">
-								<div class="tranName">汇款名称</div>
+								<div class="tranName"><span class="tranName">{{title}}</span></div>
 							</div>
 							<div class="hstWrap">
 							    {{#msgList}}<div><date>{{created}}</date><span class="bhv">{{content}}</span></div>{{/msgList}}

@@ -101,7 +101,7 @@ var exportContent ={
 
 
 if('dev' === WEBPACK_ENV){
-	config.entry.commons.push('webpack-dev-server/client?http://localhost:8080');
+	config.entry.commons.push('webpack-dev-server/client?http://localhost:8009');
 };
  
 

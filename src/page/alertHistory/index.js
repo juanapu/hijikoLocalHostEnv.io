@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-11-09 17:29:32
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-29 15:35:33
+* @Last Modified time: 2017-12-01 15:39:52
 */
 "use strict";
 
@@ -79,7 +79,7 @@ var transaction={
 				user_id: _commonJs.getCookie().user_id
 			};
 			_trade.tranLogRead(data,function(resDt,txtStatus,res){
-				//_mm.successTips(txtStatus);
+				//_mm.successTips(txtStatus)
 			},function(err){
 				_mm.errorTips(err);
 			});
